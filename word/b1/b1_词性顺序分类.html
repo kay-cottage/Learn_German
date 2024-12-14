@@ -19,6 +19,7 @@
         }
         .letter-section {
             margin-left: 20px;
+            margin-bottom: 10px;
         }
         .letter-header {
             font-size: 18px;
@@ -10545,138 +10546,105 @@ const wordData = {
 // 按字母分组并排序
 function groupWordsByGenderAndSort(data) {
     const groupedData = {
-        "m": {},
-        "f": {},
-        "n": {},
-        "others": {}  // 用来存放没有性别信息的单词
+        "m.": {},
+        "f.": {},
+        "n.": {},
+        "others": {}
     };
 
-    // 遍历数据，将单词按性别分组
     for (const word in data) {
-        // 提取翻译字段中的性别信息
-        let gender = null;
-        const expText = data[word][0].exp;  // 假设翻译字段位于 exp 字段中
+        const expText = data[word][0].exp || "";
+        let gender = 'others';
 
-        // 检查翻译字段中是否包含性别标识符
-        if (expText.includes('m.') || expText.includes('m')) {
+        // 简单判断性别，同时避免refl.误判为f.
+        if (expText.includes('m.')) {
             gender = 'm.';
-        } else if (expText.includes('f.') || expText.includes('f')) {
+        } else if (expText.includes('f.') && !expText.includes('refl.')) {
             gender = 'f.';
-        } else if (expText.includes('n.') || expText.includes('n')) {
+        } else if (expText.includes('n.')) {
             gender = 'n.';
         }
 
-        // 获取单词首字母并大写
-        const firstLetter = word.charAt(0).toUpperCase();  
-
-        if (gender === 'm.' || gender === 'f.' || gender === 'n.') {
-            // 按照性别分类
-            if (!groupedData[gender]) {
-                groupedData[gender] = {};
-            }
-
-            if (!groupedData[gender][firstLetter]) {
-                groupedData[gender][firstLetter] = [];
-            }
-
-            groupedData[gender][firstLetter].push({ word, data: data[word] });
-        } else {
-            // 其他单词归类到 'others'
-            if (!groupedData["others"][firstLetter]) {
-                groupedData["others"][firstLetter] = [];
-            }
-            groupedData["others"][firstLetter].push({ word, data: data[word] });
+        const firstLetter = word.charAt(0).toUpperCase();
+        if (!groupedData[gender][firstLetter]) {
+            groupedData[gender][firstLetter] = [];
         }
+        groupedData[gender][firstLetter].push({ word, data: data[word] });
     }
 
     // 对每个性别中的字母进行排序
     for (const gender in groupedData) {
         for (const letter in groupedData[gender]) {
-            groupedData[gender][letter].sort((a, b) => a.word.localeCompare(b.word)); // 按单词排序
+            groupedData[gender][letter].sort((a, b) => a.word.localeCompare(b.word));
         }
     }
 
     return groupedData;
 }
 
-// 渲染单词及其相关信息
 function renderWords(data) {
     const container = document.getElementById("word-container");
-    const groupedData = groupWordsByGenderAndSort(data);  // 按性别分组并排序
+    const groupedData = groupWordsByGenderAndSort(data);
 
-    // 渲染阳性（m.）单词
-    if (groupedData["m"]) {
-        renderGenderSection(container, groupedData["m."], "阳性 (m.)");
-    }
-
-    // 渲染阴性（f.）单词
-    if (groupedData["f"]) {
-        renderGenderSection(container, groupedData["f."], "阴性 (f.)");
-    }
-
-    // 渲染中性（n.）单词
-    if (groupedData["n"]) {
-        renderGenderSection(container, groupedData["n."], "中性 (n.)");
-    }
-
-    // 渲染其他没有性别信息的单词
-    if (groupedData["others"]) {
-        renderGenderSection(container, groupedData["others"], "其他 (无性别信息)");
-    }
+    // 按顺序渲染四种分类
+    renderGenderSection(container, groupedData["m."], "阳性 (m.)");
+    renderGenderSection(container, groupedData["f."], "阴性 (f.)");
+    renderGenderSection(container, groupedData["n."], "中性 (n.)");
+    renderGenderSection(container, groupedData["others"], "其他 (无性别信息)");
 }
 
 // 渲染每个性别部分
 function renderGenderSection(container, group, title) {
     const section = document.createElement('div');
     section.classList.add('gender-section');
-    
-    // 标题部分
+
     const header = document.createElement('div');
     header.classList.add('gender-header');
     header.innerText = title;
     section.appendChild(header);
 
-    // 渲染字母分组
-    for (const letter in group) {
-        const letterSection = document.createElement('div');
-        letterSection.classList.add('letter-section');
-        
-        // 字母标题
-        const letterHeader = document.createElement('div');
-        letterHeader.classList.add('letter-header');
-        letterHeader.innerText = letter;
-        letterSection.appendChild(letterHeader);
+    const letters = Object.keys(group).sort();
 
-        group[letter].forEach(item => {
-            const wordDiv = document.createElement('div');
-            wordDiv.classList.add('word-item');
+    // letters.length为0时，表示该性别下没有任何单词。
+    // 我们仍然显示标题，但没有字母分组和单词。
+    if (letters.length > 0) {
+        letters.forEach(letter => {
+            const letterSection = document.createElement('div');
+            letterSection.classList.add('letter-section');
 
-            // 单词部分
-            const wordText = document.createElement('span');
-            wordText.classList.add('word');
-            wordText.innerText = item.word;
-            wordText.addEventListener('click', () => playAudio(item.data[0].audiourl)); // 点击单词播放音频
+            const letterHeader = document.createElement('div');
+            letterHeader.classList.add('letter-header');
+            letterHeader.innerText = letter;
+            letterSection.appendChild(letterHeader);
 
-            // 发音部分
-            const phoneticText = document.createElement('span');
-            phoneticText.classList.add('phonetic');
-            phoneticText.innerText = item.data[0].phon;
+            group[letter].forEach(item => {
+                const wordDiv = document.createElement('div');
+                wordDiv.classList.add('word-item');
 
-            // 解释部分
-            const expText = document.createElement('span');
-            expText.classList.add('exp');
-            expText.innerText = item.data[0].exp;
+                const wordText = document.createElement('span');
+                wordText.classList.add('word');
+                wordText.innerText = item.word;
 
-            // 将内容添加到单词项中
-            wordDiv.appendChild(wordText);
-            wordDiv.appendChild(phoneticText);
-            wordDiv.appendChild(expText);
+                if (item.data[0].audiourl) {
+                    wordText.addEventListener('click', () => playAudio(item.data[0].audiourl));
+                }
 
-            // 将单词项添加到字母分组中
-            letterSection.appendChild(wordDiv);
+                const phoneticText = document.createElement('span');
+                phoneticText.classList.add('phonetic');
+                phoneticText.innerText = item.data[0].phon || "";
+
+                const expText = document.createElement('span');
+                expText.classList.add('exp');
+                expText.innerText = item.data[0].exp;
+
+                wordDiv.appendChild(wordText);
+                wordDiv.appendChild(phoneticText);
+                wordDiv.appendChild(expText);
+
+                letterSection.appendChild(wordDiv);
+            });
+            section.appendChild(letterSection);
         });
-
-        section.appendChild(letterSection);
     }
 
     container.appendChild(section);
@@ -10685,11 +10653,11 @@ function renderGenderSection(container, group, title) {
 // 播放音频并设置倍速为 1.3
 function playAudio(url) {
     const audio = new Audio(url);
-    audio.playbackRate = 1.3; // 设置倍速
+    audio.playbackRate = 1.3;
     audio.play();
 }
 
-// 执行渲染函数
+// 执行渲染
 renderWords(wordData);
 </script>
 </body>
