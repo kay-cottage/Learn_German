@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跨设备实时共享文本</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .chat-container {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #ddd;
+        }
+        .chat-message {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #e1e1e1;
+            border-radius: 5px;
+            position: relative;
+        }
+        .chat-message .delete-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .input-container {
+            display: flex;
+            padding: 10px;
+            background-color: #fff;
+        }
+        textarea {
+            flex: 1;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            height: 80px;
+        }
+        button {
+            margin-left: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container" id="chat-container"></div>
+    <div class="input-container">
+        <textarea id="message-input" placeholder="输入内容..."></textarea>
+        <button id="send-button">发送</button>
+    </div>
+
+    <script>
+        // 全局变量，存储消息
+        let messages = JSON.parse(localStorage.getItem("sharedMessages")) || [];
+        const chatContainer = document.getElementById("chat-container");
+        const messageInput = document.getElementById("message-input");
+        const sendButton = document.getElementById("send-button");
+
+        // 渲染消息
+        function renderMessages() {
+            chatContainer.innerHTML = "";
+            messages.forEach((message, index) => {
+                const messageElement = document.createElement("div");
+                messageElement.classList.add("chat-message");
+                messageElement.innerHTML = `
+                    ${message}
+                    <button class="delete-btn" onclick="deleteMessage(${index})">X</button>
+                `;
+                chatContainer.appendChild(messageElement);
+            });
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // 发送消息
+        function sendMessage() {
+            const text = messageInput.value.trim();
+            if (text === "") return;
+            messages.push(text);
+            localStorage.setItem("sharedMessages", JSON.stringify(messages));
+            messageInput.value = "";
+            renderMessages();
+        }
+
+        // 删除消息
+        function deleteMessage(index) {
+            messages.splice(index, 1);
+            localStorage.setItem("sharedMessages", JSON.stringify(messages));
+            renderMessages();
+        }
+
+        // 初始化
+        function init() {
+            renderMessages();
+        }
+
+        sendButton.addEventListener("click", sendMessage);
+        messageInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // 每隔 1 秒检查本地存储，更新内容（用于其他设备实时同步）
+        setInterval(() => {
+            const storedMessages = JSON.parse(localStorage.getItem("sharedMessages")) || [];
+            if (JSON.stringify(storedMessages) !== JSON.stringify(messages)) {
+                messages = storedMessages;
+                renderMessages();
+            }
+        }, 1000);
+
+        init();
+    </script>
+</body>
+</html>
