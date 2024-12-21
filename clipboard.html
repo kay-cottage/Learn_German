@@ -19,7 +19,7 @@
             overflow-y: auto;
             background-color: #f9f9f9;
             border-bottom: 1px solid #ddd;
-            white-space: pre-wrap; /* 保留文本中的换行和空格 */
+            white-space: pre-wrap; /* 保留换行和空格 */
         }
         .chat-message {
             padding: 10px;
@@ -95,14 +95,22 @@
         const messageInput = document.getElementById("message-input");
         const sendButton = document.getElementById("send-button");
 
+        // HTML 转义，防止渲染 HTML 代码
+        function escapeHtml(text) {
+            const div = document.createElement("div");
+            div.innerText = text;
+            return div.innerHTML;
+        }
+
         // 渲染消息，保持原有格式
         function renderMessages() {
             chatContainer.innerHTML = "";
             messages.forEach((message, index) => {
+                const escapedMessage = escapeHtml(message);
                 const messageElement = document.createElement("div");
                 messageElement.classList.add("chat-message");
                 messageElement.innerHTML = `
-                    <div>${message}</div>
+                    <div>${escapedMessage}</div>
                     <div class="buttons">
                         <button class="copy-btn" onclick="copyMessage(${index})">复制</button>
                         <button class="delete-btn" onclick="deleteMessage(${index})">删除</button>
