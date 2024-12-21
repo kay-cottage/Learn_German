@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>跨设备实时共享文本</title>
+    <title>实时共享文本</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,6 +19,7 @@
             overflow-y: auto;
             background-color: #f9f9f9;
             border-bottom: 1px solid #ddd;
+            white-space: pre-wrap; /* 保留文本中的换行和空格 */
         }
         .chat-message {
             padding: 10px;
@@ -26,19 +27,29 @@
             background-color: #e1e1e1;
             border-radius: 5px;
             position: relative;
+            font-family: monospace; /* 使用等宽字体以保留输入格式 */
         }
-        .chat-message .delete-btn {
+        .chat-message .buttons {
             position: absolute;
             top: 5px;
             right: 10px;
+            display: flex;
+            gap: 5px;
+        }
+        .chat-message button {
             background-color: red;
             color: white;
             border: none;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            border-radius: 5px;
+            padding: 5px 10px;
             cursor: pointer;
             font-size: 12px;
+        }
+        .chat-message button.copy-btn {
+            background-color: green;
+        }
+        .chat-message button:hover {
+            opacity: 0.8;
         }
         .input-container {
             display: flex;
@@ -53,6 +64,7 @@
             border-radius: 5px;
             resize: none;
             height: 80px;
+            font-family: monospace; /* 保留等宽字体 */
         }
         button {
             margin-left: 10px;
@@ -83,15 +95,18 @@
         const messageInput = document.getElementById("message-input");
         const sendButton = document.getElementById("send-button");
 
-        // 渲染消息
+        // 渲染消息，保持原有格式
         function renderMessages() {
             chatContainer.innerHTML = "";
             messages.forEach((message, index) => {
                 const messageElement = document.createElement("div");
                 messageElement.classList.add("chat-message");
                 messageElement.innerHTML = `
-                    ${message}
-                    <button class="delete-btn" onclick="deleteMessage(${index})">X</button>
+                    <div>${message}</div>
+                    <div class="buttons">
+                        <button class="copy-btn" onclick="copyMessage(${index})">复制</button>
+                        <button class="delete-btn" onclick="deleteMessage(${index})">删除</button>
+                    </div>
                 `;
                 chatContainer.appendChild(messageElement);
             });
@@ -100,9 +115,9 @@
 
         // 发送消息
         function sendMessage() {
-            const text = messageInput.value.trim();
-            if (text === "") return;
-            messages.push(text);
+            const text = messageInput.value;
+            if (text.trim() === "") return; // 忽略空消息
+            messages.push(text); // 保留原始输入
             localStorage.setItem("sharedMessages", JSON.stringify(messages));
             messageInput.value = "";
             renderMessages();
@@ -113,6 +128,16 @@
             messages.splice(index, 1);
             localStorage.setItem("sharedMessages", JSON.stringify(messages));
             renderMessages();
+        }
+
+        // 复制消息
+        function copyMessage(index) {
+            const textToCopy = messages[index];
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert("消息已复制到剪贴板！");
+            }).catch(() => {
+                alert("复制失败，请手动复制！");
+            });
         }
 
         // 初始化
