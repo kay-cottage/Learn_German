@@ -6,37 +6,38 @@
     <title>单词展示</title>
     <style>
         .word-container {
+            font-family: Arial, sans-serif;
             margin: 20px;
         }
         .gender-section {
             margin-bottom: 20px;
         }
         .gender-header {
+            font-size: 20px;
             font-weight: bold;
             margin-bottom: 10px;
         }
         .letter-section {
             margin-left: 20px;
+            margin-bottom: 10px;
         }
         .letter-header {
+            font-size: 18px;
             font-weight: bold;
-            margin-top: 10px;
+            margin-bottom: 5px;
         }
         .word-item {
-            margin-top: 5px;
-            display: flex;
-            align-items: center;
+            margin: 5px 0;
+            font-size: 16px;
         }
         .word {
-            margin-right: 10px;
+            color: blue;
             cursor: pointer;
+            font-weight: bold;
         }
         .phonetic, .exp {
-            font-size: 0.9em;
-            color: gray;
-        }
-        .filters {
-            margin: 20px 0;
+            margin-left: 10px;
+            font-style: italic;
         }
         #export-btn {
             margin-top: 20px;
@@ -52,23 +53,27 @@
     </style>
 </head>
 <body>
-    <button id="export-btn">导出选中单词</button>
-    <div class="filters">
-        <label for="letter-filter">选择字母：</label>
-        <select id="letter-filter">
-            <option value="">所有字母</option>
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-            <option value="D">D</option>
-            <option value="E">E</option>
-            <!-- 你可以添加更多字母 -->
-        </select>
-    </div>
-    <div id="word-container" class="word-container"></div>
 
-    <script>
-        const wordData = {
+<div class="filters">
+    <label for="letter-filter">选择字母：</label>
+    <select id="letter-filter">
+        <option value="">所有字母</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+        <!-- 可以根据需要添加更多字母 -->
+    </select>
+</div>
+
+<button id="export-btn">导出选中单词</button>
+
+<div id="word-container" class="word-container"></div>
+
+<script>
+// 示例数据
+const wordData = {
     "Abkommen": [
         {
             "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Abkommen",
@@ -8436,136 +8441,157 @@
     ]
 };
 
-        let selectedWords = [];
+let selectedWords = [];
 
-        function groupWordsByGenderAndSort(data) {
-            const groupedData = {
-                "m.": {},
-                "f.": {},
-                "n.": {},
-                "others": {}
-            };
+// 按字母分组并排序
+function groupWordsByGenderAndSort(data) {
+    const groupedData = {
+        "m.": {},
+        "f.": {},
+        "n.": {},
+        "others": {}
+    };
 
-            for (const word in data) {
-                const expText = data[word][0].exp || "";
-                let gender = 'others';
+    for (const word in data) {
+        const expText = data[word][0].exp || "";
+        let gender = 'others';
 
-                if (expText.includes('m.')) {
-                    gender = 'm.';
-                } else if (expText.includes('f.') && !expText.includes('refl.')) {
-                    gender = 'f.';
-                } else if (expText.includes('n.')) {
-                    gender = 'n.';
-                }
-
-                const firstLetter = word.charAt(0).toUpperCase();
-                if (!groupedData[gender][firstLetter]) {
-                    groupedData[gender][firstLetter] = [];
-                }
-                groupedData[gender][firstLetter].push({ word, data: data[word] });
-            }
-
-            for (const gender in groupedData) {
-                for (const letter in groupedData[gender]) {
-                    groupedData[gender][letter].sort((a, b) => a.word.localeCompare(b.word));
-                }
-            }
-
-            return groupedData;
+        // 简单判断性别，同时避免refl.误判为f.
+        if (expText.includes('m.')) {
+            gender = 'm.';
+        } else if (expText.includes('f.') && !expText.includes('refl.')) {
+            gender = 'f.';
+        } else if (expText.includes('n.')) {
+            gender = 'n.';
         }
 
-        function renderWords(data) {
-            const container = document.getElementById("word-container");
-            const groupedData = groupWordsByGenderAndSort(data);
-
-            renderGenderSection(container, groupedData["m."], "阳性 (m.)");
-            renderGenderSection(container, groupedData["f."], "阴性 (f.)");
-            renderGenderSection(container, groupedData["n."], "中性 (n.)");
-            renderGenderSection(container, groupedData["others"], "其他 (无性别信息)");
+        const firstLetter = word.charAt(0).toUpperCase();
+        if (!groupedData[gender][firstLetter]) {
+            groupedData[gender][firstLetter] = [];
         }
+        groupedData[gender][firstLetter].push({ word, data: data[word] });
+    }
 
-        function renderGenderSection(container, group, title) {
-            const section = document.createElement('div');
-            section.classList.add('gender-section');
-
-            const header = document.createElement('div');
-            header.classList.add('gender-header');
-            header.innerText = title;
-            section.appendChild(header);
-
-            const letters = Object.keys(group).sort();
-
-            if (letters.length > 0) {
-                letters.forEach(letter => {
-                    const letterSection = document.createElement('div');
-                    letterSection.classList.add('letter-section');
-
-                    const letterHeader = document.createElement('div');
-                    letterHeader.classList.add('letter-header');
-                    letterHeader.innerText = letter;
-                    letterSection.appendChild(letterHeader);
-
-                    group[letter].forEach(item => {
-                        const wordDiv = document.createElement('div');
-                        wordDiv.classList.add('word-item');
-
-                        const wordText = document.createElement('span');
-                        wordText.classList.add('word');
-                        wordText.innerText = item.word;
-
-                        const checkbox = document.createElement('input');
-                        checkbox.type = 'checkbox';
-                        checkbox.value = item.word;
-                        checkbox.addEventListener('change', () => toggleWordSelection(item.word));
-
-                        const phoneticText = document.createElement('span');
-                        phoneticText.classList.add('phonetic');
-                        phoneticText.innerText = item.data[0].phon || "";
-
-                        const expText = document.createElement('span');
-                        expText.classList.add('exp');
-                        expText.innerText = item.data[0].exp;
-
-                        wordDiv.appendChild(checkbox);
-                        wordDiv.appendChild(wordText);
-                        wordDiv.appendChild(phoneticText);
-                        wordDiv.appendChild(expText);
-
-                        letterSection.appendChild(wordDiv);
-                    });
-                    section.appendChild(letterSection);
-                });
-            }
-
-            container.appendChild(section);
+    // 对每个性别中的字母进行排序
+    for (const gender in groupedData) {
+        for (const letter in groupedData[gender]) {
+            groupedData[gender][letter].sort((a, b) => a.word.localeCompare(b.word));
         }
+    }
 
-        function toggleWordSelection(word) {
-            const index = selectedWords.indexOf(word);
-            if (index === -1) {
-                selectedWords.push(word);
-            } else {
-                selectedWords.splice(index, 1);
-            }
-        }
+    return groupedData;
+}
 
-        document.getElementById("export-btn").addEventListener('click', () => {
-            const selectedData = [];
+function renderWords(data) {
+    const container = document.getElementById("word-container");
+    const groupedData = groupWordsByGenderAndSort(data);
 
-            Object.keys(wordData).forEach(word => {
-                if (selectedWords.includes(word)) {
-                    selectedData.push(wordData[word][0]);
+    // 按顺序渲染四种分类
+    renderGenderSection(container, groupedData["m."], "阳性 (m.)");
+    renderGenderSection(container, groupedData["f."], "阴性 (f.)");
+    renderGenderSection(container, groupedData["n."], "中性 (n.)");
+    renderGenderSection(container, groupedData["others"], "其他 (无性别信息)");
+}
+
+// 渲染每个性别部分
+function renderGenderSection(container, group, title) {
+    const section = document.createElement('div');
+    section.classList.add('gender-section');
+
+    const header = document.createElement('div');
+    header.classList.add('gender-header');
+    header.innerText = title;
+    section.appendChild(header);
+
+    const letters = Object.keys(group).sort();
+
+    // letters.length为0时，表示该性别下没有任何单词。
+    // 我们仍然显示标题，但没有字母分组和单词。
+    if (letters.length > 0) {
+        letters.forEach(letter => {
+            const letterSection = document.createElement('div');
+            letterSection.classList.add('letter-section');
+
+            const letterHeader = document.createElement('div');
+            letterHeader.classList.add('letter-header');
+            letterHeader.innerText = letter;
+            letterSection.appendChild(letterHeader);
+
+            group[letter].forEach(item => {
+                const wordDiv = document.createElement('div');
+                wordDiv.classList.add('word-item');
+
+                const wordText = document.createElement('span');
+                wordText.classList.add('word');
+                wordText.innerText = item.word;
+
+                if (item.data[0].audiourl) {
+                    wordText.addEventListener('click', () => playAudio(item.data[0].audiourl));
                 }
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.value = item.word;
+                checkbox.addEventListener('change', () => toggleWordSelection(item.word));
+
+                const phoneticText = document.createElement('span');
+                phoneticText.classList.add('phonetic');
+                phoneticText.innerText = item.data[0].phon || "";
+
+                const expText = document.createElement('span');
+                expText.classList.add('exp');
+                expText.innerText = item.data[0].exp;
+
+                wordDiv.appendChild(checkbox);
+                wordDiv.appendChild(wordText);
+                wordDiv.appendChild(phoneticText);
+                wordDiv.appendChild(expText);
+
+                letterSection.appendChild(wordDiv);
             });
-
-            const blob = new Blob([JSON.stringify(selectedData, null, 2)], { type: 'application/json' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'selected_words.json';
-            link.click();
+            section.appendChild(letterSection);
         });
+    }
 
-        renderWords(wordData);
-    </script>
+    container.appendChild(section);
+}
+
+// 播放音频并设置倍速为 1.3
+function playAudio(url) {
+    const audio = new Audio(url);
+    audio.playbackRate = 1.3;
+    audio.play();
+}
+
+// 选中单词的处理
+function toggleWordSelection(word) {
+    const index = selectedWords.indexOf(word);
+    if (index === -1) {
+        selectedWords.push(word);
+    } else {
+        selectedWords.splice(index, 1);
+    }
+}
+
+// 导出选中的单词
+document.getElementById("export-btn").addEventListener('click', () => {
+    const selectedData = [];
+
+    Object.keys(wordData).forEach(word => {
+        if (selectedWords.includes(word)) {
+            selectedData.push(wordData[word][0]);
+        }
+    });
+
+    const blob = new Blob([JSON.stringify(selectedData, null, 2)], { type: 'application/json' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'selected_words.json';
+    link.click();
+});
+
+// 执行渲染
+renderWords(wordData);
+</script>
 </body>
 </html>
