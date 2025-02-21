@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>保存ChatGPT聊天记录</title>
+</head>
+<body>
+  <h1>保存ChatGPT聊天记录</h1>
+  <label for="urlInput">请输入链接：</label>
+  <input id="urlInput" type="text" placeholder="https://chat.openai.com/..." style="width: 300px;" />
+  <button id="saveBtn" onclick="saveChat()">保存聊天记录</button>
+
+  <script>
+    async function saveChat() {
+      const url = document.getElementById('urlInput').value.trim();
+      if (!url) {
+        alert('请输入有效的链接');
+        return;
+      }
+
+      try {
+        // 1. fetch 请求获取目标网页的 HTML
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('网络响应异常：' + response.status);
+        }
+        const htmlText = await response.text();
+
+        // 2. 使用 DOMParser 解析获取到的 HTML 字符串
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlText, 'text/html');
+
+        // 3. 使用 XPath 提取对应节点
+        // 注意：doc.evaluate 返回的是一个 XPathResult 对象
+        // 如果需要单个节点，使用 XPathResult.FIRST_ORDERED_NODE_TYPE
+        // 如果需要多个节点，使用 XPathResult.ORDERED_NODE_SNAPSHOT_TYPE
+        const xpath = "/html/body/div[1]/div/div[1]/div[2]/main/div[1]/div[1]/div/div/div/article[8]/div/div/div/div[1]/div/div/div/div";
+        const result = doc.evaluate(xpath, doc, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+
+        let chatContent = '';
+        for (let i = 0; i < result.snapshotLength; i++) {
+          const node = result.snapshotItem(i);
+          // 如果只要文本，可以 node.innerText
+          // 如果想要原始HTML片段，可以用 outerHTML
+          chatContent += node.outerHTML + '\n';
+        }
+
+        if (!chatContent) {
+          alert('未找到对应的聊天记录节点。请检查 XPath 是否正确。');
+          return;
+        }
+
+        // 4. 将提取到的内容打包成 Blob，然后自动触发下载
+        const blob = new Blob([chatContent], { type: 'text/html' });
+        const filename = 'chatgpt_chat.html';
+
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+
+        // 清理工作
+        document.body.removeChild(link);
+        URL.revokeObjectURL(link.href);
+
+      } catch (error) {
+        console.error('获取或保存失败：', error);
+        alert('获取或保存失败，请打开控制台查看具体错误或检查跨域/CORS设置。');
+      }
+    }
+  </script>
+</body>
+</html>
