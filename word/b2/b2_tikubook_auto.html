@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
@@ -65,6 +65,9 @@
         }
         #pause-btn:hover {
             background-color: #FF4500;
+        }
+        .word-checkbox {
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -8461,7 +8464,6 @@ let selectedWords = [];
 let isAutoPlaying = false;
 let autoPlayIndex = 0;
 let wordsToPlay = [];
-let intervalId;
 
 // 按字母分组并排序
 function groupWordsByGenderAndSort(data) {
@@ -8536,18 +8538,27 @@ function renderGenderSection(container, group, title) {
                 const wordDiv = document.createElement('div');
                 wordDiv.classList.add('word-item');
 
+                // 添加复选框
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
-                checkbox.value = item.word;
-                checkbox.addEventListener('change', () => toggleWordSelection(item.word));
+                checkbox.classList.add('word-checkbox');
+                checkbox.dataset.word = item.word;
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        if (!selectedWords.includes(item.word)) {
+                            selectedWords.push(item.word);
+                        }
+                    } else {
+                        selectedWords = selectedWords.filter(w => w !== item.word);
+                    }
+                });
 
                 const wordText = document.createElement('span');
                 wordText.classList.add('word');
                 wordText.innerText = item.word;
 
                 if (item.data[0].audiourl) {
-                    wordText.addEventListener('dblclick', () => startAutoPlayFromWord(item.word)); // 双击从该单词开始播放
-                    wordText.addEventListener('click', () => playAudio(item.data[0].audiourl)); // 单击发音
+                    wordText.addEventListener('dblclick', () => startAutoPlayFromWord(item.word));
                 }
 
                 const phoneticText = document.createElement('span');
@@ -8572,92 +8583,132 @@ function renderGenderSection(container, group, title) {
     container.appendChild(section);
 }
 
-// 播放音频并设置倍速为 1.3
+// 不再需要这个函数，因为已经在playNextWord中直接处理音频播放
+// 保留这个空函数以防其他地方调用，避免错误
 function playAudio(url) {
-    const audio = new Audio(url);
-    audio.playbackRate = 1.3;
-    audio.play();
+    // 此函数已被替换，不再使用
 }
 
 // 从某个单词开始自动播放
 function startAutoPlayFromWord(startWord) {
-    // 清空之前的播放状态
+    // 重要修复：每次开始播放时，获取所有单词元素的新鲜副本
+    const allWords = Array.from(document.querySelectorAll('.word'));
+    
+    // 找到起始单词的索引
+    const startIndex = allWords.findIndex(word => word.innerText === startWord);
+    
+    if (startIndex === -1) {
+        console.error('找不到单词:', startWord);
+        return;
+    }
+    
+    // 完全重置播放状态
     isAutoPlaying = false;
+    
+    // 将所有高亮背景清除
+    document.querySelectorAll('.word-item').forEach(item => {
+        item.style.backgroundColor = ''; 
+    });
+    
+    // 设置新的播放数组，只包含从起始单词开始的所有单词
+    wordsToPlay = allWords.slice(startIndex);
+    
+    // 重置索引为0，因为我们创建了一个新的数组，从这个数组的第一个元素开始
     autoPlayIndex = 0;
-    wordsToPlay = [];
-
-    const words = Array.from(document.querySelectorAll('.word'));
-    autoPlayIndex = words.findIndex(word => word.innerText === startWord);
-    wordsToPlay = words.slice(autoPlayIndex); // 从当前单词开始播放
-
-    isAutoPlaying = true;
-    document.getElementById('pause-btn').style.display = 'inline-block';  // 显示暂停按钮
-    playNextWord();  // 开始播放
+    
+    // 短暂延迟后开始播放
+    setTimeout(() => {
+        isAutoPlaying = true;
+        document.getElementById('pause-btn').style.display = 'inline-block';
+        playNextWord();
+    }, 50);
 }
-
-
 
 // 循环播放每个单词
 function playNextWord() {
+    // 检查是否在播放状态，以及是否还有单词要播放
     if (!isAutoPlaying || autoPlayIndex >= wordsToPlay.length) {
         isAutoPlaying = false;
-        document.getElementById('pause-btn').style.display = 'none';  // 隐藏暂停按钮
+        document.getElementById('pause-btn').style.display = 'none';
+        
+        // 清除所有高亮
+        document.querySelectorAll('.word-item').forEach(item => {
+            item.style.backgroundColor = ''; 
+        });
         return;
     }
 
-    const word = wordsToPlay[autoPlayIndex];
-    const audioUrl = wordData[word.innerText][0].audiourl;
+    // 获取当前要播放的单词
+    const currentWord = wordsToPlay[autoPlayIndex];
+    const wordText = currentWord.innerText;
+    
+    // 确保单词存在于数据中
+    if (!wordData[wordText] || !wordData[wordText][0] || !wordData[wordText][0].audiourl) {
+        console.error('没有找到单词的音频数据:', wordText);
+        autoPlayIndex++;
+        playNextWord(); // 跳到下一个
+        return;
+    }
+    
+    const audioUrl = wordData[wordText][0].audiourl;
 
-    // 播放当前单词的音频
-    playAudio(audioUrl);
-
-    // 先移除之前的高亮
+    // 创建新的音频对象
+    const audio = new Audio(audioUrl);
+    audio.playbackRate = 1.3;
+    
+    // 移除所有高亮
     document.querySelectorAll('.word-item').forEach(item => {
         item.style.backgroundColor = ''; 
     });
 
     // 高亮当前单词所在行
-    const wordDiv = word.closest('.word-item');
-    wordDiv.style.backgroundColor = '#ff0';  // 高亮背景
+    const wordDiv = currentWord.closest('.word-item');
+    wordDiv.style.backgroundColor = '#ff0';
+    
+    // 滚动到当前单词
+    currentWord.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-    // 滚动单词到视图中
-    word.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
+    // 增加索引，为下一次播放做准备
     autoPlayIndex++;
-
-    // 播放下一个单词
-    if (isAutoPlaying) {
-        setTimeout(playNextWord, 1000); // 播放完当前单词后延迟1秒播放下一个
-    }
+    
+    // 设置音频结束后的行为
+    audio.onended = function() {
+        if (isAutoPlaying) {
+            setTimeout(playNextWord, 250);
+        }
+    };
+    
+    // 如果音频加载失败，继续下一个
+    audio.onerror = function() {
+        console.error('音频加载失败:', audioUrl);
+        if (isAutoPlaying) {
+            setTimeout(playNextWord, 250);
+        }
+    };
+    
+    // 开始播放
+    audio.play().catch(error => {
+        console.error('播放失败:', error);
+        if (isAutoPlaying) {
+            setTimeout(playNextWord, 250);
+        }
+    });
 }
-
-// 暂停播放并重置状态
+// 暂停播放
 document.getElementById("pause-btn").addEventListener('click', () => {
     isAutoPlaying = false;  // 停止自动播放
     document.getElementById('pause-btn').style.display = 'none';  // 隐藏暂停按钮
-    autoPlayIndex = 0;
-    wordsToPlay = [];
-    document.querySelectorAll('.word-item').forEach(item => {
-        item.style.backgroundColor = '';  // 清除所有高亮
-    });
 });
-
-// 选中单词的处理
-function toggleWordSelection(word) {
-    const index = selectedWords.indexOf(word);
-    if (index === -1) {
-        selectedWords.push(word);
-    } else {
-        selectedWords.splice(index, 1);
-    }
-}
 
 // 导出选中的单词
 document.getElementById("export-btn").addEventListener('click', () => {
     const selectedData = [];
-    Object.keys(wordData).forEach(word => {
-        if (selectedWords.includes(word)) {
-            selectedData.push(wordData[word][0]);
+    selectedWords.forEach(word => {
+        if (wordData[word]) {
+            selectedData.push({
+                word: word,
+                ...wordData[word][0]
+            });
         }
     });
 
@@ -8666,6 +8717,21 @@ document.getElementById("export-btn").addEventListener('click', () => {
     link.href = URL.createObjectURL(blob);
     link.download = 'selected_words.json';
     link.click();
+});
+
+// 字母筛选功能
+document.getElementById('letter-filter').addEventListener('change', function() {
+    const selectedLetter = this.value;
+    const letterSections = document.querySelectorAll('.letter-section');
+    
+    letterSections.forEach(section => {
+        const letterHeader = section.querySelector('.letter-header').innerText;
+        if (selectedLetter === '' || letterHeader === selectedLetter) {
+            section.style.display = 'block';
+        } else {
+            section.style.display = 'none';
+        }
+    });
 });
 
 // 执行渲染
