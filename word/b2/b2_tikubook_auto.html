@@ -8674,7 +8674,7 @@ function playNextWord() {
     // 设置音频结束后的行为
     audio.onended = function() {
         if (isAutoPlaying) {
-            setTimeout(playNextWord, 250);
+            setTimeout(playNextWord, 100);
         }
     };
     
@@ -8682,7 +8682,7 @@ function playNextWord() {
     audio.onerror = function() {
         console.error('音频加载失败:', audioUrl);
         if (isAutoPlaying) {
-            setTimeout(playNextWord, 250);
+            setTimeout(playNextWord, 100);
         }
     };
     
@@ -8690,7 +8690,7 @@ function playNextWord() {
     audio.play().catch(error => {
         console.error('播放失败:', error);
         if (isAutoPlaying) {
-            setTimeout(playNextWord, 250);
+            setTimeout(playNextWord, 100);
         }
     });
 }
