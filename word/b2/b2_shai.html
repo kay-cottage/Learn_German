@@ -93,2071 +93,2415 @@
 <script>
 // 示例数据
 const wordData ={
-  {
-    "word": "Antibiotikum",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Antibiotikum.",
-    "exp": "n. 抗生素 Der Arzt hat mir ein Antibiotikum verschrieben. 医生给我开了抗生素。",
-    "phon": ""
-  },
-  {
-    "word": "anhänglich",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=anh%C3%A4nglich.",
-    "exp": "adj. 依赖的, 亲昵的 Das Kind ist sehr anhänglich und möchte ständig bei seiner Mutter sein. 这个小孩很依赖，总是想待在他妈妈身边。",
-    "phon": ""
-  },
-  {
-    "word": "anhand",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=anhand.",
-    "exp": "präp. 根据 Anhand der Dokumente können wir den Fall lösen. 我们可以根据文件解决这个案件。",
-    "phon": ""
-  },
-  {
-    "word": "angreifen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=angreifen.",
-    "exp": "vt. 攻击 Der Hund greift den Mann an. 狗攻击了那个男人。",
-    "phon": ""
-  },
-  {
-    "word": "alleinerziehend",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=alleinerziehend.",
-    "exp": "adj. 单亲的 Sie ist alleinerziehend mit zwei Kindern. 她是带两个孩子的单亲家长。",
-    "phon": ""
-  },
-  {
-    "word": "befragen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=befragen.",
-    "exp": "vt. 询问 Der Polizist befragt den Zeugen. 警察询问证人。",
-    "phon": ""
-  },
-  {
-    "word": "Bedürfnis",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bed%C3%BCrfnis.",
-    "exp": "n. 需求 Ich habe ein Bedürfnis nach Ruhe. 我有安静的需求。",
-    "phon": ""
-  },
-  {
-    "word": "Bedenken",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bedenken.",
-    "exp": "n. 疑虑 Ich habe Bedenken, ob das funktionieren wird. 我对这是否会奏效有疑虑。",
-    "phon": ""
-  },
-  {
-    "word": "beitragen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=beitragen.",
-    "exp": "v. 贡献 Er möchte zu dem Projekt beitragen. 他想为这个项目做贡献。",
-    "phon": ""
-  },
-  {
-    "word": "behandeln",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=behandeln.",
-    "exp": "vt. 处理,治疗 Der Arzt behandelt den Patienten. 医生给病人治疗。",
-    "phon": ""
-  },
-  {
-    "word": "Begehren",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Begehren.",
-    "exp": "n. 欲望 Er konnte das Begehren nicht unterdrücken. 他无法抑制这种欲望。",
-    "phon": ""
-  },
-  {
-    "word": "bisweilen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=bisweilen.",
-    "exp": "adv. 有时 Er besucht bisweilen seine Großeltern. 他有时会去看望他的祖父母。",
-    "phon": ""
-  },
-  {
-    "word": "Bewusstsein",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bewusstsein.",
-    "exp": "n. 意识 Das Bewusstsein verlieren 恍惚或失去知觉。",
-    "phon": ""
-  },
-  {
-    "word": "bewältigen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=bew%C3%A4ltigen.",
-    "exp": "vt. 克服 Er kann jede Schwierigkeit bewältigen. 他能克服任何困难。",
-    "phon": ""
-  },
-  {
-    "word": "besprechen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=besprechen.",
-    "exp": "vt. 讨论 Wir müssen den Plan besprechen. 我们必须讨论这个计划。",
-    "phon": ""
-  },
-  {
-    "word": "beschließen,",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=beschlie%C3%9Fen%2C.",
-    "exp": "etw. zu fassen v. 决定去做某事 Er beschließt, einen Plan zu fassen. 他决定制定一个计划。",
-    "phon": ""
-  },
-  {
-    "word": "Benehmen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Benehmen.",
-    "exp": "n. 行为 Er hat ein gutes Benehmen. 他的行为很好。",
-    "phon": ""
-  },
-  {
-    "word": "aufhalten",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=aufhalten.",
-    "exp": "可分动词: 阻止，停留 Ich kann ihn nicht länger aufhalten. 我没法再阻止他。",
-    "phon": ""
-  },
-  {
-    "word": "annehmen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=annehmen.",
-    "exp": "v. 接受,假设 (可分动词) nimmt an, angenommen Ich nehme das Geschenk an. 我接受这个礼物。 Er nimmt an, dass... 他假设……",
-    "phon": ""
-  },
-  {
-    "word": "Ambiente",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ambiente.",
-    "exp": "n. 环境 Das Ambiente des Restaurants ist sehr gemütlich. 餐厅的环境非常舒适。",
-    "phon": ""
-  },
-  {
-    "word": "Überschrift",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%9Cberschrift.",
-    "exp": "f. 标题 Die Überschrift des Artikels ist sehr interessant. 文章的标题很有趣。",
-    "phon": ""
-  },
-  {
-    "word": "Übersicht",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%9Cbersicht.",
-    "exp": "f. 概览 Ich gebe Ihnen eine Übersicht über die wichtigsten Themen. 我会给您提供一个关于最重要主题的概览。",
-    "phon": ""
-  },
-  {
-    "word": "Übertrage",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%9Cbertrage.",
-    "exp": "f. 转账, 转录 Bitte machen Sie eine Übertrage von Ihrem Bankkonto auf das unseres Unternehmens. 请从您的银行账户转账到我们公司的账户。",
-    "phon": ""
-  },
-  {
-    "word": "demnach",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=demnach.",
-    "exp": "adv. 因此 Demnach müssen wir den Termin verschieben. 因此我们必须改期。",
-    "phon": ""
-  },
-  {
-    "word": "einsetzen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=einsetzen.",
-    "exp": "可分动词 setzt ein, einzusetzen, eingesetzt Der Regen setzte plötzlich ein. 雨突然开始下起来。",
-    "phon": ""
-  },
-  {
-    "word": "einbringen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=einbringen.",
-    "exp": "可分动词 引入，带来 Er bringt neue Ideen in die Diskussion ein. 他在讨论中引入了新的想法。",
-    "phon": ""
-  },
-  {
-    "word": "einführen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=einf%C3%BChren.",
-    "exp": "vt. 引入, 输入 Das Unternehmen plant, ein neues Produkt einzuführen. 公司计划推出一款新产品。",
-    "phon": ""
-  },
-  {
-    "word": "bewerten",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=bewerten.",
-    "exp": "vt. 评价 Die Lehrerin bewertet die Prüfungen. 老师在给考试打分。",
-    "phon": ""
-  },
-  {
-    "word": "eingeüben",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=einge%C3%BCben.",
-    "exp": "vt. 练习 (可分动词) Wir müssen den Tanzschritt noch einmal eingeüben. 我们必须再练习一下这个舞步。",
-    "phon": ""
-  },
-  {
-    "word": "einhalten",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=einhalten.",
-    "exp": "vt. 遵守（规则、时间等） Bitte halten Sie die Frist ein. 请您遵守截止日期。",
-    "phon": ""
-  },
-  {
-    "word": "Engagement",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Engagement.",
-    "exp": "n. 订婚 Ihre Verlobung wurde letzte Woche bekannt gegeben. 上周宣布了他们的订婚。",
-    "phon": ""
-  },
-  {
-    "word": "erfassen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erfassen.",
-    "exp": "vt. 理解, 掌握 Ich kann den Text nicht erfassen. 我无法理解这篇文章。",
-    "phon": ""
-  },
-  {
-    "word": "entsprechend",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=entsprechend.",
-    "exp": "adj./adv. 相应的, 根据 Er handelt entsprechend den Vorschriften. 他根据规定行事。",
-    "phon": ""
-  },
-  {
-    "word": "erforderlich",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erforderlich.",
-    "exp": "adj. 必要的 Es ist erforderlich, die Zustimmung von sb(D) zu erhalten. 有必要得到某人的同意。",
-    "phon": ""
-  },
-  {
-    "word": "ergreifen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=ergreifen.",
-    "exp": "vt. 抓住,采取 Er ergreift die Gelegenheit, um seine Ideen vorzustellen. 他抓住机会展示他的想法。",
-    "phon": ""
-  },
-  {
-    "word": "erstellen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erstellen.",
-    "exp": "vt. 创建 Er erstellt einen Plan. 他在制定一个计划。",
-    "phon": ""
-  },
-  {
-    "word": "erwärmen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erw%C3%A4rmen.",
-    "exp": "vt. 加热 Die Suppe auf dem Herd erwärmen. 把汤在炉子上加热。",
-    "phon": ""
-  },
-  {
-    "word": "erwerben",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erwerben.",
-    "exp": "vt. 获得,购得 Ich habe ein neues Auto erworben. 我买了一辆新车。",
-    "phon": ""
-  },
-  {
-    "word": "Formulier",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Formulier.",
-    "exp": "n. 表格 Bitte füllen Sie dieses Formular aus. 请填写这张表格。",
-    "phon": ""
-  },
-  {
-    "word": "festlich",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=festlich.",
-    "exp": "adj. 节日的 Die festliche Dekoration ist wunderschön. 节日的装饰很漂亮。",
-    "phon": ""
-  },
-  {
-    "word": "Gebiet",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Gebiet.",
-    "exp": "n. 地区, 领域 Das Gebiet liegt im Norden des Landes. 这个地区位于国家的北部。",
-    "phon": ""
-  },
-  {
-    "word": "gelangen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=gelangen.",
-    "exp": "vi. 到达 Ich bin endlich am Ziel angekommen. 我终于到达了目的地。",
-    "phon": ""
-  },
-  {
-    "word": "Genie",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Genie.",
-    "exp": "n. 天才 Er ist ein Genie in Mathematik. 他是数学天才。",
-    "phon": ""
-  },
-  {
-    "word": "Geräusch",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ger%C3%A4usch.",
-    "exp": "n. 声音,噪声 ein lautes Geräusch 吵闹的声音",
-    "phon": ""
-  },
-  {
-    "word": "Gericht",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Gericht.",
-    "exp": "n. 菜肴; 法院 Ich habe ein leckeres Gericht gekocht. 我做了一道美味的菜。/ Das Gericht hat die Entscheidung gefällt. 法院作出了判决。",
-    "phon": ""
-  },
-  {
-    "word": "Gerücht",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ger%C3%BCcht.",
-    "exp": "n. 传闻，谣言 Es gibt ein Gerücht über + sth(A) 有关于sth的传闻。",
-    "phon": ""
-  },
-  {
-    "word": "Gesetz",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Gesetz.",
-    "exp": "n. 法律 Das Gesetz verbietet es, ohne Führerschein zu fahren. 法律禁止无驾照驾驶。",
-    "phon": ""
-  },
-  {
-    "word": "Gewicht",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Gewicht.",
-    "exp": "n. 重量 Er misst das Gewicht mit einer Waage. 他用秤称量重量。",
-    "phon": ""
-  },
-  {
-    "word": "gemeinnützig",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=gemeinn%C3%BCtzig.",
-    "exp": "adj. 公益的 Eine gemeinnützige Organisation unterstützt bedürftige Menschen. 一个公益组织帮助有需要的人。",
-    "phon": ""
-  },
-  {
-    "word": "gelingen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=gelingen.",
-    "exp": "vi. 成功 Es gelingt mir, die Prüfung zu bestehen. 我成功通过了考试。",
-    "phon": ""
-  },
-  {
-    "word": "Hasskommentare",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Hasskommentare.",
-    "exp": "pl. 仇恨评论 Er hat Hasskommentare im Internet hinterlassen. 他在互联网上留下了仇恨评论。",
-    "phon": ""
-  },
-  {
-    "word": "heutzutage",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=heutzutage.",
-    "exp": "adv. 如今 Heutzutage ist es wichtig, umweltfreundlich zu leben. 如今环保生活很重要。",
-    "phon": ""
-  },
-  {
-    "word": "herrschen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=herrschen.",
-    "exp": "vi. 统治, 支配 In diesem Land herrscht Frieden. 这个国家处于和平状态。",
-    "phon": ""
-  },
-  {
-    "word": "höchstens",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=h%C3%B6chstens.",
-    "exp": "adv. 至多，最多 Ich kann höchstens eine Stunde bleiben. 我最多能待一个小时。",
-    "phon": ""
-  },
-  {
-    "word": "hinweisen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=hinweisen.",
-    "exp": "vt. 提示, 指出 可分动词：weist hin, hingewiesen auf + sth(A) hinweisen 指出sth, 例如: Der Lehrer weist auf den Fehler hin. 老师指出错误。",
-    "phon": ""
-  },
-  {
-    "word": "identifizieren",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=identifizieren.",
-    "exp": "v. 辨认,鉴定 Ich kann den Vogel nicht identifizieren. 我不能辨认这只鸟。",
-    "phon": ""
-  },
-  {
-    "word": "Kalb",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kalb.",
-    "exp": "n. 小牛 Das Kalb trinkt Milch bei seiner Mutter. 小牛从它的母亲那里喝奶。",
-    "phon": ""
-  },
-  {
-    "word": "konservativ",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=konservativ.",
-    "exp": "adj. 保守的 Er hat konservative Ansichten. 他持有保守的观点。",
-    "phon": ""
-  },
-  {
-    "word": "Kleinkindalter",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kleinkindalter.",
-    "exp": "n. 幼儿期 Das Kleinkindalter umfasst die Lebensjahre von eins bis drei. 幼儿期包括从一岁到三岁的年龄阶段。",
-    "phon": ""
-  },
-  {
-    "word": "Kunsthandwerk",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kunsthandwerk.",
-    "exp": "n. 手工艺 Der Markt bietet verschiedene Arten von Kunsthandwerk. 市场上提供各种手工艺品。",
-    "phon": ""
-  },
-  {
-    "word": "Kriterium",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kriterium.",
-    "exp": "n. 标准,条件 ein Kriterium für + sth(A) 是sth的标准。",
-    "phon": ""
-  },
-  {
-    "word": "kritisch",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=kritisch.",
-    "exp": "adj. 批评的, 危急的 Er ist immer kritisch gegenüber neuen Ideen. 他总是对新想法持批评态度。",
-    "phon": ""
-  },
-  {
-    "word": "kritisieren",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=kritisieren.",
-    "exp": "vt. 批评 Er kritisiert ständig seine Kollegen. 他总是批评他的同事。",
-    "phon": ""
-  },
-  {
-    "word": "Läster",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=L%C3%A4ster.",
-    "exp": "n. 诽谤 über jmdn./etw. lästern 谈论、诋毁某人/某事。",
-    "phon": ""
-  },
-  {
-    "word": "Leid",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Leid.",
-    "exp": "n. 痛苦 Es tut mir leid. 对不起。",
-    "phon": ""
-  },
-  {
-    "word": "lohnen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=lohnen.",
-    "exp": "v. 值得 Es lohnt sich, die Ausstellung zu besuchen. 去参观展览是值得的。",
-    "phon": ""
-  },
-  {
-    "word": "Merkmal",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Merkmal.",
-    "exp": "n. 特征 Ein wichtiges Merkmal dieses Produkts ist seine Langlebigkeit. 这个产品的一个重要特征是其耐用性。",
-    "phon": ""
-  },
-  {
-    "word": "Missverständnis",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Missverst%C3%A4ndnis.",
-    "exp": "n. 误会 Es gab ein Missverständnis zwischen den beiden. 他们之间有个误会。",
-    "phon": ""
-  },
-  {
-    "word": "Mittelalter",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Mittelalter.",
-    "exp": "n. 中世纪 Das Mittelalter war eine Epoche in der europäischen Geschichte. 中世纪是欧洲历史上的一个时期。",
-    "phon": ""
-  },
-  {
-    "word": "nachhaltig",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=nachhaltig.",
-    "exp": "adj. 可持续的 Die Regierung plant, die Wirtschaft nachhaltig zu gestalten. 政府计划让经济可持续发展。",
-    "phon": ""
-  },
-  {
-    "word": "Niveau",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Niveau.",
-    "exp": "n. 水平 Er hat ein hohes Niveau im Schach. 他在国际象棋方面水平很高。",
-    "phon": ""
-  },
-  {
-    "word": "Opfer",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Opfer.",
-    "exp": "n. 受害者; 牺牲品 Er war das Opfer eines Betrugs. 他是诈骗的受害者。",
-    "phon": ""
-  },
-  {
-    "word": "ordnen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=ordnen.",
-    "exp": "vt. 整理 Die Bücher im Regal ordnen. 把书架上的书整理好。",
-    "phon": ""
-  },
-  {
-    "word": "Phänomen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ph%C3%A4nomen.",
-    "exp": "n. 现象 Das Wetterleuchten ist ein interessantes Phänomen. 闪电是一种有趣的现象。",
-    "phon": ""
-  },
-  {
-    "word": "Plagiat",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Plagiat.",
-    "exp": "n. 剽窃 Er wurde des Plagiats beschuldigt. 他被指控剽窃。",
-    "phon": ""
-  },
-  {
-    "word": "Potenzial",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Potenzial.",
-    "exp": "n. 潜力 Er hat ein großes Potenzial, in der Firma aufzusteigen. 他在公司里有很大的晋升潜力。",
-    "phon": ""
-  },
-  {
-    "word": "Publikum",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Publikum.",
-    "exp": "n. 观众 Das Publikum applaudierte nach der Aufführung. 演出结束后观众鼓掌。",
-    "phon": ""
-  },
-  {
-    "word": "Referat",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Referat.",
-    "exp": "n. 报告 Ich muss ein Referat über die deutsche Geschichte halten. 我必须做一个关于德国历史的报告。",
-    "phon": ""
-  },
-  {
-    "word": "regeln",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=regeln.",
-    "exp": "vt. 调整, 处理 etw(A) regeln 调整某事，例如：Er kann das Problem selbst regeln. 他可以自己解决这个问题。",
-    "phon": ""
-  },
-  {
-    "word": "räumen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=r%C3%A4umen.",
-    "exp": "vt. 清理, 腾出 Ich muss mein Zimmer räumen. 我必须清理我的房间。",
-    "phon": ""
-  },
-  {
-    "word": "reinigen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=reinigen.",
-    "exp": "vt. 清洁, 清洗 Ich muss mein Zimmer reinigen. 我必须打扫我的房间。",
-    "phon": ""
-  },
-  {
-    "word": "schmilzen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=schmilzen.",
-    "exp": "v. 融化 Das Eis beginnt zu schmilzen. 冰开始融化。",
-    "phon": ""
-  },
-  {
-    "word": "solange",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=solange.",
-    "exp": "连词 只要 Solange du lernst, wirst du Fortschritte machen. 只要你学习，你就会取得进步。",
-    "phon": ""
-  },
-  {
-    "word": "steigern",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=steigern.",
-    "exp": "vt. 提高 Er steigert die Produktion. 他提高生产。",
-    "phon": ""
-  },
-  {
-    "word": "Symptom",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Symptom.",
-    "exp": "n. 症状 Ein Symptom von Grippe ist hohes Fieber. 流感的一个症状是高烧。",
-    "phon": ""
-  },
-  {
-    "word": "symbolisieren",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=symbolisieren.",
-    "exp": "vt. 象征 Die Taube symbolisiert den Frieden. 鸽子象征和平。",
-    "phon": ""
-  },
-  {
-    "word": "theoretisch",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=theoretisch.",
-    "exp": "adj. 理论上的 Theoretisch könnte das funktionieren. 理论上这可能行得通。",
-    "phon": ""
-  },
-  {
-    "word": "tödlich",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=t%C3%B6dlich.",
-    "exp": "adj. 致命的 Eine tödliche Krankheit kann das Leben bedrohen. 致命的疾病可能威胁生命。",
-    "phon": ""
-  },
-  {
-    "word": "Tort",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Tort.",
-    "exp": "n. 侵害，侵权行为 Er hat gegen das Tortgesetz verstoßen. 他违反了侵权法。",
-    "phon": ""
-  },
-  {
-    "word": "freiwillig",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=freiwillig.",
-    "exp": "adj. 自愿的 Er hat die Aufgabe freiwillig übernommen. 他自愿承担了这个任务。",
-    "phon": ""
-  },
-  {
-    "word": "umfasst",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=umfasst.",
-    "exp": "(umfassen) vt. 包含 Das Buch umfasst 300 Seiten. 这本书包含300页。",
-    "phon": ""
-  },
-  {
-    "word": "vertreiben",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=vertreiben.",
-    "exp": "vt. 驱赶, 赶走 Sie vertrieb die Vögel aus dem Garten. 她把鸟从花园里赶走。",
-    "phon": ""
-  },
-  {
-    "word": "verschwinden",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verschwinden.",
-    "exp": "vi. 消失 Er ist spurlos verschwunden. 他无影无踪地消失了。",
-    "phon": ""
-  },
-  {
-    "word": "Versandkosten",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Versandkosten.",
-    "exp": "pl. 运费 Die Versandkosten sind im Preis inbegriffen. 运费包含在价格内。",
-    "phon": ""
-  },
-  {
-    "word": "vernachlässigen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=vernachl%C3%A4ssigen.",
-    "exp": "vt. 忽视 Er vernachlässigt seine Pflichten. 他忽视了他的职责。",
-    "phon": ""
-  },
-  {
-    "word": "verlassen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verlassen.",
-    "exp": "vt. 离开 Er hat das Gebäude verlassen. 他离开了建筑物。",
-    "phon": ""
-  },
-  {
-    "word": "verhindern",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verhindern.",
-    "exp": "vt. 阻止 Er konnte den Unfall nicht verhindern. 他无法阻止事故发生。",
-    "phon": ""
-  },
-  {
-    "word": "Verhältnis",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verh%C3%A4ltnis.",
-    "exp": "n. 关系 Ich habe ein gutes Verhältnis zu meinen Kollegen. 我与我的同事关系很好。",
-    "phon": ""
-  },
-  {
-    "word": "Verhalten",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verhalten.",
-    "exp": "n. 行为 Das Verhalten von Kindern kann manchmal schwer zu verstehen sein. 孩子的行为有时难以理解。",
-    "phon": ""
-  },
-  {
-    "word": "verarbeiten",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verarbeiten.",
-    "exp": "vt. 加工,处理 Der Computer kann große Datenmengen schnell verarbeiten. 计算机可以快速处理大量数据。",
-    "phon": ""
-  },
-  {
-    "word": "verführen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verf%C3%BChren.",
-    "exp": "vt. 诱惑,引诱 Er versucht, sie mit Schokolade zu verführen. 他试图用巧克力引诱她。",
-    "phon": ""
-  },
-  {
-    "word": "Vermögen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verm%C3%B6gen.",
-    "exp": "n. 财产; 能力 Er hat das Vermögen, die Situation zu verändern. 他有能力改变局面。",
-    "phon": ""
-  },
-  {
-    "word": "übertragen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%BCbertragen.",
-    "exp": "vt. 转移, 转播 Die Sendung wird live im Fernsehen übertragen. 该节目在电视上进行现场直播。",
-    "phon": ""
-  },
-  {
-    "word": "wiedergeben",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=wiedergeben.",
-    "exp": "v. 复述,表述 Der Schüler soll den Text sinngemäß wiedergeben. 学生应该根据意思复述课文。",
-    "phon": ""
-  },
-  {
-    "word": "wirksam",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=wirksam.",
-    "exp": "adj. 有效的 Die Medizin ist sehr wirksam gegen Kopfschmerzen. 这种药对头痛非常有效。",
-    "phon": ""
-  },
-  {
-    "word": "womit",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=womit.",
-    "exp": "(pron.) 用什么 Womit kann ich Ihnen helfen? 我能用什么帮助您？",
-    "phon": ""
-  },
-  {
-    "word": "Wort",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Wort.",
-    "exp": "n. 单词,话 ein Wort verlieren über + sth(A) 谈论某事。",
-    "phon": ""
-  },
-  {
-    "word": "Wunder",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Wunder.",
-    "exp": "n. 奇迹 Das war ein echtes Wunder. 那真是一个奇迹。",
-    "phon": ""
-  },
-  {
-    "word": "Vorgehen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vorgehen.",
-    "exp": "n. 方法，步骤 Das Vorgehen bei einem Experiment muss sorgfältig geplant werden. 实验的方法必须仔细计划。",
-    "phon": ""
-  },
-  {
-    "word": "vielseitig",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=vielseitig.",
-    "exp": "adj. 多才多艺的，多方面的 Sie ist eine vielseitige Künstlerin. 她是一个多才多艺的艺术家。",
-    "phon": ""
-  },
-  {
-    "word": "verwalten",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verwalten.",
-    "exp": "vt. 管理 Er verwaltet das Unternehmen. 他管理这家公司。",
-    "phon": ""
-  },
-  {
-    "word": "verursachen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verursachen.",
-    "exp": "vt. 引起,导致 Der Regen verursacht Überschwemmungen. 雨导致了洪水。",
-    "phon": ""
-  },
-  {
-    "word": "Vorhaben",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vorhaben.",
-    "exp": "n. 计划 Er hat das Vorhaben, ein eigenes Geschäft zu gründen. 他计划开一家自己的店。",
-    "phon": ""
-  },
-  {
-    "word": "verfolgen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verfolgen.",
-    "exp": "vt. 跟踪，追踪 Ich verfolge die Nachrichten. 我在关注新闻。",
-    "phon": ""
-  },
-  {
-    "word": "ahnen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=ahnen.",
-    "exp": "v. 预感 Ich ahne, dass es heute regnen wird. 我预感到今天会下雨。",
-    "phon": ""
-  },
-  {
-    "word": "allzu",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=allzu.",
-    "exp": "adv. 过于 Das ist allzu teuer. 这太贵了。",
-    "phon": ""
-  },
-  {
-    "word": "betreiben",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=betreiben.",
-    "exp": "vt. 经营，运行 Er betreibt ein kleines Café in der Stadt. 他在城里经营一家小咖啡馆。",
-    "phon": ""
-  },
-  {
-    "word": "betreffen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=betreffen.",
-    "exp": "vt. 涉及 Die neue Regelung betrifft alle Mitarbeiter. 新规定涉及所有员工。",
-    "phon": ""
-  },
-  {
-    "word": "betonen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=betonen.",
-    "exp": "vt. 强调 Er betont, dass er die Wahrheit sagt. 他强调他在说实话。",
-    "phon": ""
-  },
-  {
-    "word": "betätigen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=bet%C3%A4tigen.",
-    "exp": "vt. 启动,证实 Er betätigte den Schalter. 他启动了开关。",
-    "phon": ""
-  },
-  {
-    "word": "bestätigen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=best%C3%A4tigen.",
-    "exp": "vt. 确认 Er bestätigte den Termin per E-Mail. 他通过电子邮件确认了预约。",
-    "phon": ""
-  },
-  {
-    "word": "besichtigen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=besichtigen.",
-    "exp": "vt. 参观 Wir haben das Schloss besichtigt. 我们参观了那座城堡。",
-    "phon": ""
-  },
-  {
-    "word": "beschließen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=beschlie%C3%9Fen.",
-    "exp": "vt. 决定 beschließt, etw. zu tun 决定做某事。",
-    "phon": ""
-  },
-  {
-    "word": "bewusst",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=bewusst.",
-    "exp": "adj. 有意识的,清醒的 Er ist sich der Gefahr bewusst. 他意识到危险。",
-    "phon": ""
-  },
-  {
-    "word": "bedrohen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=bedrohen.",
-    "exp": "vt. 威胁 Er bedroht ihn mit einem Messer. 他用刀威胁他。",
-    "phon": ""
-  },
-  {
-    "word": "befassen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=befassen.",
-    "exp": "vr. 涉及 sich mit + sth(D) befassen 涉及、处理某事。",
-    "phon": ""
-  },
-  {
-    "word": "behindern",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=behindern.",
-    "exp": "vt. 阻碍 Der Verkehrsunfall hat den Verkehr stark behindert. 交通事故严重阻碍了交通。",
-    "phon": ""
-  },
-  {
-    "word": "behalten",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=behalten.",
-    "exp": "vt. 保持, 记住 Das Geheimnis für sich behalten 保守秘密。",
-    "phon": ""
-  },
-  {
-    "word": "begeistert",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=begeistert.",
-    "exp": "adj. 兴奋的, 激动的 Er ist begeistert von + sth(D) 他对sth感到兴奋。",
-    "phon": ""
-  },
-  {
-    "word": "beinahe",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=beinahe.",
-    "exp": "adv. 几乎 Er hat beinahe den Zug verpasst. 他几乎错过了火车。",
-    "phon": ""
-  },
-  {
-    "word": "befinden",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=befinden.",
-    "exp": "vr. 位于；处于某种状态 sich irgendwo befinden 位于某地；sich in einer schwierigen Lage befinden 处于困难境地。",
-    "phon": ""
-  },
-  {
-    "word": "belohnen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=belohnen.",
-    "exp": "vt. 奖励 Er wurde für seine Mühe belohnt. 他的努力得到了奖励。",
-    "phon": ""
-  },
-  {
-    "word": "Behalt",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Behalt.",
-    "exp": "m. 保持 Der Behalt des Gleichgewichts ist wichtig. 保持平衡是很重要的。",
-    "phon": ""
-  },
-  {
-    "word": "Beschluss",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Beschluss.",
-    "exp": "m. 决定 einen Beschluss fassen 做出决定。",
-    "phon": ""
-  },
-  {
-    "word": "Beschäftigter",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Besch%C3%A4ftigter.",
-    "exp": "m. 职员 Ein Beschäftigter der Firma wurde befördert. 公司的一名职员被晋升了。",
-    "phon": ""
-  },
-  {
-    "word": "Bollerwagen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bollerwagen.",
-    "exp": "m. 手推车 Er zieht den Bollerwagen hinter sich her. 他把手推车拉在身后。",
-    "phon": ""
-  },
-  {
-    "word": "Betrieb",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Betrieb.",
-    "exp": "m. 企业; 运行 Der Betrieb hat viele Angestellte. 这家公司有很多员工。",
-    "phon": ""
-  },
-  {
-    "word": "Freiwillige",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Freiwillige.",
-    "exp": "m./f. 志愿者 Er arbeitet als Freiwilliger in einer Suppenküche. 他在一个施食处做志愿者。",
-    "phon": ""
-  },
-  {
-    "word": "Führungsstil",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=F%C3%BChrungsstil.",
-    "exp": "m. 领导风格 Sein Führungsstil ist sehr autoritär. 他的领导风格非常专制。",
-    "phon": ""
-  },
-  {
-    "word": "Rahmen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Rahmen.",
-    "exp": "m. 框架，范围 im Rahmen von + sth 在...的框架内/范围内",
-    "phon": ""
-  },
-  {
-    "word": "Ratgeber",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ratgeber.",
-    "exp": "m. 指南，顾问 Er liest einen Ratgeber über gesunde Ernährung. 他在看一本关于健康饮食的指南。",
-    "phon": ""
-  },
-  {
-    "word": "Betrug",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Betrug.",
-    "exp": "m. 欺骗 Er wurde des Betrugs beschuldigt. 他被指控欺骗。",
-    "phon": ""
-  },
-  {
-    "word": "Bezug",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bezug.",
-    "exp": "m. 关系 etw. in Bezug auf etw. (A) erwähnen 在某事上提到某事。",
-    "phon": ""
-  },
-  {
-    "word": "Beweis",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Beweis.",
-    "exp": "m. 证据 einen Beweis erbringen 提供证据。",
-    "phon": ""
-  },
-  {
-    "word": "Besitzer",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Besitzer.",
-    "exp": "m. 所有者 Der Besitzer des Hauses ist im Urlaub. 房子的所有者在度假。",
-    "phon": ""
-  },
-  {
-    "word": "Anlass",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Anlass.",
-    "exp": "m. 场合, 动机 etw. zum Anlass nehmen (etw. zu tun) 以某事为契机做某事。",
-    "phon": ""
-  },
-  {
-    "word": "Erhalt",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Erhalt.",
-    "exp": "m. 保存 Der Erhalt der alten Gebäude ist wichtig. 保护这些老建筑很重要。",
-    "phon": ""
-  },
-  {
-    "word": "Gegenstand",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Gegenstand.",
-    "exp": "m. 物品 Der Gegenstand liegt auf dem Tisch. 物品在桌子上。",
-    "phon": ""
-  },
-  {
-    "word": "Handwerksberuf",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Handwerksberuf.",
-    "exp": "m. 手工业职业 Er arbeitet seit Jahren in einem Handwerksberuf. 他多年来从事手工业职业。",
-    "phon": ""
-  },
-  {
-    "word": "Heuschreck",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Heuschreck.",
-    "exp": "m. 蝗虫 Der Heuschreck frisst Blätter. 蝗虫吃叶子。",
-    "phon": ""
-  },
-  {
-    "word": "Kommentar",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kommentar.",
-    "exp": "m. 评论 Er schrieb einen Kommentar zu dem Artikel. 他对这篇文章写了一个评论。",
-    "phon": ""
-  },
-  {
-    "word": "Komödiant",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kom%C3%B6diant.",
-    "exp": "m. 喜剧演员 Der Komödiant machte das Publikum zum Lachen. 喜剧演员让观众发笑。",
-    "phon": ""
-  },
-  {
-    "word": "Kunststoff",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kunststoff.",
-    "exp": "m. 塑料 Der Stuhl ist aus Kunststoff gefertigt. 这把椅子是用塑料制成的。",
-    "phon": ""
-  },
-  {
-    "word": "Lärm",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=L%C3%A4rm.",
-    "exp": "m. 噪音 Der Lärm auf der Straße ist unerträglich. 街道上的噪音让人无法忍受。",
-    "phon": ""
-  },
-  {
-    "word": "Leitfaden",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Leitfaden.",
-    "exp": "m. 指南，手册 Der Leitfaden für neue Mitarbeiter hilft bei der Einarbeitung. 新员工指南有助于入职培训。",
-    "phon": ""
-  },
-  {
-    "word": "Missbrauch",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Missbrauch.",
-    "exp": "m. 滥用 Der Missbrauch von Alkohol kann gesundheitsschädlich sein. 滥用酒精可能对健康有害。",
-    "phon": ""
-  },
-  {
-    "word": "Passant",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Passant.",
-    "exp": "m. 行人 Die Passanten auf der Straße wurden befragt. 这些街上的行人被采访了。",
-    "phon": ""
-  },
-  {
-    "word": "Säugling",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=S%C3%A4ugling.",
-    "exp": "m. 婴儿 Der Säugling schläft in der Wiege. 婴儿在摇篮里睡觉。",
-    "phon": ""
-  },
-  {
-    "word": "Schmuck",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Schmuck.",
-    "exp": "m. 首饰 Sie trug eleganten Schmuck auf der Party. 她在派对上佩戴了优雅的首饰。",
-    "phon": ""
-  },
-  {
-    "word": "Schränk",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Schr%C3%A4nk.",
-    "exp": "m. 柜子 Der Schrank ist voll mit Kleidung. 柜子里装满了衣服。",
-    "phon": ""
-  },
-  {
-    "word": "Sieg",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Sieg.",
-    "exp": "m. 胜利 Der Sieg war hart erkämpft. 这场胜利来之不易。",
-    "phon": ""
-  },
-  {
-    "word": "Spielplatz",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Spielplatz.",
-    "exp": "m. 操场 Kinder spielen oft auf dem Spielplatz. 孩子们经常在操场上玩。",
-    "phon": ""
-  },
-  {
-    "word": "Stern",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Stern.",
-    "exp": "m. 星星；明星 Der Himmel ist voller Sterne. 天空布满了星星。",
-    "phon": ""
-  },
-  {
-    "word": "Stoff",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Stoff.",
-    "exp": "m. 物质，材料 Der Stoff ist zu teuer. 这材料太贵了。",
-    "phon": ""
-  },
-  {
-    "word": "Treibhauseffekt",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Treibhauseffekt.",
-    "exp": "m. 温室效应 Der Treibhauseffekt führt zur Erderwärmung. 温室效应导致地球变暖。",
-    "phon": ""
-  },
-  {
-    "word": "Umgang",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Umgang.",
-    "exp": "m. 交往，处理 mit jmdm./etw. (D) Umgang haben 与某人/某物有交往或打交道。",
-    "phon": ""
-  },
-  {
-    "word": "Umbau",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Umbau.",
-    "exp": "m. 改建,改造 Der Umbau des Hauses dauert drei Monate. 房子的改造需要三个月。",
-    "phon": ""
-  },
-  {
-    "word": "Verfasser",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verfasser.",
-    "exp": "m. 作者 Der Verfasser des Buches ist unbekannt. 这本书的作者未知。",
-    "phon": ""
-  },
-  {
-    "word": "Verkaufsstand",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verkaufsstand.",
-    "exp": "m. 售货摊 Der Verkaufsstand bietet frisches Obst und Gemüse an. 这个售货摊提供新鲜的水果和蔬菜。",
-    "phon": ""
-  },
-  {
-    "word": "Verdienst",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verdienst.",
-    "exp": "m. 收入 Er hat einen hohen Verdienst. 他的收入很高。",
-    "phon": ""
-  },
-  {
-    "word": "Vorgang",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vorgang.",
-    "exp": "m. 过程，手续 Der Vorgang wird Schritt für Schritt erklärt. 这个过程被一步一步地解释。",
-    "phon": ""
-  },
-  {
-    "word": "Vertreter",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vertreter.",
-    "exp": "m. 代表,代理人 Er ist Vertreter der Firma. 他是这家公司的代表。",
-    "phon": ""
-  },
-  {
-    "word": "Verlust",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verlust.",
-    "exp": "m. 损失 Er hat einen großen Verlust erlitten. 他遭受了重大损失。",
-    "phon": ""
-  },
-  {
-    "word": "Verlag",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verlag.",
-    "exp": "m. 出版社 Der Verlag veröffentlicht viele bekannte Bücher. 该出版社出版了许多著名的书籍。",
-    "phon": ""
-  },
-  {
-    "word": "Umsetzung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Umsetzung.",
-    "exp": "f. 实施 Die Umsetzung des Plans verlief erfolgreich. 计划的实施进展顺利。",
-    "phon": ""
-  },
-  {
-    "word": "Unterhaltung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Unterhaltung.",
-    "exp": "f. 谈话, 娱乐 Ich hatte eine interessante Unterhaltung mit sb(D). 我与某人进行了有趣的谈话。",
-    "phon": ""
-  },
-  {
-    "word": "Unterbringung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Unterbringung.",
-    "exp": "f. 住宿 Die Unterbringung der Gäste war gut organisiert. 客人的住宿安排得很好。",
-    "phon": ""
-  },
-  {
-    "word": "Umfrage",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Umfrage.",
-    "exp": "f. 调查 eine Umfrage durchführen 进行调查。",
-    "phon": ""
-  },
-  {
-    "word": "Tatsache",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Tatsache.",
-    "exp": "f. 事实 Es ist eine Tatsache, dass... 这是一个事实, 即...（后接从句）。",
-    "phon": ""
-  },
-  {
-    "word": "Täuschung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=T%C3%A4uschung.",
-    "exp": "f. 欺骗 Er fiel auf die Täuschung herein. 他上了这个骗局的当。",
-    "phon": ""
-  },
-  {
-    "word": "Tuberkulose",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Tuberkulose.",
-    "exp": "f. 结核病 Die Tuberkulose ist eine ansteckende Infektionskrankheit. 结核病是一种传染性传染病。",
-    "phon": ""
-  },
-  {
-    "word": "Stimme",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Stimme.",
-    "exp": "f. 声音 Er hat eine tiefe Stimme. 他的声音很低沉。",
-    "phon": ""
-  },
-  {
-    "word": "Stimmung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Stimmung.",
-    "exp": "f. 情绪，气氛 Die Stimmung auf der Party war sehr gut. 聚会的气氛很好。",
-    "phon": ""
-  },
-  {
-    "word": "Senkung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Senkung.",
-    "exp": "f. 降低 Die Senkung der Preise führte zu einem höheren Absatz. 降低价格导致了更高的销售量。",
-    "phon": ""
-  },
-  {
-    "word": "Stelle",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Stelle.",
-    "exp": "f. 职位 Ich habe eine neue Stelle als Lehrer bekommen. 我得到了一个教师的新职位。",
-    "phon": ""
-  },
-  {
-    "word": "Sehnsucht",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Sehnsucht.",
-    "exp": "f. 渴望 Er hat eine große Sehnsucht nach der Heimat. 他对家乡有着强烈的渴望。",
-    "phon": ""
-  },
-  {
-    "word": "Selbstdarstellung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Selbstdarstellung.",
-    "exp": "f. 自我表现 Er legt großen Wert auf seine Selbstdarstellung. 他非常重视自我表现。",
-    "phon": ""
-  },
-  {
-    "word": "Selbstständigkeit",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Selbstst%C3%A4ndigkeit.",
-    "exp": "f. 独立,自主 Die Selbstständigkeit ist für viele Menschen ein wichtiges Ziel. 独立对于很多人来说是一个重要的目标。",
-    "phon": ""
-  },
-  {
-    "word": "Sendung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Sendung.",
-    "exp": "f. 节目，发送 Ich habe die Sendung im Fernsehen gesehen. 我在电视上看了这个节目。",
-    "phon": ""
-  },
-  {
-    "word": "Schuld",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Schuld.",
-    "exp": "f. 债务,责任 Er hat hohe Schulden. 他负债累累。/Sie ist an dem Unfall schuld. 她对这次事故负责。",
-    "phon": ""
-  },
-  {
-    "word": "Schwankung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Schwankung.",
-    "exp": "f. 波动 Die Schwankung des Wechselkurses beeinflusst die Wirtschaft. 汇率的波动影响经济。",
-    "phon": ""
-  },
-  {
-    "word": "Bedingung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bedingung.",
-    "exp": "f. 条件 unter der Bedingung, dass... 在...的条件下。",
-    "phon": ""
-  },
-  {
-    "word": "Bedienung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bedienung.",
-    "exp": "f. 服务 Die Bedienung im Restaurant war sehr freundlich. 餐厅的服务非常友好。",
-    "phon": ""
-  },
-  {
-    "word": "Behandlung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Behandlung.",
-    "exp": "f. 治疗, 处理 Die Behandlung des Patienten dauerte zwei Stunden. 患者的治疗持续了两个小时。",
-    "phon": ""
-  },
-  {
-    "word": "Behörde",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Beh%C3%B6rde.",
-    "exp": "f. 政府机关 sich bei einer Behörde beschweren 向政府机关投诉。",
-    "phon": ""
-  },
-  {
-    "word": "Belohnung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Belohnung.",
-    "exp": "f. 奖励 Sie erhielt eine Belohnung für ihre harte Arbeit. 她因辛勤工作而获得奖励。",
-    "phon": ""
-  },
-  {
-    "word": "Beratung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Beratung.",
-    "exp": "f. 咨询 Ich brauche eine Beratung zu diesem Thema. 我需要关于这个主题的咨询。",
-    "phon": ""
-  },
-  {
-    "word": "Beraterin",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Beraterin.",
-    "exp": "f. 顾问 Sie arbeitet als Beraterin für ein großes Unternehmen. 她在一家大公司担任顾问。",
-    "phon": ""
-  },
-  {
-    "word": "Beschäftigung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Besch%C3%A4ftigung.",
-    "exp": "f. 工作,活动 Ich suche eine Beschäftigung im Bereich Marketing. 我在找一份市场营销方面的工作。",
-    "phon": ""
-  },
-  {
-    "word": "Berühmtheit",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ber%C3%BChmtheit.",
-    "exp": "f. 名声, 名人 Sie hat durch ihre Musik Berühmtheit erlangt. 她通过音乐获得了名声。",
-    "phon": ""
-  },
-  {
-    "word": "Bestellung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bestellung.",
-    "exp": "f. 订单 Ich habe eine Bestellung für ein Buch aufgegeben. 我下了一份书的订单。",
-    "phon": ""
-  },
-  {
-    "word": "bestimmen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=bestimmen.",
-    "exp": "vt. 确定,决定 Das Wetter bestimmt unseren Tagesablauf. 天气决定了我们的日程安排。",
-    "phon": ""
-  },
-  {
-    "word": "Betreuung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Betreuung.",
-    "exp": "f. 照顾, 关怀 Die Betreuung von Kindern kann sehr anspruchsvoll sein. 照顾孩子可能很有挑战性。",
-    "phon": ""
-  },
-  {
-    "word": "Beurteilung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Beurteilung.",
-    "exp": "f. 评价 Die Beurteilung des Projekts erfolgt nächste Woche. 项目的评价将在下周进行。",
-    "phon": ""
-  },
-  {
-    "word": "Bevölkerung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bev%C3%B6lkerung.",
-    "exp": "f. 人口 Die Bevölkerung der Stadt wächst stetig. 城市的人口在不断增长。",
-    "phon": ""
-  },
-  {
-    "word": "Branche",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Branche.",
-    "exp": "f. 行业 Er arbeitet in der IT-Branche. 他在IT行业工作。",
-    "phon": ""
-  },
-  {
-    "word": "Dienstleistung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Dienstleistung.",
-    "exp": "f. 服务 Dienstleistungen im Bereich der Gastronomie. 餐饮领域的服务。",
-    "phon": ""
-  },
-  {
-    "word": "Domestizierung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Domestizierung.",
-    "exp": "f. 驯化 Die Domestizierung von Tieren begann vor Tausenden von Jahren. 动物的驯化始于几千年前。",
-    "phon": ""
-  },
-  {
-    "word": "Eigenschaft",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Eigenschaft.",
-    "exp": "f. 特性, 属性 Das ist eine wichtige Eigenschaft von Wasser. 这是水的一个重要特性。",
-    "phon": ""
-  },
-  {
-    "word": "Einführung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Einf%C3%BChrung.",
-    "exp": "f. 介绍,引言 eine Einführung in + sth(A) 给sth的介绍或引言,例如:Eine Einführung in die deutsche Grammatik 德语语法的介绍。",
-    "phon": ""
-  },
-  {
-    "word": "Einleitung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Einleitung.",
-    "exp": "f. 引言，导言 Die Einleitung des Buches beschreibt die Hauptthemen. 这本书的引言描述了主要主题。",
-    "phon": ""
-  },
-  {
-    "word": "Felswände",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Felsw%C3%A4nde.",
-    "exp": "f. 悬崖 Die Kletterer erklimmen die steilen Felswände. 登山者攀爬陡峭的悬崖。",
-    "phon": ""
-  },
-  {
-    "word": "Feuchtigkeit",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Feuchtigkeit.",
-    "exp": "f. 湿气 Die Feuchtigkeit in der Luft ist sehr hoch. 空气中的湿度很高。",
-    "phon": ""
-  },
-  {
-    "word": "Folge",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Folge.",
-    "exp": "f. 后果,结果 Die Folge der Entscheidung war unerwartet. 决定的结果出乎意料。",
-    "phon": ""
-  },
-  {
-    "word": "Formulierung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Formulierung.",
-    "exp": "f. 表达 eine treffende Formulierung finden 找到一个恰当的表达。",
-    "phon": ""
-  },
-  {
-    "word": "Freizeitbeschäftigung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Freizeitbesch%C3%A4ftigung.",
-    "exp": "f. 休闲活动 In meiner Freizeitbeschäftigung gehe ich gerne schwimmen. 在我的休闲活动中，我喜欢去游泳。",
-    "phon": ""
-  },
-  {
-    "word": "Führung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=F%C3%BChrung.",
-    "exp": "f. 指导，领导 Die Führung des Unternehmens liegt in seinen Händen. 公司的领导权掌握在他手中。",
-    "phon": ""
-  },
-  {
-    "word": "Gelegenheit",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Gelegenheit.",
-    "exp": "f. 机会 Ich hatte die Gelegenheit, ins Ausland zu reisen. 我有机会去国外旅行。",
-    "phon": ""
-  },
-  {
-    "word": "Gestik",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Gestik.",
-    "exp": "f. 手势 Die Gestik unterstreicht seine Worte. 手势强调了他的话。",
-    "phon": ""
-  },
-  {
-    "word": "Grundlagenforschung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Grundlagenforschung.",
-    "exp": "f. 基础研究 Die Grundlagenforschung legt die Basis für angewandte Forschung. 基础研究为应用研究奠定基础。",
-    "phon": ""
-  },
-  {
-    "word": "Handarbeit",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Handarbeit.",
-    "exp": "f. 手工劳动 Ich mache gerne Handarbeit, wie Stricken und Nähen. 我喜欢手工活，比如编织和缝纫。",
-    "phon": ""
-  },
-  {
-    "word": "Handvoll",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Handvoll.",
-    "exp": "f. 少量，少数 eine Handvoll Leute 一小群人。",
-    "phon": ""
-  },
-  {
-    "word": "Hektik",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Hektik.",
-    "exp": "f. 忙碌 In der Großstadt herrscht oft Hektik. 大城市里常常很忙碌。",
-    "phon": ""
-  },
-  {
-    "word": "Hypothese",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Hypothese.",
-    "exp": "f. 假设 Ich stelle die Hypothese auf, dass... 我假设……。",
-    "phon": ""
-  },
-  {
-    "word": "Hingabe",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Hingabe.",
-    "exp": "f. 投入，奉献 Er arbeitet mit großer Hingabe. 他工作非常投入。",
-    "phon": ""
-  },
-  {
-    "word": "Herausforderung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Herausforderung.",
-    "exp": "f. 挑战 sich (D) einer Herausforderung stellen 迎接挑战。",
-    "phon": ""
-  },
-  {
-    "word": "Identifizierung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Identifizierung.",
-    "exp": "f. 识别 Die Identifizierung des Täters war erfolgreich. 罪犯的识别是成功的。",
-    "phon": ""
-  },
-  {
-    "word": "Immunität",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Immunit%C3%A4t.",
-    "exp": "f. 免疫 Er hat eine natürliche Immunität gegen das Virus. 他对这种病毒有天然的免疫力。",
-    "phon": ""
-  },
-  {
-    "word": "Innenstadt",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Innenstadt.",
-    "exp": "f. 市中心 Ich gehe oft in die Innenstadt, um einzukaufen. 我经常去市中心购物。",
-    "phon": ""
-  },
-  {
-    "word": "Irreführung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Irref%C3%BChrung.",
-    "exp": "f. 误导 Die Werbung war eine Irreführung. 广告是一种误导。",
-    "phon": ""
-  },
-  {
-    "word": "Kombination",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kombination.",
-    "exp": "f. 组合 Diese Kombination aus Farben ist sehr schön. 这组颜色的组合很漂亮。",
-    "phon": ""
-  },
-  {
-    "word": "Kommerzialisierung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kommerzialisierung.",
-    "exp": "f. 商业化 Die Kommerzialisierung von Sportveranstaltungen nimmt zu. 体育赛事的商业化正在增加。",
-    "phon": ""
-  },
-  {
-    "word": "Konkurrenz",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Konkurrenz.",
-    "exp": "f. 竞争 Er steht in Konkurrenz zu vielen anderen Bewerbern. 他与许多其他申请者竞争。",
-    "phon": ""
-  },
-  {
-    "word": "Köstlichkeit",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=K%C3%B6stlichkeit.",
-    "exp": "f. 美味 Die Köstlichkeit des Desserts überrascht alle. 甜点的美味让所有人惊讶。",
-    "phon": ""
-  },
-  {
-    "word": "Kündigung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=K%C3%BCndigung.",
-    "exp": "f. 解约, 辞职 Er hat seine Kündigung eingereicht. 他递交了辞呈。",
-    "phon": ""
-  },
-  {
-    "word": "Leidenschaft",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Leidenschaft.",
-    "exp": "f. 激情 Er hat eine große Leidenschaft für Musik. 他对音乐有很大的激情。",
-    "phon": ""
-  },
-  {
-    "word": "Leitung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Leitung.",
-    "exp": "f. 领导, 管理 Er hat die Leitung des Projekts übernommen. 他接管了项目的管理。",
-    "phon": ""
-  },
-  {
-    "word": "Lüge",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=L%C3%BCge.",
-    "exp": "f. 谎言 Er hat eine Lüge erzählt. 他讲了一个谎言。",
-    "phon": ""
-  },
-  {
-    "word": "Milliarde",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Milliarde.",
-    "exp": "f. 十亿 Deutschland hat über 80 Millionen Einwohner, das sind mehr als 0,08 Milliarden. 德国有超过8000万人口，这超过了0.08亿。",
-    "phon": ""
-  },
-  {
-    "word": "Zahlungsmittel",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Zahlungsmittel.",
-    "exp": "n. 支付手段 Kreditkarte ist ein beliebtes Zahlungsmittel. 信用卡是一种常见的支付手段。",
-    "phon": ""
-  },
-  {
-    "word": "zurzeit",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=zurzeit.",
-    "exp": "adv. 目前 Zurzeit habe ich viel zu tun. 我目前有很多事情要做。",
-    "phon": ""
-  },
-  {
-    "word": "Wahrheit",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Wahrheit.",
-    "exp": "f. 真相；事实 Die Wahrheit sagen 说实话。",
-    "phon": ""
-  },
-  {
-    "word": "Verstädterung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verst%C3%A4dterung.",
-    "exp": "f. 城市化 Die Verstädterung führt oft zu Umweltproblemen. 城市化常常导致环境问题。",
-    "phon": ""
-  },
-  {
-    "word": "Verschwendung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verschwendung.",
-    "exp": "f. 浪费 Verschwendung von Geld und Ressourcen 资金和资源的浪费。",
-    "phon": ""
-  },
-  {
-    "word": "Verfügung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verf%C3%BCgung.",
-    "exp": "f. 支配，指令 zur Verfügung stehen (D) 可供某人支配；etw. zur Verfügung haben (A) 拥有某物供使用。",
-    "phon": ""
-  },
-  {
-    "word": "Verknüpfung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verkn%C3%BCpfung.",
-    "exp": "f. 连接 Die Verknüpfung von Theorie und Praxis ist wichtig. 理论与实践的结合很重要。",
-    "phon": ""
-  },
-  {
-    "word": "Vernachlässigung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vernachl%C3%A4ssigung.",
-    "exp": "f. 忽视 Die Vernachlässigung der Kinder kann schwerwiegende Folgen haben. 忽视孩子可能会有严重后果。",
-    "phon": ""
-  },
-  {
-    "word": "Vielfalt",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vielfalt.",
-    "exp": "f. 多样性 Die Vielfalt der Kulturen bereichert unser Leben. 文化的多样性丰富了我们的生活。",
-    "phon": ""
-  },
-  {
-    "word": "Vorbeuge",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vorbeuge.",
-    "exp": "f. 预防措施 Er ergriff Vorbeuge gegen die Krankheit. 他采取了预防疾病的措施。",
-    "phon": ""
-  },
-  {
-    "word": "Vorgabe",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vorgabe.",
-    "exp": "f. 要求, 规定 Die Vorgabe für das Projekt ist klar. 项目的要求是明确的。",
-    "phon": ""
-  },
-  {
-    "word": "Vorlesung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vorlesung.",
-    "exp": "f. 讲座 Ich besuche eine Vorlesung über deutsche Literatur. 我在听一场关于德国文学的讲座。",
-    "phon": ""
-  },
-  {
-    "word": "Abstimmung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Abstimmung.",
-    "exp": "f. 投票 Die Abstimmung findet morgen statt. 投票将在明天进行。",
-    "phon": ""
-  },
-  {
-    "word": "Anleitung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Anleitung.",
-    "exp": "f. 指导 Die Anleitung zum Gebrauch des Geräts liegt bei. 设备使用说明附在里面。",
-    "phon": ""
-  },
-  {
-    "word": "Anschrift",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Anschrift.",
-    "exp": "f. 地址 Bitte senden Sie den Brief an meine neue Anschrift. 请将信寄到我的新地址。",
-    "phon": ""
-  },
-  {
-    "word": "Ansicht",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ansicht.",
-    "exp": "f. 观点 Meiner Ansicht nach ist das eine gute Idee. 在我看来，这是个好主意。",
-    "phon": ""
-  },
-  {
-    "word": "Ansprache",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ansprache.",
-    "exp": "f. 演讲 Er hielt eine Ansprache an die Belegschaft. 他向员工们发表了演讲。",
-    "phon": ""
-  },
-  {
-    "word": "Anstellung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Anstellung.",
-    "exp": "f. 职位, 职务 Er hat eine Anstellung als Ingenieur gefunden. 他找到了一份工程师的职位。",
-    "phon": ""
-  },
-  {
-    "word": "Arktis",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Arktis.",
-    "exp": "f. 北极 Die Eisbären leben in der Arktis. 北极熊生活在北极。",
-    "phon": ""
-  },
-  {
-    "word": "ausreichend",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=ausreichend.",
-    "exp": "adj. 足够的 Das Geld ist ausreichend für den Einkauf. 这笔钱足够买东西。",
-    "phon": ""
-  },
-  {
-    "word": "Ausrüstung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ausr%C3%BCstung.",
-    "exp": "f. 装备 Die Ausrüstung für die Wanderung ist sehr wichtig. 远足的装备非常重要。",
-    "phon": ""
-  },
-  {
-    "word": "Ausstattung",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ausstattung.",
-    "exp": "f. 装备 Die Ausstattung des Büros umfasst moderne Technik. 办公室的装备包括现代化技术。",
-    "phon": ""
-  },
-  {
-    "word": "aufgreifen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=aufgreifen.",
-    "exp": "(可分动词) vt. 抓住, 采纳 Die Polizei greift den Verdächtigen auf. 警方抓住了嫌疑犯。",
-    "phon": ""
-  },
-  {
-    "word": "aufstellen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=aufstellen.",
-    "exp": "(可分动词) vt. 竖立, 安放 Er stellt die Leiter an die Wand auf. 他把梯子竖靠在墙上。",
-    "phon": ""
-  },
-  {
-    "word": "Wandel",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Wandel.",
-    "exp": "m. 变化 Der Klimawandel ist eine große Herausforderung. 气候变化是一个巨大挑战。",
-    "phon": ""
-  },
-  {
-    "word": "Wettbewerb",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Wettbewerb.",
-    "exp": "m. 竞争，比赛 an einem Wettbewerb teilnehmen 参加比赛。",
-    "phon": ""
-  },
-  {
-    "word": "Widerspruch",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Widerspruch.",
-    "exp": "m. 反对, 矛盾 in Widerspruch zu + sth(D) stehen 与sth相矛盾。",
-    "phon": ""
-  },
-  {
-    "word": "Angestellter",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Angestellter.",
-    "exp": "m. 职员 Er ist Angestellter in einer großen Firma. 他是大公司的一名职员。",
-    "phon": ""
-  },
-  {
-    "word": "Anhänger",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Anh%C3%A4nger.",
-    "exp": "m. 支持者；挂车 Er ist ein großer Anhänger dieser Idee. 他是这个想法的坚定支持者。",
-    "phon": ""
-  },
-  {
-    "word": "Ansatz",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ansatz.",
-    "exp": "m. 开始，假设 ein wissenschaftlicher Ansatz 科学假设",
-    "phon": ""
-  },
-  {
-    "word": "Aufenthalt",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Aufenthalt.",
-    "exp": "m. 停留 Ich wünsche Ihnen einen angenehmen Aufenthalt. 祝您停留愉快。",
-    "phon": ""
-  },
-  {
-    "word": "Auftritt",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Auftritt.",
-    "exp": "m. 表演 Der Künstler hatte gestern einen großartigen Auftritt. 昨天那位艺术家的表演非常精彩。",
-    "phon": ""
-  },
-  {
-    "word": "Auftrag",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Auftrag.",
-    "exp": "m. 订单；任务 Ich habe den Auftrag, diese Dokumente zu bearbeiten. 我有处理这些文件的任务。",
-    "phon": ""
-  },
-  {
-    "word": "zuständig",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=zust%C3%A4ndig.",
-    "exp": "adj. 负责的 Er ist für die Buchhaltung zuständig. 他负责会计工作。",
-    "phon": ""
-  },
-  {
-    "word": "zusätzlich",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=zus%C3%A4tzlich.",
-    "exp": "adj. 额外的 Er hat zusätzlich einen Kurs belegt. 他额外选修了一门课程。",
-    "phon": ""
-  },
-  {
-    "word": "übernehmen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%BCbernehmen.",
-    "exp": "v. 接管, 承担 Er übernimmt die Verantwortung. 他承担责任。",
-    "phon": ""
-  },
-  {
-    "word": "überschaubar",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%BCberschaubar.",
-    "exp": "adj. 可估计的 Die Kosten sind überschaubar. 成本是可估计的。",
-    "phon": ""
-  },
-  {
-    "word": "überwiegend",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%BCberwiegend.",
-    "exp": "adj. 主要的 Das Wetter ist überwiegend sonnig. 天气主要是晴天。",
-    "phon": ""
-  },
-  {
-    "word": "überwinden",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%BCberwinden.",
-    "exp": "vt. 克服 Er überwindet seine Angst. 他克服了自己的恐惧。",
-    "phon": ""
-  },
-  {
-    "word": "übrig",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%BCbrig.",
-    "exp": "adj. 剩余的 Hast du noch etwas Geld übrig? 你还有剩下的钱吗？",
-    "phon": ""
-  },
-  {
-    "word": "überflüssig",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%BCberfl%C3%BCssig.",
-    "exp": "adj. 多余的 Das ist völlig überflüssig. 这完全是多余的。",
-    "phon": ""
-  },
-  {
-    "word": "zudem",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=zudem.",
-    "exp": "Adv. 此外 Er ist klug und zudem sehr fleißig. 他聪明且非常勤奋。",
-    "phon": ""
-  },
-  {
-    "word": "zufolge",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=zufolge.",
-    "exp": "präp. 根据 Dem Bericht zufolge hat sich die Lage verbessert. 根据报告，情况有所改善。",
-    "phon": ""
-  },
-  {
-    "word": "wenden",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=wenden.",
-    "exp": "vt. 转向, 翻转 sich an + sb(A) wenden 向某人求助/咨询。",
-    "phon": ""
-  },
-  {
-    "word": "verfügen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verf%C3%BCgen.",
-    "exp": "v. 拥有, 支配 über + sth(A) verfügen 支配/拥有某物。",
-    "phon": ""
-  },
-  {
-    "word": "verhalten",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verhalten.",
-    "exp": "vt. 控制,抑制; vr. 表现 Er verhält sich ruhig. 他表现得很冷静。",
-    "phon": ""
-  },
-  {
-    "word": "vereinbaren",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=vereinbaren.",
-    "exp": "vt. 协商,约定 einen Termin vereinbaren 约定一个时间/预约。",
-    "phon": ""
-  },
-  {
-    "word": "verfassen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verfassen.",
-    "exp": "vt. 撰写 einen Artikel verfassen 撰写一篇文章。",
-    "phon": ""
-  },
-  {
-    "word": "verfügbar",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verf%C3%BCgbar.",
-    "exp": "adj. 可用的 Die Information ist online verfügbar. 信息在网上是可用的。",
-    "phon": ""
-  },
-  {
-    "word": "verpflichten",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verpflichten.",
-    "exp": "v. 使承担义务 sich zu etw. verpflichten 承诺做某事。",
-    "phon": ""
-  },
-  {
-    "word": "verschaffen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verschaffen.",
-    "exp": "v. 提供，设法获得 sich(D) einen Überblick verschaffen 对某事有大致了解",
-    "phon": ""
-  },
-  {
-    "word": "versetzen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=versetzen.",
-    "exp": "vt. 调动, 移动 Er wurde in eine andere Abteilung versetzt. 他被调到了另一个部门。",
-    "phon": ""
-  },
-  {
-    "word": "versorgen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=versorgen.",
-    "exp": "vt. 供给, 照顾 jdn/sich mit etw. versorgen 为某人/自己提供某物。",
-    "phon": ""
-  },
-  {
-    "word": "vertreten",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=vertreten.",
-    "exp": "vt. 代表 Er vertritt seine Firma auf der Konferenz. 他在会议上代表他的公司。",
-    "phon": ""
-  },
-  {
-    "word": "vollkommen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=vollkommen.",
-    "exp": "adj. 完全的 Das ist vollkommen in Ordnung. 这完全没问题。",
-    "phon": ""
-  },
-  {
-    "word": "voneinander",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=voneinander.",
-    "exp": "彼此，互相（副词） Wir lernen voneinander. 我们互相学习。",
-    "phon": ""
-  },
-  {
-    "word": "vorläufig",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=vorl%C3%A4ufig.",
-    "exp": "adj. 临时的 Das ist nur eine vorläufige Entscheidung. 这只是一个临时决定。",
-    "phon": ""
-  },
-  {
-    "word": "umsetzen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=umsetzen.",
-    "exp": "可分动词 转换, 实施 (动词) Der Plan wurde erfolgreich umgesetzt. 计划被成功实施。",
-    "phon": ""
-  },
-  {
-    "word": "umgehen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=umgehen.",
-    "exp": "v. (可分动词) 绕过 umgeht, umging, hat umgangen 绕过某物。",
-    "phon": ""
-  },
-  {
-    "word": "ungefähr",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=ungef%C3%A4hr.",
-    "exp": "adj. 大约的 Die Strecke ist ungefähr zehn Kilometer lang. 这段路大约有十公里长。",
-    "phon": ""
-  },
-  {
-    "word": "unterwegs",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=unterwegs.",
-    "exp": "adv. 在路上 Ich bin gerade unterwegs. 我正在路上。",
-    "phon": ""
-  },
-  {
-    "word": "schmücken",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=schm%C3%BCcken.",
-    "exp": "vt. 装饰 Der Weihnachtsbaum wird mit Lichtern und Kugeln geschmückt. 圣诞树被灯和球装饰。",
-    "phon": ""
-  },
-  {
-    "word": "somit",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=somit.",
-    "exp": "副词 因此 Er hat viel gearbeitet, somit hat er sich den Urlaub verdient. 他努力工作，因此他应得假期。",
-    "phon": ""
-  },
-  {
-    "word": "spektakulär",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=spektakul%C3%A4r.",
-    "exp": "adj. 壮观的 Die Aussicht auf die Berge ist spektakulär. 山景非常壮观。",
-    "phon": ""
-  },
-  {
-    "word": "eignen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=eignen.",
-    "exp": "vr. 适合 sich für etw. eignen 适合做某事。",
-    "phon": ""
-  },
-  {
-    "word": "eingehen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=eingehen.",
-    "exp": "可分动词 进入;接受 geht auf + sth(A) ein 对sth做出反应/接受sth",
-    "phon": ""
-  },
-  {
-    "word": "einnehmen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=einnehmen.",
-    "exp": "vt. 占据,服用(药) nimmt ein, eingenommen (可分动词) 占据位置: einen Platz einnehmen 占一个位置; 服药: eine Tablette einnehmen 服用一片药。",
-    "phon": ""
-  },
-  {
-    "word": "entfalten",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=entfalten.",
-    "exp": "vt. 展开,展示 Der Künstler entfaltet sein Talent. 艺术家展示他的才华。",
-    "phon": ""
-  },
-  {
-    "word": "entfernt",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=entfernt.",
-    "exp": "adj. 遥远的 Die Stadt ist weit entfernt von hier. 这座城市离这里很远。",
-    "phon": ""
-  },
-  {
-    "word": "erfüllen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erf%C3%BCllen.",
-    "exp": "v. 实现, 满足 Sie erfüllt die Voraussetzungen für den Job. 她满足这份工作的条件。",
-    "phon": ""
-  },
-  {
-    "word": "erheblich",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erheblich.",
-    "exp": "adj. 显著的 Das hat erhebliche Auswirkungen auf die Umwelt. 这对环境有显著的影响。",
-    "phon": ""
-  },
-  {
-    "word": "erscheinen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erscheinen.",
-    "exp": "vi. 出现，出版 Das Buch erscheint nächsten Monat. 这本书下个月出版。",
-    "phon": ""
-  },
-  {
-    "word": "erstaunlich",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erstaunlich.",
-    "exp": "adj. 令人惊讶的 Das ist wirklich erstaunlich! 这真是令人惊讶！",
-    "phon": ""
-  },
-  {
-    "word": "Erstelle",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Erstelle.",
-    "exp": "vt. 创建 Erstelle einen neuen Ordner. 创建一个新的文件夹。",
-    "phon": ""
-  },
-  {
-    "word": "fehlend",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=fehlend.",
-    "exp": "adj. 缺少的 fehlende Teile 缺少的部分。",
-    "phon": ""
-  },
-  {
-    "word": "falls",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=falls.",
-    "exp": "连词 如果 Falls es regnet, bleiben wir zu Hause. 如果下雨,我们就待在家里。",
-    "phon": ""
-  },
-  {
-    "word": "folgend",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=folgend.",
-    "exp": "adj. 随后的 Das folgende Beispiel zeigt, wie man es macht. 以下的例子展示了如何做。",
-    "phon": ""
-  },
-  {
-    "word": "geraten",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=geraten.",
-    "exp": "vi. 陷入 in Schwierigkeiten geraten 陷入困境。",
-    "phon": ""
-  },
-  {
-    "word": "gelegentlich",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=gelegentlich.",
-    "exp": "adj. 偶尔的 Ich gehe nur gelegentlich ins Kino. 我只是偶尔去看电影。",
-    "phon": ""
-  },
-  {
-    "word": "handeln",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=handeln.",
-    "exp": "v. 行动; 处理 Es handelt sich um + sth(A) 涉及到sth。",
-    "phon": ""
-  },
-  {
-    "word": "hinweg",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=hinweg.",
-    "exp": "adv. 过去 über etw. hinwegsehen 忽视某事。",
-    "phon": ""
-  },
-  {
-    "word": "humoristisch",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=humoristisch.",
-    "exp": "adj. 幽默的 Er hat einen humoristischen Stil. 他有一种幽默的风格。",
-    "phon": ""
-  },
-  {
-    "word": "hinzu",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=hinzu.",
-    "exp": "adv. 加上 etw. kommt hinzu 加上某事/某物",
-    "phon": ""
-  },
-  {
-    "word": "treu",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=treu.",
-    "exp": "adj. 忠诚的 jemandem treu sein 对某人忠诚。",
-    "phon": ""
-  },
-  {
-    "word": "tätig",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=t%C3%A4tig.",
-    "exp": "adj. 从事某种职业的 als Lehrer tätig sein 从事教师工作。",
-    "phon": ""
-  },
-  {
-    "word": "miteinander",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=miteinander.",
-    "exp": "副词 彼此 Wir sprechen oft miteinander. 我们经常彼此交谈。",
-    "phon": ""
-  },
-  {
-    "word": "mittlerweile",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=mittlerweile.",
-    "exp": "adv. 期间, 同时 Mittlerweile hat sich die Situation verbessert. 期间情况有所改善。",
-    "phon": ""
-  },
-  {
-    "word": "nahezu",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=nahezu.",
-    "exp": "adv. 几乎 Er hat nahezu alles erledigt. 他几乎完成了所有事情。",
-    "phon": ""
-  },
-  {
-    "word": "nebenbei",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=nebenbei.",
-    "exp": "adv. 顺便 Ich arbeite nebenbei als Kellner. 我顺便兼做服务员。",
-    "phon": ""
-  },
-  {
-    "word": "niedrig",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=niedrig.",
-    "exp": "adj. 低的 Die Preise sind sehr niedrig. 价格很低。",
-    "phon": ""
-  },
-  {
-    "word": "nötig",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=n%C3%B6tig.",
-    "exp": "adj. 必要的 Es ist nötig, dass du kommst. 你来是必要的。",
-    "phon": ""
-  },
-  {
-    "word": "offenbaren",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=offenbaren.",
-    "exp": "vt. 显露,表明 Er offenbart seine Gefühle. 他表露了他的感情。",
-    "phon": ""
-  },
-  {
-    "word": "offensichtlich",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=offensichtlich.",
-    "exp": "adj. 明显的 Es ist offensichtlich, dass er die Wahrheit sagt. 很明显，他说的是实话。",
-    "phon": ""
-  },
-  {
-    "word": "pädagogisch",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=p%C3%A4dagogisch.",
-    "exp": "adj. 教育的 pädagogische Methoden 教育方法。",
-    "phon": ""
-  },
-  {
-    "word": "riesig",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=riesig.",
-    "exp": "adj. 巨大的 Der Elefant ist ein riesiges Tier. 大象是一种庞大的动物。",
-    "phon": ""
-  },
-  {
-    "word": "recherchieren",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=recherchieren.",
-    "exp": "v. 调查,研究 etw.(A) recherchieren 调查某事。",
-    "phon": ""
-  },
-  {
-    "word": "keineswegs",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=keineswegs.",
-    "exp": "adv. 绝不 Das ist keineswegs sicher. 这绝不安全。",
-    "phon": ""
-  },
-  {
-    "word": "konkret",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=konkret.",
-    "exp": "adj. 具体的 Ich brauche eine konkrete Antwort. 我需要一个具体的回答。",
-    "phon": ""
-  },
-  {
-    "word": "konventionell",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=konventionell.",
-    "exp": "adj. 常规的,传统的 Die konventionelle Methode funktioniert oft gut. 传统的方法通常效果很好。",
-    "phon": ""
-  },
-  {
-    "word": "konzessiv",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=konzessiv.",
-    "exp": "adj. 让步的 konzessive Konjunktionen 使用让步连词。",
-    "phon": ""
-  },
-  {
-    "word": "köstlich",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=k%C3%B6stlich.",
-    "exp": "adj. 美味的 Das Essen schmeckt köstlich. 这食物味道美味。",
-    "phon": ""
-  },
-  {
-    "word": "kündigen",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=k%C3%BCndigen.",
-    "exp": "vt./vi. 解雇, 辞职 Ich habe meinen Job gekündigt. 我辞掉了工作。",
-    "phon": ""
-  },
-  {
-    "word": "infolge",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=infolge.",
-    "exp": "präp. 由于 Infolge des schlechten Wetters fiel das Spiel aus. 由于天气不好，比赛取消了。",
-    "phon": ""
-  },
-  {
-    "word": "insbesondere",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=insbesondere.",
-    "exp": "adv. 尤其 Er interessiert sich für viele Sportarten, insbesondere für Fußball. 他对许多运动感兴趣，尤其是足球。",
-    "phon": ""
-  },
-  {
-    "word": "integrieren",
-    "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=integrieren.",
-    "exp": "vt. 融入 sich in die Gesellschaft integrieren 融入社会。",
-    "phon": ""
-  }
-  };
+  "Antibiotikum": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Antibiotikum.",
+      "exp": "n. 抗生素 Der Arzt hat mir ein Antibiotikum verschrieben. 医生给我开了抗生素。",
+      "phon": ""
+    }
+  ],
+  "anhänglich": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=anh%C3%A4nglich.",
+      "exp": "adj. 依赖的, 亲昵的 Das Kind ist sehr anhänglich und möchte ständig bei seiner Mutter sein. 这个小孩很依赖，总是想待在他妈妈身边。",
+      "phon": ""
+    }
+  ],
+  "anhand": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=anhand.",
+      "exp": "präp. 根据 Anhand der Dokumente können wir den Fall lösen. 我们可以根据文件解决这个案件。",
+      "phon": ""
+    }
+  ],
+  "angreifen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=angreifen.",
+      "exp": "vt. 攻击 Der Hund greift den Mann an. 狗攻击了那个男人。",
+      "phon": ""
+    }
+  ],
+  "alleinerziehend": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=alleinerziehend.",
+      "exp": "adj. 单亲的 Sie ist alleinerziehend mit zwei Kindern. 她是带两个孩子的单亲家长。",
+      "phon": ""
+    }
+  ],
+  "befragen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=befragen.",
+      "exp": "vt. 询问 Der Polizist befragt den Zeugen. 警察询问证人。",
+      "phon": ""
+    }
+  ],
+  "Bedürfnis": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bed%C3%BCrfnis.",
+      "exp": "n. 需求 Ich habe ein Bedürfnis nach Ruhe. 我有安静的需求。",
+      "phon": ""
+    }
+  ],
+  "Bedenken": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bedenken.",
+      "exp": "n. 疑虑 Ich habe Bedenken, ob das funktionieren wird. 我对这是否会奏效有疑虑。",
+      "phon": ""
+    }
+  ],
+  "beitragen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=beitragen.",
+      "exp": "v. 贡献 Er möchte zu dem Projekt beitragen. 他想为这个项目做贡献。",
+      "phon": ""
+    }
+  ],
+  "behandeln": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=behandeln.",
+      "exp": "vt. 处理,治疗 Der Arzt behandelt den Patienten. 医生给病人治疗。",
+      "phon": ""
+    }
+  ],
+  "Begehren": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Begehren.",
+      "exp": "n. 欲望 Er konnte das Begehren nicht unterdrücken. 他无法抑制这种欲望。",
+      "phon": ""
+    }
+  ],
+  "bisweilen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=bisweilen.",
+      "exp": "adv. 有时 Er besucht bisweilen seine Großeltern. 他有时会去看望他的祖父母。",
+      "phon": ""
+    }
+  ],
+  "Bewusstsein": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bewusstsein.",
+      "exp": "n. 意识 Das Bewusstsein verlieren 恍惚或失去知觉。",
+      "phon": ""
+    }
+  ],
+  "bewältigen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=bew%C3%A4ltigen.",
+      "exp": "vt. 克服 Er kann jede Schwierigkeit bewältigen. 他能克服任何困难。",
+      "phon": ""
+    }
+  ],
+  "besprechen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=besprechen.",
+      "exp": "vt. 讨论 Wir müssen den Plan besprechen. 我们必须讨论这个计划。",
+      "phon": ""
+    }
+  ],
+  "beschließen,": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=beschlie%C3%9Fen%2C.",
+      "exp": "etw. zu fassen v. 决定去做某事 Er beschließt, einen Plan zu fassen. 他决定制定一个计划。",
+      "phon": ""
+    }
+  ],
+  "Benehmen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Benehmen.",
+      "exp": "n. 行为 Er hat ein gutes Benehmen. 他的行为很好。",
+      "phon": ""
+    }
+  ],
+  "aufhalten": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=aufhalten.",
+      "exp": "可分动词: 阻止，停留 Ich kann ihn nicht länger aufhalten. 我没法再阻止他。",
+      "phon": ""
+    }
+  ],
+  "annehmen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=annehmen.",
+      "exp": "v. 接受,假设 (可分动词) nimmt an, angenommen Ich nehme das Geschenk an. 我接受这个礼物。 Er nimmt an, dass... 他假设……",
+      "phon": ""
+    }
+  ],
+  "Ambiente": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ambiente.",
+      "exp": "n. 环境 Das Ambiente des Restaurants ist sehr gemütlich. 餐厅的环境非常舒适。",
+      "phon": ""
+    }
+  ],
+  "Überschrift": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%9Cberschrift.",
+      "exp": "f. 标题 Die Überschrift des Artikels ist sehr interessant. 文章的标题很有趣。",
+      "phon": ""
+    }
+  ],
+  "Übersicht": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%9Cbersicht.",
+      "exp": "f. 概览 Ich gebe Ihnen eine Übersicht über die wichtigsten Themen. 我会给您提供一个关于最重要主题的概览。",
+      "phon": ""
+    }
+  ],
+  "Übertrage": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%9Cbertrage.",
+      "exp": "f. 转账, 转录 Bitte machen Sie eine Übertrage von Ihrem Bankkonto auf das unseres Unternehmens. 请从您的银行账户转账到我们公司的账户。",
+      "phon": ""
+    }
+  ],
+  "demnach": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=demnach.",
+      "exp": "adv. 因此 Demnach müssen wir den Termin verschieben. 因此我们必须改期。",
+      "phon": ""
+    }
+  ],
+  "einsetzen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=einsetzen.",
+      "exp": "可分动词 setzt ein, einzusetzen, eingesetzt Der Regen setzte plötzlich ein. 雨突然开始下起来。",
+      "phon": ""
+    }
+  ],
+  "einbringen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=einbringen.",
+      "exp": "可分动词 引入，带来 Er bringt neue Ideen in die Diskussion ein. 他在讨论中引入了新的想法。",
+      "phon": ""
+    }
+  ],
+  "einführen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=einf%C3%BChren.",
+      "exp": "vt. 引入, 输入 Das Unternehmen plant, ein neues Produkt einzuführen. 公司计划推出一款新产品。",
+      "phon": ""
+    }
+  ],
+  "bewerten": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=bewerten.",
+      "exp": "vt. 评价 Die Lehrerin bewertet die Prüfungen. 老师在给考试打分。",
+      "phon": ""
+    }
+  ],
+  "eingeüben": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=einge%C3%BCben.",
+      "exp": "vt. 练习 (可分动词) Wir müssen den Tanzschritt noch einmal eingeüben. 我们必须再练习一下这个舞步。",
+      "phon": ""
+    }
+  ],
+  "einhalten": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=einhalten.",
+      "exp": "vt. 遵守（规则、时间等） Bitte halten Sie die Frist ein. 请您遵守截止日期。",
+      "phon": ""
+    }
+  ],
+  "Engagement": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Engagement.",
+      "exp": "n. 订婚 Ihre Verlobung wurde letzte Woche bekannt gegeben. 上周宣布了他们的订婚。",
+      "phon": ""
+    }
+  ],
+  "erfassen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erfassen.",
+      "exp": "vt. 理解, 掌握 Ich kann den Text nicht erfassen. 我无法理解这篇文章。",
+      "phon": ""
+    }
+  ],
+  "entsprechend": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=entsprechend.",
+      "exp": "adj./adv. 相应的, 根据 Er handelt entsprechend den Vorschriften. 他根据规定行事。",
+      "phon": ""
+    }
+  ],
+  "erforderlich": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erforderlich.",
+      "exp": "adj. 必要的 Es ist erforderlich, die Zustimmung von sb(D) zu erhalten. 有必要得到某人的同意。",
+      "phon": ""
+    }
+  ],
+  "ergreifen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=ergreifen.",
+      "exp": "vt. 抓住,采取 Er ergreift die Gelegenheit, um seine Ideen vorzustellen. 他抓住机会展示他的想法。",
+      "phon": ""
+    }
+  ],
+  "erstellen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erstellen.",
+      "exp": "vt. 创建 Er erstellt einen Plan. 他在制定一个计划。",
+      "phon": ""
+    }
+  ],
+  "erwärmen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erw%C3%A4rmen.",
+      "exp": "vt. 加热 Die Suppe auf dem Herd erwärmen. 把汤在炉子上加热。",
+      "phon": ""
+    }
+  ],
+  "erwerben": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erwerben.",
+      "exp": "vt. 获得,购得 Ich habe ein neues Auto erworben. 我买了一辆新车。",
+      "phon": ""
+    }
+  ],
+  "Formulier": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Formulier.",
+      "exp": "n. 表格 Bitte füllen Sie dieses Formular aus. 请填写这张表格。",
+      "phon": ""
+    }
+  ],
+  "festlich": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=festlich.",
+      "exp": "adj. 节日的 Die festliche Dekoration ist wunderschön. 节日的装饰很漂亮。",
+      "phon": ""
+    }
+  ],
+  "Gebiet": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Gebiet.",
+      "exp": "n. 地区, 领域 Das Gebiet liegt im Norden des Landes. 这个地区位于国家的北部。",
+      "phon": ""
+    }
+  ],
+  "gelangen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=gelangen.",
+      "exp": "vi. 到达 Ich bin endlich am Ziel angekommen. 我终于到达了目的地。",
+      "phon": ""
+    }
+  ],
+  "Genie": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Genie.",
+      "exp": "n. 天才 Er ist ein Genie in Mathematik. 他是数学天才。",
+      "phon": ""
+    }
+  ],
+  "Geräusch": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ger%C3%A4usch.",
+      "exp": "n. 声音,噪声 ein lautes Geräusch 吵闹的声音",
+      "phon": ""
+    }
+  ],
+  "Gericht": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Gericht.",
+      "exp": "n. 菜肴; 法院 Ich habe ein leckeres Gericht gekocht. 我做了一道美味的菜。/ Das Gericht hat die Entscheidung gefällt. 法院作出了判决。",
+      "phon": ""
+    }
+  ],
+  "Gerücht": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ger%C3%BCcht.",
+      "exp": "n. 传闻，谣言 Es gibt ein Gerücht über + sth(A) 有关于sth的传闻。",
+      "phon": ""
+    }
+  ],
+  "Gesetz": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Gesetz.",
+      "exp": "n. 法律 Das Gesetz verbietet es, ohne Führerschein zu fahren. 法律禁止无驾照驾驶。",
+      "phon": ""
+    }
+  ],
+  "Gewicht": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Gewicht.",
+      "exp": "n. 重量 Er misst das Gewicht mit einer Waage. 他用秤称量重量。",
+      "phon": ""
+    }
+  ],
+  "gemeinnützig": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=gemeinn%C3%BCtzig.",
+      "exp": "adj. 公益的 Eine gemeinnützige Organisation unterstützt bedürftige Menschen. 一个公益组织帮助有需要的人。",
+      "phon": ""
+    }
+  ],
+  "gelingen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=gelingen.",
+      "exp": "vi. 成功 Es gelingt mir, die Prüfung zu bestehen. 我成功通过了考试。",
+      "phon": ""
+    }
+  ],
+  "Hasskommentare": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Hasskommentare.",
+      "exp": "pl. 仇恨评论 Er hat Hasskommentare im Internet hinterlassen. 他在互联网上留下了仇恨评论。",
+      "phon": ""
+    }
+  ],
+  "heutzutage": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=heutzutage.",
+      "exp": "adv. 如今 Heutzutage ist es wichtig, umweltfreundlich zu leben. 如今环保生活很重要。",
+      "phon": ""
+    }
+  ],
+  "herrschen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=herrschen.",
+      "exp": "vi. 统治, 支配 In diesem Land herrscht Frieden. 这个国家处于和平状态。",
+      "phon": ""
+    }
+  ],
+  "höchstens": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=h%C3%B6chstens.",
+      "exp": "adv. 至多，最多 Ich kann höchstens eine Stunde bleiben. 我最多能待一个小时。",
+      "phon": ""
+    }
+  ],
+  "hinweisen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=hinweisen.",
+      "exp": "vt. 提示, 指出 可分动词：weist hin, hingewiesen auf + sth(A) hinweisen 指出sth, 例如: Der Lehrer weist auf den Fehler hin. 老师指出错误。",
+      "phon": ""
+    }
+  ],
+  "identifizieren": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=identifizieren.",
+      "exp": "v. 辨认,鉴定 Ich kann den Vogel nicht identifizieren. 我不能辨认这只鸟。",
+      "phon": ""
+    }
+  ],
+  "Kalb": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kalb.",
+      "exp": "n. 小牛 Das Kalb trinkt Milch bei seiner Mutter. 小牛从它的母亲那里喝奶。",
+      "phon": ""
+    }
+  ],
+  "konservativ": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=konservativ.",
+      "exp": "adj. 保守的 Er hat konservative Ansichten. 他持有保守的观点。",
+      "phon": ""
+    }
+  ],
+  "Kleinkindalter": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kleinkindalter.",
+      "exp": "n. 幼儿期 Das Kleinkindalter umfasst die Lebensjahre von eins bis drei. 幼儿期包括从一岁到三岁的年龄阶段。",
+      "phon": ""
+    }
+  ],
+  "Kunsthandwerk": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kunsthandwerk.",
+      "exp": "n. 手工艺 Der Markt bietet verschiedene Arten von Kunsthandwerk. 市场上提供各种手工艺品。",
+      "phon": ""
+    }
+  ],
+  "Kriterium": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kriterium.",
+      "exp": "n. 标准,条件 ein Kriterium für + sth(A) 是sth的标准。",
+      "phon": ""
+    }
+  ],
+  "kritisch": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=kritisch.",
+      "exp": "adj. 批评的, 危急的 Er ist immer kritisch gegenüber neuen Ideen. 他总是对新想法持批评态度。",
+      "phon": ""
+    }
+  ],
+  "kritisieren": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=kritisieren.",
+      "exp": "vt. 批评 Er kritisiert ständig seine Kollegen. 他总是批评他的同事。",
+      "phon": ""
+    }
+  ],
+  "Läster": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=L%C3%A4ster.",
+      "exp": "n. 诽谤 über jmdn./etw. lästern 谈论、诋毁某人/某事。",
+      "phon": ""
+    }
+  ],
+  "Leid": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Leid.",
+      "exp": "n. 痛苦 Es tut mir leid. 对不起。",
+      "phon": ""
+    }
+  ],
+  "lohnen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=lohnen.",
+      "exp": "v. 值得 Es lohnt sich, die Ausstellung zu besuchen. 去参观展览是值得的。",
+      "phon": ""
+    }
+  ],
+  "Merkmal": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Merkmal.",
+      "exp": "n. 特征 Ein wichtiges Merkmal dieses Produkts ist seine Langlebigkeit. 这个产品的一个重要特征是其耐用性。",
+      "phon": ""
+    }
+  ],
+  "Missverständnis": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Missverst%C3%A4ndnis.",
+      "exp": "n. 误会 Es gab ein Missverständnis zwischen den beiden. 他们之间有个误会。",
+      "phon": ""
+    }
+  ],
+  "Mittelalter": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Mittelalter.",
+      "exp": "n. 中世纪 Das Mittelalter war eine Epoche in der europäischen Geschichte. 中世纪是欧洲历史上的一个时期。",
+      "phon": ""
+    }
+  ],
+  "nachhaltig": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=nachhaltig.",
+      "exp": "adj. 可持续的 Die Regierung plant, die Wirtschaft nachhaltig zu gestalten. 政府计划让经济可持续发展。",
+      "phon": ""
+    }
+  ],
+  "Niveau": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Niveau.",
+      "exp": "n. 水平 Er hat ein hohes Niveau im Schach. 他在国际象棋方面水平很高。",
+      "phon": ""
+    }
+  ],
+  "Opfer": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Opfer.",
+      "exp": "n. 受害者; 牺牲品 Er war das Opfer eines Betrugs. 他是诈骗的受害者。",
+      "phon": ""
+    }
+  ],
+  "ordnen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=ordnen.",
+      "exp": "vt. 整理 Die Bücher im Regal ordnen. 把书架上的书整理好。",
+      "phon": ""
+    }
+  ],
+  "Phänomen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ph%C3%A4nomen.",
+      "exp": "n. 现象 Das Wetterleuchten ist ein interessantes Phänomen. 闪电是一种有趣的现象。",
+      "phon": ""
+    }
+  ],
+  "Plagiat": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Plagiat.",
+      "exp": "n. 剽窃 Er wurde des Plagiats beschuldigt. 他被指控剽窃。",
+      "phon": ""
+    }
+  ],
+  "Potenzial": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Potenzial.",
+      "exp": "n. 潜力 Er hat ein großes Potenzial, in der Firma aufzusteigen. 他在公司里有很大的晋升潜力。",
+      "phon": ""
+    }
+  ],
+  "Publikum": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Publikum.",
+      "exp": "n. 观众 Das Publikum applaudierte nach der Aufführung. 演出结束后观众鼓掌。",
+      "phon": ""
+    }
+  ],
+  "Referat": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Referat.",
+      "exp": "n. 报告 Ich muss ein Referat über die deutsche Geschichte halten. 我必须做一个关于德国历史的报告。",
+      "phon": ""
+    }
+  ],
+  "regeln": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=regeln.",
+      "exp": "vt. 调整, 处理 etw(A) regeln 调整某事，例如：Er kann das Problem selbst regeln. 他可以自己解决这个问题。",
+      "phon": ""
+    }
+  ],
+  "räumen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=r%C3%A4umen.",
+      "exp": "vt. 清理, 腾出 Ich muss mein Zimmer räumen. 我必须清理我的房间。",
+      "phon": ""
+    }
+  ],
+  "reinigen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=reinigen.",
+      "exp": "vt. 清洁, 清洗 Ich muss mein Zimmer reinigen. 我必须打扫我的房间。",
+      "phon": ""
+    }
+  ],
+  "schmilzen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=schmilzen.",
+      "exp": "v. 融化 Das Eis beginnt zu schmilzen. 冰开始融化。",
+      "phon": ""
+    }
+  ],
+  "solange": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=solange.",
+      "exp": "连词 只要 Solange du lernst, wirst du Fortschritte machen. 只要你学习，你就会取得进步。",
+      "phon": ""
+    }
+  ],
+  "steigern": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=steigern.",
+      "exp": "vt. 提高 Er steigert die Produktion. 他提高生产。",
+      "phon": ""
+    }
+  ],
+  "Symptom": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Symptom.",
+      "exp": "n. 症状 Ein Symptom von Grippe ist hohes Fieber. 流感的一个症状是高烧。",
+      "phon": ""
+    }
+  ],
+  "symbolisieren": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=symbolisieren.",
+      "exp": "vt. 象征 Die Taube symbolisiert den Frieden. 鸽子象征和平。",
+      "phon": ""
+    }
+  ],
+  "theoretisch": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=theoretisch.",
+      "exp": "adj. 理论上的 Theoretisch könnte das funktionieren. 理论上这可能行得通。",
+      "phon": ""
+    }
+  ],
+  "tödlich": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=t%C3%B6dlich.",
+      "exp": "adj. 致命的 Eine tödliche Krankheit kann das Leben bedrohen. 致命的疾病可能威胁生命。",
+      "phon": ""
+    }
+  ],
+  "Tort": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Tort.",
+      "exp": "n. 侵害，侵权行为 Er hat gegen das Tortgesetz verstoßen. 他违反了侵权法。",
+      "phon": ""
+    }
+  ],
+  "freiwillig": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=freiwillig.",
+      "exp": "adj. 自愿的 Er hat die Aufgabe freiwillig übernommen. 他自愿承担了这个任务。",
+      "phon": ""
+    }
+  ],
+  "umfasst": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=umfasst.",
+      "exp": "(umfassen) vt. 包含 Das Buch umfasst 300 Seiten. 这本书包含300页。",
+      "phon": ""
+    }
+  ],
+  "vertreiben": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=vertreiben.",
+      "exp": "vt. 驱赶, 赶走 Sie vertrieb die Vögel aus dem Garten. 她把鸟从花园里赶走。",
+      "phon": ""
+    }
+  ],
+  "verschwinden": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verschwinden.",
+      "exp": "vi. 消失 Er ist spurlos verschwunden. 他无影无踪地消失了。",
+      "phon": ""
+    }
+  ],
+  "Versandkosten": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Versandkosten.",
+      "exp": "pl. 运费 Die Versandkosten sind im Preis inbegriffen. 运费包含在价格内。",
+      "phon": ""
+    }
+  ],
+  "vernachlässigen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=vernachl%C3%A4ssigen.",
+      "exp": "vt. 忽视 Er vernachlässigt seine Pflichten. 他忽视了他的职责。",
+      "phon": ""
+    }
+  ],
+  "verlassen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verlassen.",
+      "exp": "vt. 离开 Er hat das Gebäude verlassen. 他离开了建筑物。",
+      "phon": ""
+    }
+  ],
+  "verhindern": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verhindern.",
+      "exp": "vt. 阻止 Er konnte den Unfall nicht verhindern. 他无法阻止事故发生。",
+      "phon": ""
+    }
+  ],
+  "Verhältnis": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verh%C3%A4ltnis.",
+      "exp": "n. 关系 Ich habe ein gutes Verhältnis zu meinen Kollegen. 我与我的同事关系很好。",
+      "phon": ""
+    }
+  ],
+  "Verhalten": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verhalten.",
+      "exp": "n. 行为 Das Verhalten von Kindern kann manchmal schwer zu verstehen sein. 孩子的行为有时难以理解。",
+      "phon": ""
+    }
+  ],
+  "verarbeiten": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verarbeiten.",
+      "exp": "vt. 加工,处理 Der Computer kann große Datenmengen schnell verarbeiten. 计算机可以快速处理大量数据。",
+      "phon": ""
+    }
+  ],
+  "verführen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verf%C3%BChren.",
+      "exp": "vt. 诱惑,引诱 Er versucht, sie mit Schokolade zu verführen. 他试图用巧克力引诱她。",
+      "phon": ""
+    }
+  ],
+  "Vermögen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verm%C3%B6gen.",
+      "exp": "n. 财产; 能力 Er hat das Vermögen, die Situation zu verändern. 他有能力改变局面。",
+      "phon": ""
+    }
+  ],
+  "übertragen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%BCbertragen.",
+      "exp": "vt. 转移, 转播 Die Sendung wird live im Fernsehen übertragen. 该节目在电视上进行现场直播。",
+      "phon": ""
+    }
+  ],
+  "wiedergeben": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=wiedergeben.",
+      "exp": "v. 复述,表述 Der Schüler soll den Text sinngemäß wiedergeben. 学生应该根据意思复述课文。",
+      "phon": ""
+    }
+  ],
+  "wirksam": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=wirksam.",
+      "exp": "adj. 有效的 Die Medizin ist sehr wirksam gegen Kopfschmerzen. 这种药对头痛非常有效。",
+      "phon": ""
+    }
+  ],
+  "womit": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=womit.",
+      "exp": "(pron.) 用什么 Womit kann ich Ihnen helfen? 我能用什么帮助您？",
+      "phon": ""
+    }
+  ],
+  "Wort": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Wort.",
+      "exp": "n. 单词,话 ein Wort verlieren über + sth(A) 谈论某事。",
+      "phon": ""
+    }
+  ],
+  "Wunder": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Wunder.",
+      "exp": "n. 奇迹 Das war ein echtes Wunder. 那真是一个奇迹。",
+      "phon": ""
+    }
+  ],
+  "Vorgehen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vorgehen.",
+      "exp": "n. 方法，步骤 Das Vorgehen bei einem Experiment muss sorgfältig geplant werden. 实验的方法必须仔细计划。",
+      "phon": ""
+    }
+  ],
+  "vielseitig": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=vielseitig.",
+      "exp": "adj. 多才多艺的，多方面的 Sie ist eine vielseitige Künstlerin. 她是一个多才多艺的艺术家。",
+      "phon": ""
+    }
+  ],
+  "verwalten": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verwalten.",
+      "exp": "vt. 管理 Er verwaltet das Unternehmen. 他管理这家公司。",
+      "phon": ""
+    }
+  ],
+  "verursachen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verursachen.",
+      "exp": "vt. 引起,导致 Der Regen verursacht Überschwemmungen. 雨导致了洪水。",
+      "phon": ""
+    }
+  ],
+  "Vorhaben": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vorhaben.",
+      "exp": "n. 计划 Er hat das Vorhaben, ein eigenes Geschäft zu gründen. 他计划开一家自己的店。",
+      "phon": ""
+    }
+  ],
+  "verfolgen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verfolgen.",
+      "exp": "vt. 跟踪，追踪 Ich verfolge die Nachrichten. 我在关注新闻。",
+      "phon": ""
+    }
+  ],
+  "ahnen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=ahnen.",
+      "exp": "v. 预感 Ich ahne, dass es heute regnen wird. 我预感到今天会下雨。",
+      "phon": ""
+    }
+  ],
+  "allzu": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=allzu.",
+      "exp": "adv. 过于 Das ist allzu teuer. 这太贵了。",
+      "phon": ""
+    }
+  ],
+  "betreiben": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=betreiben.",
+      "exp": "vt. 经营，运行 Er betreibt ein kleines Café in der Stadt. 他在城里经营一家小咖啡馆。",
+      "phon": ""
+    }
+  ],
+  "betreffen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=betreffen.",
+      "exp": "vt. 涉及 Die neue Regelung betrifft alle Mitarbeiter. 新规定涉及所有员工。",
+      "phon": ""
+    }
+  ],
+  "betonen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=betonen.",
+      "exp": "vt. 强调 Er betont, dass er die Wahrheit sagt. 他强调他在说实话。",
+      "phon": ""
+    }
+  ],
+  "betätigen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=bet%C3%A4tigen.",
+      "exp": "vt. 启动,证实 Er betätigte den Schalter. 他启动了开关。",
+      "phon": ""
+    }
+  ],
+  "bestätigen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=best%C3%A4tigen.",
+      "exp": "vt. 确认 Er bestätigte den Termin per E-Mail. 他通过电子邮件确认了预约。",
+      "phon": ""
+    }
+  ],
+  "besichtigen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=besichtigen.",
+      "exp": "vt. 参观 Wir haben das Schloss besichtigt. 我们参观了那座城堡。",
+      "phon": ""
+    }
+  ],
+  "beschließen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=beschlie%C3%9Fen.",
+      "exp": "vt. 决定 beschließt, etw. zu tun 决定做某事。",
+      "phon": ""
+    }
+  ],
+  "bewusst": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=bewusst.",
+      "exp": "adj. 有意识的,清醒的 Er ist sich der Gefahr bewusst. 他意识到危险。",
+      "phon": ""
+    }
+  ],
+  "bedrohen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=bedrohen.",
+      "exp": "vt. 威胁 Er bedroht ihn mit einem Messer. 他用刀威胁他。",
+      "phon": ""
+    }
+  ],
+  "befassen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=befassen.",
+      "exp": "vr. 涉及 sich mit + sth(D) befassen 涉及、处理某事。",
+      "phon": ""
+    }
+  ],
+  "behindern": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=behindern.",
+      "exp": "vt. 阻碍 Der Verkehrsunfall hat den Verkehr stark behindert. 交通事故严重阻碍了交通。",
+      "phon": ""
+    }
+  ],
+  "behalten": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=behalten.",
+      "exp": "vt. 保持, 记住 Das Geheimnis für sich behalten 保守秘密。",
+      "phon": ""
+    }
+  ],
+  "begeistert": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=begeistert.",
+      "exp": "adj. 兴奋的, 激动的 Er ist begeistert von + sth(D) 他对sth感到兴奋。",
+      "phon": ""
+    }
+  ],
+  "beinahe": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=beinahe.",
+      "exp": "adv. 几乎 Er hat beinahe den Zug verpasst. 他几乎错过了火车。",
+      "phon": ""
+    }
+  ],
+  "befinden": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=befinden.",
+      "exp": "vr. 位于；处于某种状态 sich irgendwo befinden 位于某地；sich in einer schwierigen Lage befinden 处于困难境地。",
+      "phon": ""
+    }
+  ],
+  "belohnen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=belohnen.",
+      "exp": "vt. 奖励 Er wurde für seine Mühe belohnt. 他的努力得到了奖励。",
+      "phon": ""
+    }
+  ],
+  "Behalt": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Behalt.",
+      "exp": "m. 保持 Der Behalt des Gleichgewichts ist wichtig. 保持平衡是很重要的。",
+      "phon": ""
+    }
+  ],
+  "Beschluss": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Beschluss.",
+      "exp": "m. 决定 einen Beschluss fassen 做出决定。",
+      "phon": ""
+    }
+  ],
+  "Beschäftigter": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Besch%C3%A4ftigter.",
+      "exp": "m. 职员 Ein Beschäftigter der Firma wurde befördert. 公司的一名职员被晋升了。",
+      "phon": ""
+    }
+  ],
+  "Bollerwagen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bollerwagen.",
+      "exp": "m. 手推车 Er zieht den Bollerwagen hinter sich her. 他把手推车拉在身后。",
+      "phon": ""
+    }
+  ],
+  "Betrieb": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Betrieb.",
+      "exp": "m. 企业; 运行 Der Betrieb hat viele Angestellte. 这家公司有很多员工。",
+      "phon": ""
+    }
+  ],
+  "Freiwillige": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Freiwillige.",
+      "exp": "m./f. 志愿者 Er arbeitet als Freiwilliger in einer Suppenküche. 他在一个施食处做志愿者。",
+      "phon": ""
+    }
+  ],
+  "Führungsstil": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=F%C3%BChrungsstil.",
+      "exp": "m. 领导风格 Sein Führungsstil ist sehr autoritär. 他的领导风格非常专制。",
+      "phon": ""
+    }
+  ],
+  "Rahmen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Rahmen.",
+      "exp": "m. 框架，范围 im Rahmen von + sth 在...的框架内/范围内",
+      "phon": ""
+    }
+  ],
+  "Ratgeber": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ratgeber.",
+      "exp": "m. 指南，顾问 Er liest einen Ratgeber über gesunde Ernährung. 他在看一本关于健康饮食的指南。",
+      "phon": ""
+    }
+  ],
+  "Betrug": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Betrug.",
+      "exp": "m. 欺骗 Er wurde des Betrugs beschuldigt. 他被指控欺骗。",
+      "phon": ""
+    }
+  ],
+  "Bezug": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bezug.",
+      "exp": "m. 关系 etw. in Bezug auf etw. (A) erwähnen 在某事上提到某事。",
+      "phon": ""
+    }
+  ],
+  "Beweis": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Beweis.",
+      "exp": "m. 证据 einen Beweis erbringen 提供证据。",
+      "phon": ""
+    }
+  ],
+  "Besitzer": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Besitzer.",
+      "exp": "m. 所有者 Der Besitzer des Hauses ist im Urlaub. 房子的所有者在度假。",
+      "phon": ""
+    }
+  ],
+  "Anlass": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Anlass.",
+      "exp": "m. 场合, 动机 etw. zum Anlass nehmen (etw. zu tun) 以某事为契机做某事。",
+      "phon": ""
+    }
+  ],
+  "Erhalt": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Erhalt.",
+      "exp": "m. 保存 Der Erhalt der alten Gebäude ist wichtig. 保护这些老建筑很重要。",
+      "phon": ""
+    }
+  ],
+  "Gegenstand": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Gegenstand.",
+      "exp": "m. 物品 Der Gegenstand liegt auf dem Tisch. 物品在桌子上。",
+      "phon": ""
+    }
+  ],
+  "Handwerksberuf": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Handwerksberuf.",
+      "exp": "m. 手工业职业 Er arbeitet seit Jahren in einem Handwerksberuf. 他多年来从事手工业职业。",
+      "phon": ""
+    }
+  ],
+  "Heuschreck": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Heuschreck.",
+      "exp": "m. 蝗虫 Der Heuschreck frisst Blätter. 蝗虫吃叶子。",
+      "phon": ""
+    }
+  ],
+  "Kommentar": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kommentar.",
+      "exp": "m. 评论 Er schrieb einen Kommentar zu dem Artikel. 他对这篇文章写了一个评论。",
+      "phon": ""
+    }
+  ],
+  "Komödiant": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kom%C3%B6diant.",
+      "exp": "m. 喜剧演员 Der Komödiant machte das Publikum zum Lachen. 喜剧演员让观众发笑。",
+      "phon": ""
+    }
+  ],
+  "Kunststoff": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kunststoff.",
+      "exp": "m. 塑料 Der Stuhl ist aus Kunststoff gefertigt. 这把椅子是用塑料制成的。",
+      "phon": ""
+    }
+  ],
+  "Lärm": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=L%C3%A4rm.",
+      "exp": "m. 噪音 Der Lärm auf der Straße ist unerträglich. 街道上的噪音让人无法忍受。",
+      "phon": ""
+    }
+  ],
+  "Leitfaden": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Leitfaden.",
+      "exp": "m. 指南，手册 Der Leitfaden für neue Mitarbeiter hilft bei der Einarbeitung. 新员工指南有助于入职培训。",
+      "phon": ""
+    }
+  ],
+  "Missbrauch": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Missbrauch.",
+      "exp": "m. 滥用 Der Missbrauch von Alkohol kann gesundheitsschädlich sein. 滥用酒精可能对健康有害。",
+      "phon": ""
+    }
+  ],
+  "Passant": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Passant.",
+      "exp": "m. 行人 Die Passanten auf der Straße wurden befragt. 这些街上的行人被采访了。",
+      "phon": ""
+    }
+  ],
+  "Säugling": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=S%C3%A4ugling.",
+      "exp": "m. 婴儿 Der Säugling schläft in der Wiege. 婴儿在摇篮里睡觉。",
+      "phon": ""
+    }
+  ],
+  "Schmuck": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Schmuck.",
+      "exp": "m. 首饰 Sie trug eleganten Schmuck auf der Party. 她在派对上佩戴了优雅的首饰。",
+      "phon": ""
+    }
+  ],
+  "Schränk": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Schr%C3%A4nk.",
+      "exp": "m. 柜子 Der Schrank ist voll mit Kleidung. 柜子里装满了衣服。",
+      "phon": ""
+    }
+  ],
+  "Sieg": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Sieg.",
+      "exp": "m. 胜利 Der Sieg war hart erkämpft. 这场胜利来之不易。",
+      "phon": ""
+    }
+  ],
+  "Spielplatz": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Spielplatz.",
+      "exp": "m. 操场 Kinder spielen oft auf dem Spielplatz. 孩子们经常在操场上玩。",
+      "phon": ""
+    }
+  ],
+  "Stern": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Stern.",
+      "exp": "m. 星星；明星 Der Himmel ist voller Sterne. 天空布满了星星。",
+      "phon": ""
+    }
+  ],
+  "Stoff": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Stoff.",
+      "exp": "m. 物质，材料 Der Stoff ist zu teuer. 这材料太贵了。",
+      "phon": ""
+    }
+  ],
+  "Treibhauseffekt": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Treibhauseffekt.",
+      "exp": "m. 温室效应 Der Treibhauseffekt führt zur Erderwärmung. 温室效应导致地球变暖。",
+      "phon": ""
+    }
+  ],
+  "Umgang": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Umgang.",
+      "exp": "m. 交往，处理 mit jmdm./etw. (D) Umgang haben 与某人/某物有交往或打交道。",
+      "phon": ""
+    }
+  ],
+  "Umbau": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Umbau.",
+      "exp": "m. 改建,改造 Der Umbau des Hauses dauert drei Monate. 房子的改造需要三个月。",
+      "phon": ""
+    }
+  ],
+  "Verfasser": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verfasser.",
+      "exp": "m. 作者 Der Verfasser des Buches ist unbekannt. 这本书的作者未知。",
+      "phon": ""
+    }
+  ],
+  "Verkaufsstand": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verkaufsstand.",
+      "exp": "m. 售货摊 Der Verkaufsstand bietet frisches Obst und Gemüse an. 这个售货摊提供新鲜的水果和蔬菜。",
+      "phon": ""
+    }
+  ],
+  "Verdienst": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verdienst.",
+      "exp": "m. 收入 Er hat einen hohen Verdienst. 他的收入很高。",
+      "phon": ""
+    }
+  ],
+  "Vorgang": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vorgang.",
+      "exp": "m. 过程，手续 Der Vorgang wird Schritt für Schritt erklärt. 这个过程被一步一步地解释。",
+      "phon": ""
+    }
+  ],
+  "Vertreter": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vertreter.",
+      "exp": "m. 代表,代理人 Er ist Vertreter der Firma. 他是这家公司的代表。",
+      "phon": ""
+    }
+  ],
+  "Verlust": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verlust.",
+      "exp": "m. 损失 Er hat einen großen Verlust erlitten. 他遭受了重大损失。",
+      "phon": ""
+    }
+  ],
+  "Verlag": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verlag.",
+      "exp": "m. 出版社 Der Verlag veröffentlicht viele bekannte Bücher. 该出版社出版了许多著名的书籍。",
+      "phon": ""
+    }
+  ],
+  "Umsetzung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Umsetzung.",
+      "exp": "f. 实施 Die Umsetzung des Plans verlief erfolgreich. 计划的实施进展顺利。",
+      "phon": ""
+    }
+  ],
+  "Unterhaltung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Unterhaltung.",
+      "exp": "f. 谈话, 娱乐 Ich hatte eine interessante Unterhaltung mit sb(D). 我与某人进行了有趣的谈话。",
+      "phon": ""
+    }
+  ],
+  "Unterbringung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Unterbringung.",
+      "exp": "f. 住宿 Die Unterbringung der Gäste war gut organisiert. 客人的住宿安排得很好。",
+      "phon": ""
+    }
+  ],
+  "Umfrage": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Umfrage.",
+      "exp": "f. 调查 eine Umfrage durchführen 进行调查。",
+      "phon": ""
+    }
+  ],
+  "Tatsache": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Tatsache.",
+      "exp": "f. 事实 Es ist eine Tatsache, dass... 这是一个事实, 即...（后接从句）。",
+      "phon": ""
+    }
+  ],
+  "Täuschung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=T%C3%A4uschung.",
+      "exp": "f. 欺骗 Er fiel auf die Täuschung herein. 他上了这个骗局的当。",
+      "phon": ""
+    }
+  ],
+  "Tuberkulose": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Tuberkulose.",
+      "exp": "f. 结核病 Die Tuberkulose ist eine ansteckende Infektionskrankheit. 结核病是一种传染性传染病。",
+      "phon": ""
+    }
+  ],
+  "Stimme": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Stimme.",
+      "exp": "f. 声音 Er hat eine tiefe Stimme. 他的声音很低沉。",
+      "phon": ""
+    }
+  ],
+  "Stimmung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Stimmung.",
+      "exp": "f. 情绪，气氛 Die Stimmung auf der Party war sehr gut. 聚会的气氛很好。",
+      "phon": ""
+    }
+  ],
+  "Senkung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Senkung.",
+      "exp": "f. 降低 Die Senkung der Preise führte zu einem höheren Absatz. 降低价格导致了更高的销售量。",
+      "phon": ""
+    }
+  ],
+  "Stelle": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Stelle.",
+      "exp": "f. 职位 Ich habe eine neue Stelle als Lehrer bekommen. 我得到了一个教师的新职位。",
+      "phon": ""
+    }
+  ],
+  "Sehnsucht": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Sehnsucht.",
+      "exp": "f. 渴望 Er hat eine große Sehnsucht nach der Heimat. 他对家乡有着强烈的渴望。",
+      "phon": ""
+    }
+  ],
+  "Selbstdarstellung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Selbstdarstellung.",
+      "exp": "f. 自我表现 Er legt großen Wert auf seine Selbstdarstellung. 他非常重视自我表现。",
+      "phon": ""
+    }
+  ],
+  "Selbstständigkeit": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Selbstst%C3%A4ndigkeit.",
+      "exp": "f. 独立,自主 Die Selbstständigkeit ist für viele Menschen ein wichtiges Ziel. 独立对于很多人来说是一个重要的目标。",
+      "phon": ""
+    }
+  ],
+  "Sendung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Sendung.",
+      "exp": "f. 节目，发送 Ich habe die Sendung im Fernsehen gesehen. 我在电视上看了这个节目。",
+      "phon": ""
+    }
+  ],
+  "Schuld": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Schuld.",
+      "exp": "f. 债务,责任 Er hat hohe Schulden. 他负债累累。/Sie ist an dem Unfall schuld. 她对这次事故负责。",
+      "phon": ""
+    }
+  ],
+  "Schwankung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Schwankung.",
+      "exp": "f. 波动 Die Schwankung des Wechselkurses beeinflusst die Wirtschaft. 汇率的波动影响经济。",
+      "phon": ""
+    }
+  ],
+  "Bedingung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bedingung.",
+      "exp": "f. 条件 unter der Bedingung, dass... 在...的条件下。",
+      "phon": ""
+    }
+  ],
+  "Bedienung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bedienung.",
+      "exp": "f. 服务 Die Bedienung im Restaurant war sehr freundlich. 餐厅的服务非常友好。",
+      "phon": ""
+    }
+  ],
+  "Behandlung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Behandlung.",
+      "exp": "f. 治疗, 处理 Die Behandlung des Patienten dauerte zwei Stunden. 患者的治疗持续了两个小时。",
+      "phon": ""
+    }
+  ],
+  "Behörde": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Beh%C3%B6rde.",
+      "exp": "f. 政府机关 sich bei einer Behörde beschweren 向政府机关投诉。",
+      "phon": ""
+    }
+  ],
+  "Belohnung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Belohnung.",
+      "exp": "f. 奖励 Sie erhielt eine Belohnung für ihre harte Arbeit. 她因辛勤工作而获得奖励。",
+      "phon": ""
+    }
+  ],
+  "Beratung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Beratung.",
+      "exp": "f. 咨询 Ich brauche eine Beratung zu diesem Thema. 我需要关于这个主题的咨询。",
+      "phon": ""
+    }
+  ],
+  "Beraterin": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Beraterin.",
+      "exp": "f. 顾问 Sie arbeitet als Beraterin für ein großes Unternehmen. 她在一家大公司担任顾问。",
+      "phon": ""
+    }
+  ],
+  "Beschäftigung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Besch%C3%A4ftigung.",
+      "exp": "f. 工作,活动 Ich suche eine Beschäftigung im Bereich Marketing. 我在找一份市场营销方面的工作。",
+      "phon": ""
+    }
+  ],
+  "Berühmtheit": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ber%C3%BChmtheit.",
+      "exp": "f. 名声, 名人 Sie hat durch ihre Musik Berühmtheit erlangt. 她通过音乐获得了名声。",
+      "phon": ""
+    }
+  ],
+  "Bestellung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bestellung.",
+      "exp": "f. 订单 Ich habe eine Bestellung für ein Buch aufgegeben. 我下了一份书的订单。",
+      "phon": ""
+    }
+  ],
+  "bestimmen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=bestimmen.",
+      "exp": "vt. 确定,决定 Das Wetter bestimmt unseren Tagesablauf. 天气决定了我们的日程安排。",
+      "phon": ""
+    }
+  ],
+  "Betreuung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Betreuung.",
+      "exp": "f. 照顾, 关怀 Die Betreuung von Kindern kann sehr anspruchsvoll sein. 照顾孩子可能很有挑战性。",
+      "phon": ""
+    }
+  ],
+  "Beurteilung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Beurteilung.",
+      "exp": "f. 评价 Die Beurteilung des Projekts erfolgt nächste Woche. 项目的评价将在下周进行。",
+      "phon": ""
+    }
+  ],
+  "Bevölkerung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Bev%C3%B6lkerung.",
+      "exp": "f. 人口 Die Bevölkerung der Stadt wächst stetig. 城市的人口在不断增长。",
+      "phon": ""
+    }
+  ],
+  "Branche": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Branche.",
+      "exp": "f. 行业 Er arbeitet in der IT-Branche. 他在IT行业工作。",
+      "phon": ""
+    }
+  ],
+  "Dienstleistung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Dienstleistung.",
+      "exp": "f. 服务 Dienstleistungen im Bereich der Gastronomie. 餐饮领域的服务。",
+      "phon": ""
+    }
+  ],
+  "Domestizierung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Domestizierung.",
+      "exp": "f. 驯化 Die Domestizierung von Tieren begann vor Tausenden von Jahren. 动物的驯化始于几千年前。",
+      "phon": ""
+    }
+  ],
+  "Eigenschaft": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Eigenschaft.",
+      "exp": "f. 特性, 属性 Das ist eine wichtige Eigenschaft von Wasser. 这是水的一个重要特性。",
+      "phon": ""
+    }
+  ],
+  "Einführung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Einf%C3%BChrung.",
+      "exp": "f. 介绍,引言 eine Einführung in + sth(A) 给sth的介绍或引言,例如:Eine Einführung in die deutsche Grammatik 德语语法的介绍。",
+      "phon": ""
+    }
+  ],
+  "Einleitung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Einleitung.",
+      "exp": "f. 引言，导言 Die Einleitung des Buches beschreibt die Hauptthemen. 这本书的引言描述了主要主题。",
+      "phon": ""
+    }
+  ],
+  "Felswände": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Felsw%C3%A4nde.",
+      "exp": "f. 悬崖 Die Kletterer erklimmen die steilen Felswände. 登山者攀爬陡峭的悬崖。",
+      "phon": ""
+    }
+  ],
+  "Feuchtigkeit": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Feuchtigkeit.",
+      "exp": "f. 湿气 Die Feuchtigkeit in der Luft ist sehr hoch. 空气中的湿度很高。",
+      "phon": ""
+    }
+  ],
+  "Folge": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Folge.",
+      "exp": "f. 后果,结果 Die Folge der Entscheidung war unerwartet. 决定的结果出乎意料。",
+      "phon": ""
+    }
+  ],
+  "Formulierung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Formulierung.",
+      "exp": "f. 表达 eine treffende Formulierung finden 找到一个恰当的表达。",
+      "phon": ""
+    }
+  ],
+  "Freizeitbeschäftigung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Freizeitbesch%C3%A4ftigung.",
+      "exp": "f. 休闲活动 In meiner Freizeitbeschäftigung gehe ich gerne schwimmen. 在我的休闲活动中，我喜欢去游泳。",
+      "phon": ""
+    }
+  ],
+  "Führung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=F%C3%BChrung.",
+      "exp": "f. 指导，领导 Die Führung des Unternehmens liegt in seinen Händen. 公司的领导权掌握在他手中。",
+      "phon": ""
+    }
+  ],
+  "Gelegenheit": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Gelegenheit.",
+      "exp": "f. 机会 Ich hatte die Gelegenheit, ins Ausland zu reisen. 我有机会去国外旅行。",
+      "phon": ""
+    }
+  ],
+  "Gestik": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Gestik.",
+      "exp": "f. 手势 Die Gestik unterstreicht seine Worte. 手势强调了他的话。",
+      "phon": ""
+    }
+  ],
+  "Grundlagenforschung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Grundlagenforschung.",
+      "exp": "f. 基础研究 Die Grundlagenforschung legt die Basis für angewandte Forschung. 基础研究为应用研究奠定基础。",
+      "phon": ""
+    }
+  ],
+  "Handarbeit": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Handarbeit.",
+      "exp": "f. 手工劳动 Ich mache gerne Handarbeit, wie Stricken und Nähen. 我喜欢手工活，比如编织和缝纫。",
+      "phon": ""
+    }
+  ],
+  "Handvoll": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Handvoll.",
+      "exp": "f. 少量，少数 eine Handvoll Leute 一小群人。",
+      "phon": ""
+    }
+  ],
+  "Hektik": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Hektik.",
+      "exp": "f. 忙碌 In der Großstadt herrscht oft Hektik. 大城市里常常很忙碌。",
+      "phon": ""
+    }
+  ],
+  "Hypothese": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Hypothese.",
+      "exp": "f. 假设 Ich stelle die Hypothese auf, dass... 我假设……。",
+      "phon": ""
+    }
+  ],
+  "Hingabe": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Hingabe.",
+      "exp": "f. 投入，奉献 Er arbeitet mit großer Hingabe. 他工作非常投入。",
+      "phon": ""
+    }
+  ],
+  "Herausforderung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Herausforderung.",
+      "exp": "f. 挑战 sich (D) einer Herausforderung stellen 迎接挑战。",
+      "phon": ""
+    }
+  ],
+  "Identifizierung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Identifizierung.",
+      "exp": "f. 识别 Die Identifizierung des Täters war erfolgreich. 罪犯的识别是成功的。",
+      "phon": ""
+    }
+  ],
+  "Immunität": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Immunit%C3%A4t.",
+      "exp": "f. 免疫 Er hat eine natürliche Immunität gegen das Virus. 他对这种病毒有天然的免疫力。",
+      "phon": ""
+    }
+  ],
+  "Innenstadt": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Innenstadt.",
+      "exp": "f. 市中心 Ich gehe oft in die Innenstadt, um einzukaufen. 我经常去市中心购物。",
+      "phon": ""
+    }
+  ],
+  "Irreführung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Irref%C3%BChrung.",
+      "exp": "f. 误导 Die Werbung war eine Irreführung. 广告是一种误导。",
+      "phon": ""
+    }
+  ],
+  "Kombination": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kombination.",
+      "exp": "f. 组合 Diese Kombination aus Farben ist sehr schön. 这组颜色的组合很漂亮。",
+      "phon": ""
+    }
+  ],
+  "Kommerzialisierung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Kommerzialisierung.",
+      "exp": "f. 商业化 Die Kommerzialisierung von Sportveranstaltungen nimmt zu. 体育赛事的商业化正在增加。",
+      "phon": ""
+    }
+  ],
+  "Konkurrenz": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Konkurrenz.",
+      "exp": "f. 竞争 Er steht in Konkurrenz zu vielen anderen Bewerbern. 他与许多其他申请者竞争。",
+      "phon": ""
+    }
+  ],
+  "Köstlichkeit": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=K%C3%B6stlichkeit.",
+      "exp": "f. 美味 Die Köstlichkeit des Desserts überrascht alle. 甜点的美味让所有人惊讶。",
+      "phon": ""
+    }
+  ],
+  "Kündigung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=K%C3%BCndigung.",
+      "exp": "f. 解约, 辞职 Er hat seine Kündigung eingereicht. 他递交了辞呈。",
+      "phon": ""
+    }
+  ],
+  "Leidenschaft": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Leidenschaft.",
+      "exp": "f. 激情 Er hat eine große Leidenschaft für Musik. 他对音乐有很大的激情。",
+      "phon": ""
+    }
+  ],
+  "Leitung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Leitung.",
+      "exp": "f. 领导, 管理 Er hat die Leitung des Projekts übernommen. 他接管了项目的管理。",
+      "phon": ""
+    }
+  ],
+  "Lüge": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=L%C3%BCge.",
+      "exp": "f. 谎言 Er hat eine Lüge erzählt. 他讲了一个谎言。",
+      "phon": ""
+    }
+  ],
+  "Milliarde": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Milliarde.",
+      "exp": "f. 十亿 Deutschland hat über 80 Millionen Einwohner, das sind mehr als 0,08 Milliarden. 德国有超过8000万人口，这超过了0.08亿。",
+      "phon": ""
+    }
+  ],
+  "Zahlungsmittel": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Zahlungsmittel.",
+      "exp": "n. 支付手段 Kreditkarte ist ein beliebtes Zahlungsmittel. 信用卡是一种常见的支付手段。",
+      "phon": ""
+    }
+  ],
+  "zurzeit": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=zurzeit.",
+      "exp": "adv. 目前 Zurzeit habe ich viel zu tun. 我目前有很多事情要做。",
+      "phon": ""
+    }
+  ],
+  "Wahrheit": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Wahrheit.",
+      "exp": "f. 真相；事实 Die Wahrheit sagen 说实话。",
+      "phon": ""
+    }
+  ],
+  "Verstädterung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verst%C3%A4dterung.",
+      "exp": "f. 城市化 Die Verstädterung führt oft zu Umweltproblemen. 城市化常常导致环境问题。",
+      "phon": ""
+    }
+  ],
+  "Verschwendung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verschwendung.",
+      "exp": "f. 浪费 Verschwendung von Geld und Ressourcen 资金和资源的浪费。",
+      "phon": ""
+    }
+  ],
+  "Verfügung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verf%C3%BCgung.",
+      "exp": "f. 支配，指令 zur Verfügung stehen (D) 可供某人支配；etw. zur Verfügung haben (A) 拥有某物供使用。",
+      "phon": ""
+    }
+  ],
+  "Verknüpfung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Verkn%C3%BCpfung.",
+      "exp": "f. 连接 Die Verknüpfung von Theorie und Praxis ist wichtig. 理论与实践的结合很重要。",
+      "phon": ""
+    }
+  ],
+  "Vernachlässigung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vernachl%C3%A4ssigung.",
+      "exp": "f. 忽视 Die Vernachlässigung der Kinder kann schwerwiegende Folgen haben. 忽视孩子可能会有严重后果。",
+      "phon": ""
+    }
+  ],
+  "Vielfalt": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vielfalt.",
+      "exp": "f. 多样性 Die Vielfalt der Kulturen bereichert unser Leben. 文化的多样性丰富了我们的生活。",
+      "phon": ""
+    }
+  ],
+  "Vorbeuge": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vorbeuge.",
+      "exp": "f. 预防措施 Er ergriff Vorbeuge gegen die Krankheit. 他采取了预防疾病的措施。",
+      "phon": ""
+    }
+  ],
+  "Vorgabe": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vorgabe.",
+      "exp": "f. 要求, 规定 Die Vorgabe für das Projekt ist klar. 项目的要求是明确的。",
+      "phon": ""
+    }
+  ],
+  "Vorlesung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Vorlesung.",
+      "exp": "f. 讲座 Ich besuche eine Vorlesung über deutsche Literatur. 我在听一场关于德国文学的讲座。",
+      "phon": ""
+    }
+  ],
+  "Abstimmung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Abstimmung.",
+      "exp": "f. 投票 Die Abstimmung findet morgen statt. 投票将在明天进行。",
+      "phon": ""
+    }
+  ],
+  "Anleitung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Anleitung.",
+      "exp": "f. 指导 Die Anleitung zum Gebrauch des Geräts liegt bei. 设备使用说明附在里面。",
+      "phon": ""
+    }
+  ],
+  "Anschrift": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Anschrift.",
+      "exp": "f. 地址 Bitte senden Sie den Brief an meine neue Anschrift. 请将信寄到我的新地址。",
+      "phon": ""
+    }
+  ],
+  "Ansicht": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ansicht.",
+      "exp": "f. 观点 Meiner Ansicht nach ist das eine gute Idee. 在我看来，这是个好主意。",
+      "phon": ""
+    }
+  ],
+  "Ansprache": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ansprache.",
+      "exp": "f. 演讲 Er hielt eine Ansprache an die Belegschaft. 他向员工们发表了演讲。",
+      "phon": ""
+    }
+  ],
+  "Anstellung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Anstellung.",
+      "exp": "f. 职位, 职务 Er hat eine Anstellung als Ingenieur gefunden. 他找到了一份工程师的职位。",
+      "phon": ""
+    }
+  ],
+  "Arktis": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Arktis.",
+      "exp": "f. 北极 Die Eisbären leben in der Arktis. 北极熊生活在北极。",
+      "phon": ""
+    }
+  ],
+  "ausreichend": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=ausreichend.",
+      "exp": "adj. 足够的 Das Geld ist ausreichend für den Einkauf. 这笔钱足够买东西。",
+      "phon": ""
+    }
+  ],
+  "Ausrüstung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ausr%C3%BCstung.",
+      "exp": "f. 装备 Die Ausrüstung für die Wanderung ist sehr wichtig. 远足的装备非常重要。",
+      "phon": ""
+    }
+  ],
+  "Ausstattung": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ausstattung.",
+      "exp": "f. 装备 Die Ausstattung des Büros umfasst moderne Technik. 办公室的装备包括现代化技术。",
+      "phon": ""
+    }
+  ],
+  "aufgreifen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=aufgreifen.",
+      "exp": "(可分动词) vt. 抓住, 采纳 Die Polizei greift den Verdächtigen auf. 警方抓住了嫌疑犯。",
+      "phon": ""
+    }
+  ],
+  "aufstellen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=aufstellen.",
+      "exp": "(可分动词) vt. 竖立, 安放 Er stellt die Leiter an die Wand auf. 他把梯子竖靠在墙上。",
+      "phon": ""
+    }
+  ],
+  "Wandel": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Wandel.",
+      "exp": "m. 变化 Der Klimawandel ist eine große Herausforderung. 气候变化是一个巨大挑战。",
+      "phon": ""
+    }
+  ],
+  "Wettbewerb": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Wettbewerb.",
+      "exp": "m. 竞争，比赛 an einem Wettbewerb teilnehmen 参加比赛。",
+      "phon": ""
+    }
+  ],
+  "Widerspruch": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Widerspruch.",
+      "exp": "m. 反对, 矛盾 in Widerspruch zu + sth(D) stehen 与sth相矛盾。",
+      "phon": ""
+    }
+  ],
+  "Angestellter": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Angestellter.",
+      "exp": "m. 职员 Er ist Angestellter in einer großen Firma. 他是大公司的一名职员。",
+      "phon": ""
+    }
+  ],
+  "Anhänger": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Anh%C3%A4nger.",
+      "exp": "m. 支持者；挂车 Er ist ein großer Anhänger dieser Idee. 他是这个想法的坚定支持者。",
+      "phon": ""
+    }
+  ],
+  "Ansatz": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Ansatz.",
+      "exp": "m. 开始，假设 ein wissenschaftlicher Ansatz 科学假设",
+      "phon": ""
+    }
+  ],
+  "Aufenthalt": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Aufenthalt.",
+      "exp": "m. 停留 Ich wünsche Ihnen einen angenehmen Aufenthalt. 祝您停留愉快。",
+      "phon": ""
+    }
+  ],
+  "Auftritt": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Auftritt.",
+      "exp": "m. 表演 Der Künstler hatte gestern einen großartigen Auftritt. 昨天那位艺术家的表演非常精彩。",
+      "phon": ""
+    }
+  ],
+  "Auftrag": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Auftrag.",
+      "exp": "m. 订单；任务 Ich habe den Auftrag, diese Dokumente zu bearbeiten. 我有处理这些文件的任务。",
+      "phon": ""
+    }
+  ],
+  "zuständig": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=zust%C3%A4ndig.",
+      "exp": "adj. 负责的 Er ist für die Buchhaltung zuständig. 他负责会计工作。",
+      "phon": ""
+    }
+  ],
+  "zusätzlich": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=zus%C3%A4tzlich.",
+      "exp": "adj. 额外的 Er hat zusätzlich einen Kurs belegt. 他额外选修了一门课程。",
+      "phon": ""
+    }
+  ],
+  "übernehmen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%BCbernehmen.",
+      "exp": "v. 接管, 承担 Er übernimmt die Verantwortung. 他承担责任。",
+      "phon": ""
+    }
+  ],
+  "überschaubar": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%BCberschaubar.",
+      "exp": "adj. 可估计的 Die Kosten sind überschaubar. 成本是可估计的。",
+      "phon": ""
+    }
+  ],
+  "überwiegend": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%BCberwiegend.",
+      "exp": "adj. 主要的 Das Wetter ist überwiegend sonnig. 天气主要是晴天。",
+      "phon": ""
+    }
+  ],
+  "überwinden": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%BCberwinden.",
+      "exp": "vt. 克服 Er überwindet seine Angst. 他克服了自己的恐惧。",
+      "phon": ""
+    }
+  ],
+  "übrig": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%BCbrig.",
+      "exp": "adj. 剩余的 Hast du noch etwas Geld übrig? 你还有剩下的钱吗？",
+      "phon": ""
+    }
+  ],
+  "überflüssig": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=%C3%BCberfl%C3%BCssig.",
+      "exp": "adj. 多余的 Das ist völlig überflüssig. 这完全是多余的。",
+      "phon": ""
+    }
+  ],
+  "zudem": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=zudem.",
+      "exp": "Adv. 此外 Er ist klug und zudem sehr fleißig. 他聪明且非常勤奋。",
+      "phon": ""
+    }
+  ],
+  "zufolge": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=zufolge.",
+      "exp": "präp. 根据 Dem Bericht zufolge hat sich die Lage verbessert. 根据报告，情况有所改善。",
+      "phon": ""
+    }
+  ],
+  "wenden": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=wenden.",
+      "exp": "vt. 转向, 翻转 sich an + sb(A) wenden 向某人求助/咨询。",
+      "phon": ""
+    }
+  ],
+  "verfügen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verf%C3%BCgen.",
+      "exp": "v. 拥有, 支配 über + sth(A) verfügen 支配/拥有某物。",
+      "phon": ""
+    }
+  ],
+  "verhalten": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verhalten.",
+      "exp": "vt. 控制,抑制; vr. 表现 Er verhält sich ruhig. 他表现得很冷静。",
+      "phon": ""
+    }
+  ],
+  "vereinbaren": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=vereinbaren.",
+      "exp": "vt. 协商,约定 einen Termin vereinbaren 约定一个时间/预约。",
+      "phon": ""
+    }
+  ],
+  "verfassen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verfassen.",
+      "exp": "vt. 撰写 einen Artikel verfassen 撰写一篇文章。",
+      "phon": ""
+    }
+  ],
+  "verfügbar": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verf%C3%BCgbar.",
+      "exp": "adj. 可用的 Die Information ist online verfügbar. 信息在网上是可用的。",
+      "phon": ""
+    }
+  ],
+  "verpflichten": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verpflichten.",
+      "exp": "v. 使承担义务 sich zu etw. verpflichten 承诺做某事。",
+      "phon": ""
+    }
+  ],
+  "verschaffen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=verschaffen.",
+      "exp": "v. 提供，设法获得 sich(D) einen Überblick verschaffen 对某事有大致了解",
+      "phon": ""
+    }
+  ],
+  "versetzen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=versetzen.",
+      "exp": "vt. 调动, 移动 Er wurde in eine andere Abteilung versetzt. 他被调到了另一个部门。",
+      "phon": ""
+    }
+  ],
+  "versorgen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=versorgen.",
+      "exp": "vt. 供给, 照顾 jdn/sich mit etw. versorgen 为某人/自己提供某物。",
+      "phon": ""
+    }
+  ],
+  "vertreten": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=vertreten.",
+      "exp": "vt. 代表 Er vertritt seine Firma auf der Konferenz. 他在会议上代表他的公司。",
+      "phon": ""
+    }
+  ],
+  "vollkommen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=vollkommen.",
+      "exp": "adj. 完全的 Das ist vollkommen in Ordnung. 这完全没问题。",
+      "phon": ""
+    }
+  ],
+  "voneinander": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=voneinander.",
+      "exp": "彼此，互相（副词） Wir lernen voneinander. 我们互相学习。",
+      "phon": ""
+    }
+  ],
+  "vorläufig": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=vorl%C3%A4ufig.",
+      "exp": "adj. 临时的 Das ist nur eine vorläufige Entscheidung. 这只是一个临时决定。",
+      "phon": ""
+    }
+  ],
+  "umsetzen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=umsetzen.",
+      "exp": "可分动词 转换, 实施 (动词) Der Plan wurde erfolgreich umgesetzt. 计划被成功实施。",
+      "phon": ""
+    }
+  ],
+  "umgehen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=umgehen.",
+      "exp": "v. (可分动词) 绕过 umgeht, umging, hat umgangen 绕过某物。",
+      "phon": ""
+    }
+  ],
+  "ungefähr": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=ungef%C3%A4hr.",
+      "exp": "adj. 大约的 Die Strecke ist ungefähr zehn Kilometer lang. 这段路大约有十公里长。",
+      "phon": ""
+    }
+  ],
+  "unterwegs": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=unterwegs.",
+      "exp": "adv. 在路上 Ich bin gerade unterwegs. 我正在路上。",
+      "phon": ""
+    }
+  ],
+  "schmücken": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=schm%C3%BCcken.",
+      "exp": "vt. 装饰 Der Weihnachtsbaum wird mit Lichtern und Kugeln geschmückt. 圣诞树被灯和球装饰。",
+      "phon": ""
+    }
+  ],
+  "somit": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=somit.",
+      "exp": "副词 因此 Er hat viel gearbeitet, somit hat er sich den Urlaub verdient. 他努力工作，因此他应得假期。",
+      "phon": ""
+    }
+  ],
+  "spektakulär": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=spektakul%C3%A4r.",
+      "exp": "adj. 壮观的 Die Aussicht auf die Berge ist spektakulär. 山景非常壮观。",
+      "phon": ""
+    }
+  ],
+  "eignen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=eignen.",
+      "exp": "vr. 适合 sich für etw. eignen 适合做某事。",
+      "phon": ""
+    }
+  ],
+  "eingehen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=eingehen.",
+      "exp": "可分动词 进入;接受 geht auf + sth(A) ein 对sth做出反应/接受sth",
+      "phon": ""
+    }
+  ],
+  "einnehmen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=einnehmen.",
+      "exp": "vt. 占据,服用(药) nimmt ein, eingenommen (可分动词) 占据位置: einen Platz einnehmen 占一个位置; 服药: eine Tablette einnehmen 服用一片药。",
+      "phon": ""
+    }
+  ],
+  "entfalten": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=entfalten.",
+      "exp": "vt. 展开,展示 Der Künstler entfaltet sein Talent. 艺术家展示他的才华。",
+      "phon": ""
+    }
+  ],
+  "entfernt": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=entfernt.",
+      "exp": "adj. 遥远的 Die Stadt ist weit entfernt von hier. 这座城市离这里很远。",
+      "phon": ""
+    }
+  ],
+  "erfüllen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erf%C3%BCllen.",
+      "exp": "v. 实现, 满足 Sie erfüllt die Voraussetzungen für den Job. 她满足这份工作的条件。",
+      "phon": ""
+    }
+  ],
+  "erheblich": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erheblich.",
+      "exp": "adj. 显著的 Das hat erhebliche Auswirkungen auf die Umwelt. 这对环境有显著的影响。",
+      "phon": ""
+    }
+  ],
+  "erscheinen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erscheinen.",
+      "exp": "vi. 出现，出版 Das Buch erscheint nächsten Monat. 这本书下个月出版。",
+      "phon": ""
+    }
+  ],
+  "erstaunlich": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=erstaunlich.",
+      "exp": "adj. 令人惊讶的 Das ist wirklich erstaunlich! 这真是令人惊讶！",
+      "phon": ""
+    }
+  ],
+  "Erstelle": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=Erstelle.",
+      "exp": "vt. 创建 Erstelle einen neuen Ordner. 创建一个新的文件夹。",
+      "phon": ""
+    }
+  ],
+  "fehlend": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=fehlend.",
+      "exp": "adj. 缺少的 fehlende Teile 缺少的部分。",
+      "phon": ""
+    }
+  ],
+  "falls": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=falls.",
+      "exp": "连词 如果 Falls es regnet, bleiben wir zu Hause. 如果下雨,我们就待在家里。",
+      "phon": ""
+    }
+  ],
+  "folgend": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=folgend.",
+      "exp": "adj. 随后的 Das folgende Beispiel zeigt, wie man es macht. 以下的例子展示了如何做。",
+      "phon": ""
+    }
+  ],
+  "geraten": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=geraten.",
+      "exp": "vi. 陷入 in Schwierigkeiten geraten 陷入困境。",
+      "phon": ""
+    }
+  ],
+  "gelegentlich": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=gelegentlich.",
+      "exp": "adj. 偶尔的 Ich gehe nur gelegentlich ins Kino. 我只是偶尔去看电影。",
+      "phon": ""
+    }
+  ],
+  "handeln": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=handeln.",
+      "exp": "v. 行动; 处理 Es handelt sich um + sth(A) 涉及到sth。",
+      "phon": ""
+    }
+  ],
+  "hinweg": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=hinweg.",
+      "exp": "adv. 过去 über etw. hinwegsehen 忽视某事。",
+      "phon": ""
+    }
+  ],
+  "humoristisch": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=humoristisch.",
+      "exp": "adj. 幽默的 Er hat einen humoristischen Stil. 他有一种幽默的风格。",
+      "phon": ""
+    }
+  ],
+  "hinzu": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=hinzu.",
+      "exp": "adv. 加上 etw. kommt hinzu 加上某事/某物",
+      "phon": ""
+    }
+  ],
+  "treu": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=treu.",
+      "exp": "adj. 忠诚的 jemandem treu sein 对某人忠诚。",
+      "phon": ""
+    }
+  ],
+  "tätig": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=t%C3%A4tig.",
+      "exp": "adj. 从事某种职业的 als Lehrer tätig sein 从事教师工作。",
+      "phon": ""
+    }
+  ],
+  "miteinander": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=miteinander.",
+      "exp": "副词 彼此 Wir sprechen oft miteinander. 我们经常彼此交谈。",
+      "phon": ""
+    }
+  ],
+  "mittlerweile": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=mittlerweile.",
+      "exp": "adv. 期间, 同时 Mittlerweile hat sich die Situation verbessert. 期间情况有所改善。",
+      "phon": ""
+    }
+  ],
+  "nahezu": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=nahezu.",
+      "exp": "adv. 几乎 Er hat nahezu alles erledigt. 他几乎完成了所有事情。",
+      "phon": ""
+    }
+  ],
+  "nebenbei": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=nebenbei.",
+      "exp": "adv. 顺便 Ich arbeite nebenbei als Kellner. 我顺便兼做服务员。",
+      "phon": ""
+    }
+  ],
+  "niedrig": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=niedrig.",
+      "exp": "adj. 低的 Die Preise sind sehr niedrig. 价格很低。",
+      "phon": ""
+    }
+  ],
+  "nötig": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=n%C3%B6tig.",
+      "exp": "adj. 必要的 Es ist nötig, dass du kommst. 你来是必要的。",
+      "phon": ""
+    }
+  ],
+  "offenbaren": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=offenbaren.",
+      "exp": "vt. 显露,表明 Er offenbart seine Gefühle. 他表露了他的感情。",
+      "phon": ""
+    }
+  ],
+  "offensichtlich": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=offensichtlich.",
+      "exp": "adj. 明显的 Es ist offensichtlich, dass er die Wahrheit sagt. 很明显，他说的是实话。",
+      "phon": ""
+    }
+  ],
+  "pädagogisch": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=p%C3%A4dagogisch.",
+      "exp": "adj. 教育的 pädagogische Methoden 教育方法。",
+      "phon": ""
+    }
+  ],
+  "riesig": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=riesig.",
+      "exp": "adj. 巨大的 Der Elefant ist ein riesiges Tier. 大象是一种庞大的动物。",
+      "phon": ""
+    }
+  ],
+  "recherchieren": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=recherchieren.",
+      "exp": "v. 调查,研究 etw.(A) recherchieren 调查某事。",
+      "phon": ""
+    }
+  ],
+  "keineswegs": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=keineswegs.",
+      "exp": "adv. 绝不 Das ist keineswegs sicher. 这绝不安全。",
+      "phon": ""
+    }
+  ],
+  "konkret": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=konkret.",
+      "exp": "adj. 具体的 Ich brauche eine konkrete Antwort. 我需要一个具体的回答。",
+      "phon": ""
+    }
+  ],
+  "konventionell": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=konventionell.",
+      "exp": "adj. 常规的,传统的 Die konventionelle Methode funktioniert oft gut. 传统的方法通常效果很好。",
+      "phon": ""
+    }
+  ],
+  "konzessiv": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=konzessiv.",
+      "exp": "adj. 让步的 konzessive Konjunktionen 使用让步连词。",
+      "phon": ""
+    }
+  ],
+  "köstlich": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=k%C3%B6stlich.",
+      "exp": "adj. 美味的 Das Essen schmeckt köstlich. 这食物味道美味。",
+      "phon": ""
+    }
+  ],
+  "kündigen": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=k%C3%BCndigen.",
+      "exp": "vt./vi. 解雇, 辞职 Ich habe meinen Job gekündigt. 我辞掉了工作。",
+      "phon": ""
+    }
+  ],
+  "infolge": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=infolge.",
+      "exp": "präp. 由于 Infolge des schlechten Wetters fiel das Spiel aus. 由于天气不好，比赛取消了。",
+      "phon": ""
+    }
+  ],
+  "insbesondere": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=insbesondere.",
+      "exp": "adv. 尤其 Er interessiert sich für viele Sportarten, insbesondere für Fußball. 他对许多运动感兴趣，尤其是足球。",
+      "phon": ""
+    }
+  ],
+  "integrieren": [
+    {
+      "audiourl": "https://api.frdic.com/api/v2/speech/speakweb?langid=de&txt=integrieren.",
+      "exp": "vt. 融入 sich in die Gesellschaft integrieren 融入社会。",
+      "phon": ""
+    }
+  ]
+};
 
 
 let selectedWords = [];
