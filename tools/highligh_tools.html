@@ -1,103 +1,78 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>文本高亮工具</title>
-  <style>
-    /* —— 以下样式与原版 100% 一致 —— */
-    * {margin:0;padding:0;box-sizing:border-box;}
-    body {font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-      background:#f5f5f5;height:100vh;display:flex;flex-direction:column;}
-    .toolbar {background:white;border-bottom:1px solid #e0e0e0;
-      padding:12px 20px;display:flex;align-items:center;gap:12px;
-      box-shadow:0 2px 4px rgba(0,0,0,0.1);}
-    .toolbar button {padding:8px 16px;border:1px solid #ddd;
-      background:white;border-radius:6px;cursor:pointer;font-size:14px;
-      transition:all 0.2s;}
-    .toolbar button:hover {background:#f0f0f0;}
-    .toolbar button.active {background:#007bff;color:white;border-color:#007bff;}
-    .color-selector {display:flex;gap:8px;}
-    .color-btn {width:32px;height:32px;border:2px solid #ddd;
-      border-radius:4px;cursor:pointer;transition:all 0.2s;}
-    .color-btn:hover {transform:scale(1.1);}
-    .color-btn.active {border-color:#333;transform:scale(1.1);}
-    .main-container {flex:1;display:flex;height:calc(100vh - 70px);}
-    .input-section {width:50%;background:white;border-right:1px solid #e0e0e0;
-      display:flex;flex-direction:column;transition:all 0.3s;}
-    .input-section.collapsed {width:0;overflow:hidden;}
-    .input-header {padding:16px;background:#f8f9fa;
-      border-bottom:1px solid #e0e0e0;display:flex;
-      justify-content:space-between;align-items:center;}
-    .input-header>div {display:flex;align-items:center;gap:12px;}
-    .input-area {flex:1;padding:16px;}
-    #textInput {width:100%;height:100%;border:1px solid #ddd;
-      border-radius:6px;padding:12px;font-size:14px;resize:none;
-      font-family:inherit;}
-    .display-section {flex:1;background:white;display:flex;flex-direction:column;}
-    .display-header {padding:16px;background:#f8f9fa;
-      border-bottom:1px solid #e0e0e0;display:flex;
-      justify-content:space-between;align-items:center;}
-    .display-content {flex:1;padding:20px;overflow-y:auto;
-      line-height:1.6;font-size:14px;user-select:text;}
-    .highlight {padding:2px 4px;border-radius:3px;margin:0 1px;
-      cursor:pointer;transition:all 0.2s;}
-    .highlight:hover {box-shadow:0 0 0 2px rgba(0,123,255,0.3);}
-    .highlight.selected {box-shadow:0 0 0 2px #007bff;}
-    .highlight-yellow {background-color:#fff3cd;}
-    .highlight-green  {background-color:#d4edda;}
-    .highlight-blue   {background-color:#cce5ff;}
-    .highlight-pink   {background-color:#f8d7da;}
-    .highlight-purple {background-color:#e2e3ff;}
-    .saved-content {margin-top:20px;padding:16px;background:#f8f9fa;
-      border-radius:6px;border:1px solid #e0e0e0;transition:all 0.3s;}
-    .saved-content.collapsed {height:50px;overflow:hidden;}
-    .saved-header {display:flex;justify-content:space-between;
-      align-items:center;margin-bottom:12px;}
-    .saved-content h3 {color:#333;margin:0;}
-    .saved-item {margin-bottom:8px;padding:8px;background:white;
-      border-radius:4px;border-left:4px solid #007bff;
-      display:flex;justify-content:space-between;align-items:center;}
-    .saved-item-content {flex:1;}
-    .saved-item-actions {margin-left:12px;}
-    .delete-btn {background:#dc3545;color:white;border:none;
-      padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px;}
-    .delete-btn:hover {background:#c82333;}
-    .format-select {padding:6px 10px;border:1px solid #ddd;
-      border-radius:4px;background:white;font-size:12px;}
-    .toggle-btn {background:#007bff;color:white;border:none;
-      padding:6px 12px;border-radius:4px;cursor:pointer;font-size:12px;}
-    .toggle-btn:hover {background:#0056b3;}
-    .context-menu {position:fixed;background:white;border:1px solid #ddd;
-      border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,0.15);
-      z-index:1000;min-width:120px;display:none;}
-    .context-menu-item {padding:8px 12px;cursor:pointer;
-      font-size:14px;color:#333;border-bottom:1px solid #f0f0f0;}
-    .context-menu-item:last-child {border-bottom:none;}
-    .context-menu-item:hover {background:#f8f9fa;}
-    .context-menu-item.danger {color:#dc3545;}
-    .context-menu-item.danger:hover {background:#f8d7da;}
-    /* —— 样式结束 —— */
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文本高亮工具</title>
+<style>
+  /* —— 样式保持与你原文件 100% 一致 —— */
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f5f5;height:100vh;display:flex;flex-direction:column;}
+  .toolbar{background:#fff;border-bottom:1px solid #e0e0e0;padding:12px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 4px rgba(0,0,0,.1);}
+  .toolbar button{padding:8px 16px;border:1px solid #ddd;background:#fff;border-radius:6px;cursor:pointer;font-size:14px;transition:.2s;}
+  .toolbar button:hover{background:#f0f0f0;}
+  .toolbar button.active{background:#007bff;color:#fff;border-color:#007bff;}
+  .color-selector{display:flex;gap:8px;}
+  .color-btn{width:32px;height:32px;border:2px solid #ddd;border-radius:4px;cursor:pointer;transition:.2s;}
+  .color-btn:hover{transform:scale(1.1);}
+  .color-btn.active{border-color:#333;transform:scale(1.1);}
+  .main-container{flex:1;display:flex;height:calc(100vh - 70px);}
+  .input-section{width:50%;background:#fff;border-right:1px solid #e0e0e0;display:flex;flex-direction:column;transition:.3s;}
+  .input-section.collapsed{width:0;overflow:hidden;}
+  .input-header{padding:16px;background:#f8f9fa;border-bottom:1px solid #e0e0e0;display:flex;justify-content:space-between;align-items:center;}
+  .input-header>div{display:flex;align-items:center;gap:12px;}
+  .input-area{flex:1;padding:16px;}
+  #textInput{width:100%;height:100%;border:1px solid #ddd;border-radius:6px;padding:12px;font-size:14px;resize:none;font-family:inherit;}
+  .display-section{flex:1;background:#fff;display:flex;flex-direction:column;}
+  .display-header{padding:16px;background:#f8f9fa;border-bottom:1px solid #e0e0e0;display:flex;justify-content:space-between;align-items:center;}
+  .display-content{flex:1;padding:20px;overflow-y:auto;line-height:1.6;font-size:14px;user-select:text;}
+  .highlight{padding:2px 4px;border-radius:3px;margin:0 1px;cursor:pointer;transition:.2s;}
+  .highlight:hover{box-shadow:0 0 0 2px rgba(0,123,255,.3);}
+  .highlight.selected{box-shadow:0 0 0 2px #007bff;}
+  .highlight-yellow{background:#fff3cd;}
+  .highlight-green{background:#d4edda;}
+  .highlight-blue{background:#cce5ff;}
+  .highlight-pink{background:#f8d7da;}
+  .highlight-purple{background:#e2e3ff;}
+  .saved-content{margin-top:20px;padding:16px;background:#f8f9fa;border-radius:6px;border:1px solid #e0e0e0;transition:.3s;}
+  .saved-content.collapsed{height:50px;overflow:hidden;}
+  .saved-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+  .saved-content h3{color:#333;margin:0;}
+  .saved-item{margin-bottom:8px;padding:8px;background:#fff;border-radius:4px;border-left:4px solid #007bff;display:flex;justify-content:space-between;align-items:center;}
+  .saved-item-actions{margin-left:12px;}
+  .delete-btn{background:#dc3545;color:#fff;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px;}
+  .delete-btn:hover{background:#c82333;}
+  .format-select{padding:6px 10px;border:1px solid #ddd;border-radius:4px;background:#fff;font-size:12px;}
+  .toggle-btn{background:#007bff;color:#fff;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;font-size:12px;}
+  .toggle-btn:hover{background:#0056b3;}
+  .context-menu{position:fixed;background:#fff;border:1px solid #ddd;border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:1000;min-width:120px;display:none;}
+  .context-menu-item{padding:8px 12px;cursor:pointer;font-size:14px;color:#333;border-bottom:1px solid #f0f0f0;}
+  .context-menu-item:last-child{border-bottom:none;}
+  .context-menu-item:hover{background:#f8f9fa;}
+  .context-menu-item.danger{color:#dc3545;}
+  .context-menu-item.danger:hover{background:#f8d7da;}
+</style>
 </head>
 <body>
+  <!-- ——— 工具栏 ——— -->
   <div class="toolbar">
     <button id="highlightBtn">🖍️ 高亮工具</button>
     <div class="color-selector">
-      <div class="color-btn highlight-yellow" data-color="yellow" title="黄色"></div>
-      <div class="color-btn highlight-green"  data-color="green"  title="绿色"></div>
-      <div class="color-btn highlight-blue"   data-color="blue"   title="蓝色"></div>
-      <div class="color-btn highlight-pink"   data-color="pink"   title="粉色"></div>
-      <div class="color-btn highlight-purple" data-color="purple" title="紫色"></div>
+      <div class="color-btn highlight-yellow" data-color="yellow"></div>
+      <div class="color-btn highlight-green"  data-color="green"></div>
+      <div class="color-btn highlight-blue"   data-color="blue"></div>
+      <div class="color-btn highlight-pink"   data-color="pink"></div>
+      <div class="color-btn highlight-purple" data-color="purple"></div>
     </div>
-    <button id="deleteSelectedBtn">🗑️ 删除选中</button>
+    <button id="deleteSelectedBtn">🗑 删除选中</button>
     <button id="saveBtn">💾 保存高亮</button>
     <button id="exportTxtBtn">📄 导出TXT</button>
     <button id="exportJsonBtn">📋 导出JSON</button>
     <button id="exportMdBtn">📝 导出Markdown</button>
-    <button id="clearBtn">🗑️ 清除高亮</button>
+    <button id="clearBtn">🗑 清除高亮</button>
   </div>
 
+  <!-- ——— 主体 ——— -->
   <div class="main-container">
     <div class="input-section" id="inputSection">
       <div class="input-header">
@@ -123,6 +98,7 @@
       <div class="display-content" id="displayContent">
         <p>在左侧输入框中输入文本，内容将在这里显示。使用高亮工具可以标记重要内容。</p>
       </div>
+
       <div class="saved-content" id="savedContent" style="display:none;">
         <div class="saved-header">
           <h3>已保存的高亮内容</h3>
@@ -133,328 +109,299 @@
     </div>
   </div>
 
+  <!-- 右键菜单 -->
   <div class="context-menu" id="contextMenu">
     <div class="context-menu-item danger" id="deleteHighlightItem">删除高亮</div>
   </div>
 
-  <script>
-    class TextHighlighter {
-      constructor() {
-        this.isHighlightMode = false;
-        this.currentColor   = 'yellow';
-        this.savedHighlights= [];
-        this.highlightId    = 0;
-        this.selectedHighlight = null;
+<script>
+class TextHighlighter{
+  constructor(){
+    /* ====== 基础属性 ====== */
+    this.isHighlightMode=false;
+    this.currentColor='yellow';
+    this.savedHighlights=[];
+    this.highlightId=0;
+    this.selectedHighlight=null;
+    /* ====== 设备检测 ====== */
+    this.isIOS=/iP(ad|hone|od)/i.test(navigator.userAgent);
+    this.supportsPointer=!!window.PointerEvent;
 
-        this.initElements();
-        this.bindEvents();
-      }
+    this.initElements();
+    this.bindEvents();
+  }
 
-      initElements() {
-        this.highlightBtn     = document.getElementById('highlightBtn');
-        this.colorBtns        = document.querySelectorAll('.color-btn');
-        this.deleteSelectedBtn= document.getElementById('deleteSelectedBtn');
-        this.saveBtn          = document.getElementById('saveBtn');
-        this.exportTxtBtn     = document.getElementById('exportTxtBtn');
-        this.exportJsonBtn    = document.getElementById('exportJsonBtn');
-        this.exportMdBtn      = document.getElementById('exportMdBtn');
-        this.clearBtn         = document.getElementById('clearBtn');
-        this.formatSelect     = document.getElementById('formatSelect');
-        this.textInput        = document.getElementById('textInput');
-        this.displayContent   = document.getElementById('displayContent');
-        this.collapseBtn      = document.getElementById('collapseBtn');
-        this.expandBtn        = document.getElementById('expandBtn');
-        this.inputSection     = document.getElementById('inputSection');
-        this.savedContent     = document.getElementById('savedContent');
-        this.savedList        = document.getElementById('savedList');
-        this.savedToggleBtn   = document.getElementById('savedToggleBtn');
-        this.contextMenu      = document.getElementById('contextMenu');
-        this.deleteHighlightItem = document.getElementById('deleteHighlightItem');
+  /* === DOM 缓存 === */
+  initElements(){
+    const g=id=>document.getElementById(id);
+    this.highlightBtn       =g('highlightBtn');
+    this.colorBtns          =document.querySelectorAll('.color-btn');
+    this.deleteSelectedBtn  =g('deleteSelectedBtn');
+    this.saveBtn            =g('saveBtn');
+    this.exportTxtBtn       =g('exportTxtBtn');
+    this.exportJsonBtn      =g('exportJsonBtn');
+    this.exportMdBtn        =g('exportMdBtn');
+    this.clearBtn           =g('clearBtn');
+    this.formatSelect       =g('formatSelect');
+    this.textInput          =g('textInput');
+    this.displayContent     =g('displayContent');
+    this.collapseBtn        =g('collapseBtn');
+    this.expandBtn          =g('expandBtn');
+    this.inputSection       =g('inputSection');
+    this.savedContent       =g('savedContent');
+    this.savedList          =g('savedList');
+    this.savedToggleBtn     =g('savedToggleBtn');
+    this.contextMenu        =g('contextMenu');
+    this.deleteHighlightItem=g('deleteHighlightItem');
+    this.colorBtns[0].classList.add('active');
+  }
 
-        // 默认第一个颜色被激活
-        this.colorBtns[0].classList.add('active');
-      }
+  /* === 事件绑定 === */
+  bindEvents(){
+    /* 工具栏按钮 */
+    this.highlightBtn.addEventListener('click',()=>this.toggleHighlightMode());
+    this.colorBtns.forEach(btn=>btn.addEventListener('click',e=>this.selectColor(e.target)));
+    this.deleteSelectedBtn.addEventListener('click',()=>this.deleteSelectedHighlight());
+    this.saveBtn.addEventListener('click', ()=>this.saveHighlights());
+    this.exportTxtBtn.addEventListener('click',()=>this.exportTxt());
+    this.exportJsonBtn.addEventListener('click',()=>this.exportJson());
+    this.exportMdBtn.addEventListener('click',()=>this.exportMarkdown());
+    this.clearBtn.addEventListener('click',   ()=>this.clearHighlights());
+    this.textInput.addEventListener('input',  ()=>this.updateDisplay());
+    this.formatSelect.addEventListener('change',()=>this.updateDisplay());
+    this.collapseBtn.addEventListener('click',()=>this.toggleInputSection());
+    this.expandBtn.addEventListener('click',  ()=>this.toggleInputSection());
+    this.savedToggleBtn.addEventListener('click',()=>this.toggleSavedSection());
+    this.deleteHighlightItem.addEventListener('click',()=>this.deleteHighlightFromMenu());
 
-      bindEvents() {
-        this.highlightBtn.addEventListener('click', () => this.toggleHighlightMode());
-        this.colorBtns.forEach(btn => btn.addEventListener('click', e => this.selectColor(e.target)));
-        this.deleteSelectedBtn.addEventListener('click', () => this.deleteSelectedHighlight());
-        this.saveBtn.addEventListener('click', () => this.saveHighlights());
-        this.exportTxtBtn.addEventListener('click', () => this.exportTxt());
-        this.exportJsonBtn.addEventListener('click', () => this.exportJson());
-        this.exportMdBtn.addEventListener('click', () => this.exportMarkdown());
-        this.clearBtn.addEventListener('click', () => this.clearHighlights());
+    /* 点击 / 右键 */
+    document.addEventListener('click',     e=>this.handleClick(e));
+    document.addEventListener('contextmenu',e=>this.handleContextMenu(e));
 
-        this.textInput.addEventListener('input', () => this.updateDisplay());
-        this.formatSelect.addEventListener('change', () => this.updateDisplay());
+    /* ——— 选区监听：按设备差异化 ——— */
+    if(this.isIOS){
+      /* iOS 上 selectionchange 频率极高、但 PointerEvent 可靠
+         所以：selectionchange → 只记录 range，不进行高亮
+              pointerup/touchend → 真正执行高亮 */
+      document.addEventListener('selectionchange',()=>this.storeCurrentSelection());
+      ['pointerup','touchend'].forEach(evt=>{
+        document.addEventListener(evt,()=>this.commitHighlight());
+      });
+    }else{
+      /* 桌面 / Android：mouseup & pointerup 一次性完成 */
+      ['pointerup','mouseup'].forEach(evt=>{
+        document.addEventListener(evt,()=>this.commitHighlight());
+      });
+    }
+  }
 
-        this.collapseBtn.addEventListener('click', () => this.toggleInputSection());
-        this.expandBtn.addEventListener('click', () => this.toggleInputSection());
-        this.savedToggleBtn.addEventListener('click', () => this.toggleSavedSection());
-        this.deleteHighlightItem.addEventListener('click', () => this.deleteHighlightFromMenu());
+  /* ========== 高亮模式 / 颜色 ========== */
+  toggleHighlightMode(){
+    this.isHighlightMode=!this.isHighlightMode;
+    this.highlightBtn.classList.toggle('active',this.isHighlightMode);
+    this.highlightBtn.innerText=this.isHighlightMode?'🖍️ 关闭高亮':'🖍️ 高亮工具';
+  }
+  selectColor(btn){
+    this.colorBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    this.currentColor=btn.dataset.color;
+  }
 
-        // —— 核心：捕捉所有输入方式的选区 —— //
-        ['mouseup','pointerup','touchend','selectionchange']
-          .forEach(evt => document.addEventListener(evt, e => this.handleSelection(e)));
+  /* ========== 选区处理 ========== */
+  storeCurrentSelection(){
+    /* 只在 iOS 下使用：记录当前 Range，避免频繁 DOM 操作 */
+    if(!this.isHighlightMode) return;
+    const sel=window.getSelection();
+    if(!sel.rangeCount) return;
+    this.cachedRange=sel.getRangeAt(0).cloneRange();
+  }
 
-        document.addEventListener('click',      e => this.handleClick(e));
-        document.addEventListener('contextmenu',e => this.handleContextMenu(e));
-      }
+  commitHighlight(){
+    if(!this.isHighlightMode) return;
+    const sel=window.getSelection();
+    let range=null;
 
-      toggleHighlightMode() {
-        this.isHighlightMode = !this.isHighlightMode;
-        this.highlightBtn.classList.toggle('active', this.isHighlightMode);
-        this.highlightBtn.textContent = this.isHighlightMode ? '🖍️ 关闭高亮' : '🖍️ 高亮工具';
-      }
-
-      selectColor(btn) {
-        this.colorBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        this.currentColor = btn.dataset.color;
-      }
-
-      handleClick(e) {
-        this.contextMenu.style.display = 'none';
-        if (e.target.classList.contains('highlight')) {
-          this.displayContent.querySelectorAll('.highlight.selected')
-                             .forEach(h => h.classList.remove('selected'));
-          e.target.classList.add('selected');
-          this.selectedHighlight = e.target;
-        } else {
-          this.displayContent.querySelectorAll('.highlight.selected')
-                             .forEach(h => h.classList.remove('selected'));
-          this.selectedHighlight = null;
-        }
-      }
-
-      handleContextMenu(e) {
-        if (e.target.classList.contains('highlight')) {
-          e.preventDefault();
-          this.displayContent.querySelectorAll('.highlight.selected')
-                             .forEach(h => h.classList.remove('selected'));
-          e.target.classList.add('selected');
-          this.selectedHighlight = e.target;
-          this.contextMenu.style.display = 'block';
-          this.contextMenu.style.left = e.pageX + 'px';
-          this.contextMenu.style.top  = e.pageY + 'px';
-        } else {
-          this.contextMenu.style.display = 'none';
-        }
-      }
-
-      deleteHighlightFromMenu() {
-        if (this.selectedHighlight) this.deleteHighlight(this.selectedHighlight);
-        this.contextMenu.style.display = 'none';
-      }
-
-      deleteSelectedHighlight() {
-        if (this.selectedHighlight) this.deleteHighlight(this.selectedHighlight);
-        else alert('请先选择一个高亮内容');
-      }
-
-      deleteHighlight(el) {
-        const p = el.parentNode;
-        p.replaceChild(document.createTextNode(el.textContent), el);
-        p.normalize();
-        this.selectedHighlight = null;
-      }
-
-      handleSelection(e) {
-        if (!this.isHighlightMode) return;
-        const sel = window.getSelection();
-        if (!sel.rangeCount || !sel.toString().trim()) return;
-
-        let range = sel.getRangeAt(0);
-        const c = range.commonAncestorContainer;
-        if (!this.displayContent.contains(c) && c !== this.displayContent) return;
-
-        // —— 自动“拆开”选区内已有的 highlight —— //
-        this.unwrapHighlights(range);
-
-        // 再次获取当前选区（DOM 可能已变，但大多数浏览器会保留 range）
-        range = sel.getRangeAt(0);
-
-        this.highlightSelection(range);
-        sel.removeAllRanges();
-      }
-
-      // —— 新增方法：把选区内任何已有 .highlight 元素都拆开，还原成纯文本 —— //
-      unwrapHighlights(range) {
-        const all = this.displayContent.querySelectorAll('.highlight');
-        all.forEach(h => {
-          // 如果现有高亮与选区相交，就拆开它
-          if (range.intersectsNode(h)) {
-            const parent = h.parentNode;
-            while(h.firstChild) parent.insertBefore(h.firstChild, h);
-            parent.removeChild(h);
-            parent.normalize();
-          }
-        });
-      }
-
-      highlightSelection(range) {
-        const span = document.createElement('span');
-        span.className = `highlight highlight-${this.currentColor}`;
-        span.dataset.highlightId = this.highlightId++;
-        try {
-          range.surroundContents(span);
-        } catch {
-          const contents = range.extractContents();
-          span.appendChild(contents);
-          range.insertNode(span);
-        }
-      }
-
-      saveHighlights() {
-        const hs = this.displayContent.querySelectorAll('.highlight');
-        if (!hs.length) { alert('没有找到高亮内容'); return; }
-        const arr = [];
-        hs.forEach(h => {
-          const t = h.textContent.trim();
-          if (!t) return;
-          const info = this.getLineInfo(h);
-          arr.push({
-            text:t,
-            color:this.getHighlightColor(h),
-            line: info.line,
-            position:info.position
-          });
-        });
-        const byLine = {};
-        arr.forEach(i => (byLine[i.line]=byLine[i.line]||[]).push(i));
-        this.savedHighlights = [];
-        Object.keys(byLine).sort((a,b)=>a-b).forEach(line=>{
-          const items = byLine[line].sort((a,b)=>a.position-b.position);
-          this.savedHighlights.push({
-            line:+line,
-            text: items.map(i=>i.text).join(' '),
-            items
-          });
-        });
-        this.displaySavedHighlights();
-      }
-
-      getLineInfo(el) {
-        const dr = this.displayContent.getBoundingClientRect();
-        const er = el.getBoundingClientRect();
-        const lh = parseInt(getComputedStyle(this.displayContent).lineHeight);
-        return {
-          line: Math.floor((er.top - dr.top)/lh),
-          position: er.left - dr.left
-        };
-      }
-
-      getHighlightColor(el) {
-        for (let c of el.classList) if (c.startsWith('highlight-')) return c.replace('highlight-','');
-        return 'yellow';
-      }
-
-      displaySavedHighlights() {
-        if (!this.savedHighlights.length) {
-          this.savedContent.style.display = 'none';
-          return;
-        }
-        this.savedContent.style.display = 'block';
-        this.savedList.innerHTML = '';
-        this.savedHighlights.forEach((item,idx)=>{
-          const div = document.createElement('div');
-          div.className = 'saved-item';
-          div.innerHTML = `
-            <div class="saved-item-content">
-              <strong>第${item.line+1}行:</strong> ${item.text}
-            </div>
-            <div class="saved-item-actions">
-              <button class="delete-btn" onclick="highlighter.deleteSavedItem(${idx})">删除</button>
-            </div>`;
-          this.savedList.appendChild(div);
-        });
-      }
-
-      deleteSavedItem(i) {
-        this.savedHighlights.splice(i,1);
-        this.displaySavedHighlights();
-      }
-
-      exportTxt() {
-        if (!this.savedHighlights.length) { alert('没有保存的高亮内容'); return; }
-        const txt = this.savedHighlights.map(i=>i.text).join('\n');
-        this.downloadFile(txt,'highlights.txt','text/plain');
-      }
-
-      exportJson() {
-        if (!this.savedHighlights.length) { alert('没有保存的高亮内容'); return; }
-        const js = JSON.stringify(this.savedHighlights,null,2);
-        this.downloadFile(js,'highlights.json','application/json');
-      }
-
-      exportMarkdown() {
-        const disp = this.displayContent.textContent || this.displayContent.innerText;
-        const md = `# 文档内容\n\n${disp}\n\n## 高亮内容\n\n` +
-                   this.savedHighlights.map(i=>`- ${i.text}`).join('\n');
-        this.downloadFile(md,'document.md','text/markdown');
-      }
-
-      downloadFile(content, name, type) {
-        const blob = new Blob([content],{type});
-        const url  = URL.createObjectURL(blob);
-        const a    = document.createElement('a');
-        a.href = url; a.download = name;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      }
-
-      clearHighlights() {
-        this.displayContent.querySelectorAll('.highlight').forEach(h=>{
-          const p = h.parentNode;
-          p.replaceChild(document.createTextNode(h.textContent), h);
-          p.normalize();
-        });
-        this.savedHighlights = [];
-        this.savedContent.style.display = 'none';
-        this.selectedHighlight = null;
-      }
-
-      updateDisplay() {
-        const text = this.textInput.value;
-        const fmt  = this.formatSelect.value;
-        if (!text.trim()) {
-          this.displayContent.innerHTML =
-            '<p>在左侧输入框中输入文本，内容将在这里显示。使用高亮工具可以标记重要内容。</p>';
-        } else if (fmt === 'markdown') {
-          let ft = text
-            .replace(/^### (.*$)/gim,'<h3>$1</h3>')
-            .replace(/^## (.*$)/gim,'<h2>$1</h2>')
-            .replace(/^# (.*$)/gim,'<h1>$1</h1>')
-            .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
-            .replace(/\*(.*?)\*/g,'<em>$1</em>')
-            .replace(/`(.*?)`/g,'<code style="background:#f4f4f4;padding:2px 4px;border-radius:3px;">$1</code>')
-            .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" style="color:#007bff;">$1</a>')
-            .replace(/\n/g,'<br>');
-          this.displayContent.innerHTML = `<div>${ft}</div>`;
-        } else {
-          const ft = text.replace(/\n/g,'<br>');
-          this.displayContent.innerHTML = `<div>${ft}</div>`;
-        }
-      }
-
-      toggleSavedSection() {
-        const col = this.savedContent.classList.toggle('collapsed');
-        this.savedToggleBtn.textContent = col ? '展开' : '收起';
-      }
-
-      toggleInputSection() {
-        const col = this.inputSection.classList.toggle('collapsed');
-        this.collapseBtn.style.display = col ? 'none' : 'block';
-        this.expandBtn .style.display = col ? 'block' : 'none';
-      }
+    /* iOS：优先用 cachedRange；其它直接拿当前 selection */
+    if(this.isIOS){
+      if(!this.cachedRange || this.cachedRange.collapsed) return;
+      range=this.cachedRange;
+    }else{
+      if(!sel.rangeCount||sel.toString().trim()==='') return;
+      range=sel.getRangeAt(0);
     }
 
-    let highlighter;
-    document.addEventListener('DOMContentLoaded', () => {
-      highlighter = new TextHighlighter();
+    /* 仅在显示区域内才高亮 */
+    const node=range.commonAncestorContainer;
+    if(!this.displayContent.contains(node)&&node!==this.displayContent) return;
+
+    this.highlightRange(range);
+
+    /* 清掉选区、缓存 */
+    sel.removeAllRanges();
+    this.cachedRange=null;
+  }
+
+  highlightRange(range){
+    if(range.toString().trim()==='') return;
+    const span=document.createElement('span');
+    span.className=`highlight highlight-${this.currentColor}`;
+    span.dataset.highlightId=this.highlightId++;
+    try{
+      range.surroundContents(span);
+    }catch{
+      const frag=range.extractContents();
+      span.appendChild(frag);
+      range.insertNode(span);
+    }
+  }
+
+  /* ========== 点击 / 右键选中某个高亮 ========== */
+  handleClick(e){
+    this.contextMenu.style.display='none';
+    if(e.target.classList.contains('highlight')){
+      this.displayContent.querySelectorAll('.highlight.selected').forEach(h=>h.classList.remove('selected'));
+      e.target.classList.add('selected');
+      this.selectedHighlight=e.target;
+    }else{
+      this.displayContent.querySelectorAll('.highlight.selected').forEach(h=>h.classList.remove('selected'));
+      this.selectedHighlight=null;
+    }
+  }
+  handleContextMenu(e){
+    if(e.target.classList.contains('highlight')){
+      e.preventDefault();
+      this.displayContent.querySelectorAll('.highlight.selected').forEach(h=>h.classList.remove('selected'));
+      e.target.classList.add('selected');
+      this.selectedHighlight=e.target;
+      this.contextMenu.style.display='block';
+      this.contextMenu.style.left=e.pageX+'px';
+      this.contextMenu.style.top =e.pageY+'px';
+    }else{
+      this.contextMenu.style.display='none';
+    }
+  }
+  deleteHighlightFromMenu(){
+    if(this.selectedHighlight) this.deleteHighlight(this.selectedHighlight);
+    this.contextMenu.style.display='none';
+  }
+  deleteSelectedHighlight(){
+    if(this.selectedHighlight) this.deleteHighlight(this.selectedHighlight);
+    else alert('请先选择一个高亮内容');
+  }
+  deleteHighlight(el){
+    const p=el.parentNode;
+    p.replaceChild(document.createTextNode(el.textContent),el);
+    p.normalize();
+    this.selectedHighlight=null;
+  }
+
+  /* ========== 保存 / 导出 / 清除 ========== */
+  saveHighlights(){
+    const hs=this.displayContent.querySelectorAll('.highlight');
+    if(!hs.length){alert('没有找到高亮内容');return;}
+    const arr=[];
+    hs.forEach(h=>{
+      const txt=h.textContent.trim();
+      if(!txt) return;
+      const info=this.getLineInfo(h);
+      arr.push({text:txt,color:this.getHighlightColor(h),line:info.line,position:info.position});
     });
-  </script>
+    /* 按行合并 */
+    const byLine={};
+    arr.forEach(i=>(byLine[i.line]=byLine[i.line]||[]).push(i));
+    this.savedHighlights=[];
+    Object.keys(byLine).sort((a,b)=>a-b).forEach(line=>{
+      const items=byLine[line].sort((a,b)=>a.position-b.position);
+      this.savedHighlights.push({line:+line,text:items.map(i=>i.text).join(' '),items});
+    });
+    this.displaySavedHighlights();
+  }
+  getLineInfo(el){
+    const dr=this.displayContent.getBoundingClientRect();
+    const er=el.getBoundingClientRect();
+    const lh=parseInt(getComputedStyle(this.displayContent).lineHeight);
+    return{line:Math.floor((er.top-dr.top)/lh),position:er.left-dr.left};
+  }
+  getHighlightColor(el){
+    for(const c of el.classList) if(c.startsWith('highlight-')) return c.replace('highlight-','');
+    return'yellow';
+  }
+  displaySavedHighlights(){
+    if(!this.savedHighlights.length){this.savedContent.style.display='none';return;}
+    this.savedContent.style.display='block';
+    this.savedList.innerHTML='';
+    this.savedHighlights.forEach((item,idx)=>{
+      const div=document.createElement('div');
+      div.className='saved-item';
+      div.innerHTML=`<div class="saved-item-content"><strong>第${item.line+1}行:</strong> ${item.text}</div>
+      <div class="saved-item-actions"><button class="delete-btn" onclick="highlighter.deleteSavedItem(${idx})">删除</button></div>`;
+      this.savedList.appendChild(div);
+    });
+  }
+  deleteSavedItem(i){this.savedHighlights.splice(i,1);this.displaySavedHighlights();}
+  exportTxt(){if(!this.savedHighlights.length){alert('没有保存的高亮内容');return;}
+    this.downloadFile(this.savedHighlights.map(i=>i.text).join('\n'),'highlights.txt','text/plain');}
+  exportJson(){if(!this.savedHighlights.length){alert('没有保存的高亮内容');return;}
+    this.downloadFile(JSON.stringify(this.savedHighlights,null,2),'highlights.json','application/json');}
+  exportMarkdown(){
+    const disp=this.displayContent.textContent||this.displayContent.innerText;
+    const md=`# 文档内容\n\n${disp}\n\n## 高亮内容\n\n${this.savedHighlights.map(i=>`- ${i.text}`).join('\n')}`;
+    this.downloadFile(md,'document.md','text/markdown');
+  }
+  downloadFile(content,name,type){
+    const blob=new Blob([content],{type});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;a.download=name;
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+  clearHighlights(){
+    this.displayContent.querySelectorAll('.highlight').forEach(h=>{
+      const p=h.parentNode;
+      p.replaceChild(document.createTextNode(h.textContent),h);
+      p.normalize();
+    });
+    this.savedHighlights=[];
+    this.savedContent.style.display='none';
+    this.selectedHighlight=null;
+  }
+
+  /* ========== 编辑区渲染 ========== */
+  updateDisplay(){
+    const txt=this.textInput.value;
+    const fmt=this.formatSelect.value;
+    if(!txt.trim()){this.displayContent.innerHTML='<p>在左侧输入框中输入文本，内容将在这里显示。使用高亮工具可以标记重要内容。</p>';return;}
+    if(fmt==='markdown'){
+      let t=txt.replace(/^### (.*$)/gim,'<h3>$1</h3>')
+               .replace(/^## (.*$)/gim,'<h2>$1</h2>')
+               .replace(/^# (.*$)/gim,'<h1>$1</h1>')
+               .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+               .replace(/\*(.*?)\*/g,'<em>$1</em>')
+               .replace(/`(.*?)`/g,'<code style="background:#f4f4f4;padding:2px 4px;border-radius:3px;">$1</code>')
+               .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" style="color:#007bff;">$1</a>')
+               .replace(/\n/g,'<br>');
+      this.displayContent.innerHTML=`<div>${t}</div>`;
+    }else{
+      this.displayContent.innerHTML=`<div>${txt.replace(/\n/g,'<br>')}</div>`;
+    }
+  }
+
+  /* ========== 折叠面板 ========== */
+  toggleSavedSection(){
+    const col=this.savedContent.classList.toggle('collapsed');
+    this.savedToggleBtn.innerText=col?'展开':'收起';
+  }
+  toggleInputSection(){
+    const col=this.inputSection.classList.toggle('collapsed');
+    this.collapseBtn.style.display=col?'none':'block';
+    this.expandBtn .style.display=col?'block':'none';
+  }
+}
+
+/* ——— 启动 ——— */
+let highlighter;
+document.addEventListener('DOMContentLoaded',()=>{highlighter=new TextHighlighter();});
+</script>
 </body>
 </html>
