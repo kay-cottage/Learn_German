@@ -1,139 +1,307 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>文本高亮工具</title>
 <style>
-  /* —— 样式保持与你原文件 100% 一致 —— */
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f5f5;height:100vh;display:flex;flex-direction:column;}
-  .toolbar{background:#fff;border-bottom:1px solid #e0e0e0;padding:12px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 4px rgba(0,0,0,.1);}
-  .toolbar button{padding:8px 16px;border:1px solid #ddd;background:#fff;border-radius:6px;cursor:pointer;font-size:14px;transition:.2s;}
-  .toolbar button:hover{background:#f0f0f0;}
-  .toolbar button.active{background:#007bff;color:#fff;border-color:#007bff;}
-  .color-selector{display:flex;gap:8px;}
-  .color-btn{width:32px;height:32px;border:2px solid #ddd;border-radius:4px;cursor:pointer;transition:.2s;}
-  .color-btn:hover{transform:scale(1.1);}
-  .color-btn.active{border-color:#333;transform:scale(1.1);}
-  .main-container{flex:1;display:flex;height:calc(100vh - 70px);}
-  .input-section{width:50%;background:#fff;border-right:1px solid #e0e0e0;display:flex;flex-direction:column;transition:.3s;}
-  .input-section.collapsed{width:0;overflow:hidden;}
-  .input-header{padding:16px;background:#f8f9fa;border-bottom:1px solid #e0e0e0;display:flex;justify-content:space-between;align-items:center;}
-  .input-header>div{display:flex;align-items:center;gap:12px;}
-  .input-area{flex:1;padding:16px;}
-  #textInput{width:100%;height:100%;border:1px solid #ddd;border-radius:6px;padding:12px;font-size:14px;resize:none;font-family:inherit;}
-  .display-section{flex:1;background:#fff;display:flex;flex-direction:column;}
-  .display-header{padding:16px;background:#f8f9fa;border-bottom:1px solid #e0e0e0;display:flex;justify-content:space-between;align-items:center;}
-  .display-content{flex:1;padding:20px;overflow-y:auto;line-height:1.6;font-size:14px;user-select:text;}
-  .highlight{padding:2px 4px;border-radius:3px;margin:0 1px;cursor:pointer;transition:.2s;}
-  .highlight:hover{box-shadow:0 0 0 2px rgba(0,123,255,.3);}
-  .highlight.selected{box-shadow:0 0 0 2px #007bff;}
-  .highlight-yellow{background:#fff3cd;}
-  .highlight-green{background:#d4edda;}
-  .highlight-blue{background:#cce5ff;}
-  .highlight-pink{background:#f8d7da;}
-  .highlight-purple{background:#e2e3ff;}
-  .saved-content{margin-top:20px;padding:16px;background:#f8f9fa;border-radius:6px;border:1px solid #e0e0e0;transition:.3s;}
-  .saved-content.collapsed{height:50px;overflow:hidden;}
-  .saved-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
-  .saved-content h3{color:#333;margin:0;}
-  .saved-item{margin-bottom:8px;padding:8px;background:#fff;border-radius:4px;border-left:4px solid #007bff;display:flex;justify-content:space-between;align-items:center;}
-  .saved-item-actions{margin-left:12px;}
-  .delete-btn{background:#dc3545;color:#fff;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;font-size:12px;}
-  .delete-btn:hover{background:#c82333;}
-  .format-select{padding:6px 10px;border:1px solid #ddd;border-radius:4px;background:#fff;font-size:12px;}
-  .toggle-btn{background:#007bff;color:#fff;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;font-size:12px;}
-  .toggle-btn:hover{background:#0056b3;}
-  .context-menu{position:fixed;background:#fff;border:1px solid #ddd;border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,.15);z-index:1000;min-width:120px;display:none;}
-  .context-menu-item{padding:8px 12px;cursor:pointer;font-size:14px;color:#333;border-bottom:1px solid #f0f0f0;}
-  .context-menu-item:last-child{border-bottom:none;}
-  .context-menu-item:hover{background:#f8f9fa;}
-  .context-menu-item.danger{color:#dc3545;}
-  .context-menu-item.danger:hover{background:#f8d7da;}
+/* ==================== 全局 ==================== */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:#f5f5f5;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ==================== 顶部工具栏 ==================== */
+.toolbar{
+  background:#fff;
+  border-bottom:1px solid #e0e0e0;
+  padding:12px 20px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  box-shadow:0 2px 4px rgba(0,0,0,.1);
+}
+.toolbar button{
+  padding:8px 16px;
+  border:1px solid #ddd;
+  background:#fff;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:14px;
+  transition:.2s;
+}
+.toolbar button:hover{background:#f0f0f0;}
+.toolbar button.active{
+  background:#007bff;
+  color:#fff;
+  border-color:#007bff;
+}
+
+/* 颜色按钮 */
+.color-selector{display:flex;gap:8px;}
+.color-btn{
+  width:32px;height:32px;
+  border:2px solid #ddd;
+  border-radius:4px;
+  cursor:pointer;
+  transition:.2s;
+}
+.color-btn:hover{transform:scale(1.1);}
+.color-btn.active{
+  border-color:#333;
+  transform:scale(1.1);
+}
+
+/* ==================== 主布局 ==================== */
+.main-container{
+  flex:1;
+  display:flex;
+  height:calc(100vh - 70px);
+}
+
+/* 左侧输入区 */
+.input-section{
+  width:50%;
+  background:#fff;
+  border-right:1px solid #e0e0e0;
+  display:flex;
+  flex-direction:column;
+  transition:.3s;
+}
+.input-section.collapsed{
+  width:0;
+  overflow:hidden;
+}
+.input-header{
+  padding:16px;
+  background:#f8f9fa;
+  border-bottom:1px solid #e0e0e0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.input-header>div{display:flex;align-items:center;gap:12px;}
+.input-area{flex:1;padding:16px;}
+#textInput{
+  width:100%;height:100%;
+  border:1px solid #ddd;
+  border-radius:6px;
+  padding:12px;
+  font-size:14px;
+  resize:none;
+  font-family:inherit;
+}
+
+/* 右侧显示区 */
+.display-section{
+  flex:1;
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+}
+.display-header{
+  padding:16px;
+  background:#f8f9fa;
+  border-bottom:1px solid #e0e0e0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.display-content{
+  flex:1;
+  padding:20px;
+  overflow-y:auto;
+  line-height:1.6;
+  font-size:14px;
+  user-select:text;
+}
+
+/* ==================== 高亮样式 ==================== */
+.highlight{
+  padding:2px 4px;
+  border-radius:3px;
+  margin:0 1px;
+  cursor:pointer;
+  transition:.2s;
+}
+.highlight:hover{box-shadow:0 0 0 2px rgba(0,123,255,.3);}
+.highlight.selected{box-shadow:0 0 0 2px #007bff;}
+
+.highlight-yellow {background:#fff3cd;}
+.highlight-green  {background:#d4edda;}
+.highlight-blue   {background:#cce5ff;}
+.highlight-pink   {background:#f8d7da;}
+.highlight-purple {background:#e2e3ff;}
+
+/* ==================== 已保存内容面板 ==================== */
+.saved-content{
+  margin-top:20px;
+  padding:16px;
+  background:#f8f9fa;
+  border-radius:6px;
+  border:1px solid #e0e0e0;
+  transition:.3s;
+}
+.saved-content.collapsed{
+  height:50px;
+  overflow:hidden;
+}
+.saved-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+.saved-item{
+  margin-bottom:8px;
+  padding:8px;
+  background:#fff;
+  border-radius:4px;
+  border-left:4px solid #007bff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.saved-item-actions{margin-left:12px;}
+.delete-btn{
+  background:#dc3545;
+  color:#fff;
+  border:none;
+  padding:4px 8px;
+  border-radius:4px;
+  cursor:pointer;
+  font-size:12px;
+}
+.delete-btn:hover{background:#c82333;}
+
+/* ==================== 常用按钮/选择器 ==================== */
+.format-select{
+  padding:6px 10px;
+  border:1px solid #ddd;
+  border-radius:4px;
+  background:#fff;
+  font-size:12px;
+}
+.toggle-btn{
+  background:#007bff;
+  color:#fff;
+  border:none;
+  padding:6px 12px;
+  border-radius:4px;
+  cursor:pointer;
+  font-size:12px;
+}
+.toggle-btn:hover{background:#0056b3;}
+
+/* ==================== 右键菜单 ==================== */
+.context-menu{
+  position:fixed;
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:6px;
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
+  z-index:1000;
+  min-width:120px;
+  display:none;
+}
+.context-menu-item{
+  padding:8px 12px;
+  cursor:pointer;
+  font-size:14px;
+  color:#333;
+  border-bottom:1px solid #f0f0f0;
+}
+.context-menu-item:last-child{border-bottom:none;}
+.context-menu-item:hover{background:#f8f9fa;}
+.context-menu-item.danger{color:#dc3545;}
+.context-menu-item.danger:hover{background:#f8d7da;}
 </style>
 </head>
 <body>
-  <!-- 工具栏 -->
-  <div class="toolbar">
-    <button id="highlightBtn">🖍️ 高亮工具</button>
-    <div class="color-selector">
-      <div class="color-btn highlight-yellow" data-color="yellow"></div>
-      <div class="color-btn highlight-green"  data-color="green"></div>
-      <div class="color-btn highlight-blue"   data-color="blue"></div>
-      <div class="color-btn highlight-pink"   data-color="pink"></div>
-      <div class="color-btn highlight-purple" data-color="purple"></div>
-    </div>
-    <button id="deleteSelectedBtn">🗑 删除选中</button>
-    <button id="saveBtn">💾 保存高亮</button>
-    <button id="exportTxtBtn">📄 导出TXT</button>
-    <button id="exportJsonBtn">📋 导出JSON</button>
-    <button id="exportMdBtn">📝 导出Markdown</button>
-    <button id="clearBtn">🗑 清除高亮</button>
+<!-- =============== 工具栏 =============== -->
+<div class="toolbar">
+  <button id="highlightBtn">🖍️ 高亮工具</button>
+  <div class="color-selector">
+    <div class="color-btn highlight-yellow" data-color="yellow"></div>
+    <div class="color-btn highlight-green"  data-color="green"></div>
+    <div class="color-btn highlight-blue"   data-color="blue"></div>
+    <div class="color-btn highlight-pink"   data-color="pink"></div>
+    <div class="color-btn highlight-purple" data-color="purple"></div>
   </div>
+  <button id="deleteSelectedBtn">🗑 删除选中</button>
+  <button id="saveBtn">💾 保存高亮</button>
+  <button id="exportTxtBtn">📄 导出TXT</button>
+  <button id="exportJsonBtn">📋 导出JSON</button>
+  <button id="exportMdBtn">📝 导出Markdown</button>
+  <button id="clearBtn">🗑 清除高亮</button>
+</div>
 
-  <!-- 主区域 -->
-  <div class="main-container">
-    <div class="input-section" id="inputSection">
-      <div class="input-header">
-        <h3>文本输入</h3>
-        <div>
-          <select id="formatSelect" class="format-select">
-            <option value="text">纯文本</option>
-            <option value="markdown">Markdown</option>
-          </select>
-          <button class="toggle-btn" id="collapseBtn">收起</button>
-        </div>
-      </div>
-      <div class="input-area">
-        <textarea id="textInput" placeholder="在此输入文本内容..."></textarea>
+<!-- =============== 主体 =============== -->
+<div class="main-container">
+  <!-- 左：输入 -->
+  <div class="input-section" id="inputSection">
+    <div class="input-header">
+      <h3>文本输入</h3>
+      <div>
+        <select id="formatSelect" class="format-select">
+          <option value="text">纯文本</option>
+          <option value="markdown">Markdown</option>
+        </select>
+        <button class="toggle-btn" id="collapseBtn">收起</button>
       </div>
     </div>
-
-    <div class="display-section">
-      <div class="display-header">
-        <h3>显示区域</h3>
-        <button class="toggle-btn" id="expandBtn" style="display:none;">展开输入区</button>
-      </div>
-      <div class="display-content" id="displayContent">
-        <p>在左侧输入框中输入文本，内容将在这里显示。使用高亮工具可以标记重要内容。</p>
-      </div>
-
-      <div class="saved-content" id="savedContent" style="display:none;">
-        <div class="saved-header">
-          <h3>已保存的高亮内容</h3>
-          <button class="toggle-btn" id="savedToggleBtn">收起</button>
-        </div>
-        <div id="savedList"></div>
-      </div>
+    <div class="input-area">
+      <textarea id="textInput" placeholder="在此输入文本内容..."></textarea>
     </div>
   </div>
 
-  <!-- 右键菜单 -->
-  <div class="context-menu" id="contextMenu">
-    <div class="context-menu-item danger" id="deleteHighlightItem">删除高亮</div>
-  </div>
+  <!-- 右：显示 -->
+  <div class="display-section">
+    <div class="display-header">
+      <h3>显示区域</h3>
+      <button class="toggle-btn" id="expandBtn" style="display:none;">展开输入区</button>
+    </div>
+    <div class="display-content" id="displayContent">
+      <p>在左侧输入框中输入文本，内容将在这里显示。使用高亮工具可以标记重要内容。</p>
+    </div>
 
+    <!-- 保存面板 -->
+    <div class="saved-content" id="savedContent" style="display:none;">
+      <div class="saved-header">
+        <h3>已保存的高亮内容</h3>
+        <button class="toggle-btn" id="savedToggleBtn">收起</button>
+      </div>
+      <div id="savedList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 右键菜单 -->
+<div class="context-menu" id="contextMenu">
+  <div class="context-menu-item danger" id="deleteHighlightItem">删除高亮</div>
+</div>
+
+<!-- ==================== 脚本 ==================== -->
 <script>
 class TextHighlighter{
   constructor(){
-    this.isHighlightMode = false;
-    this.currentColor    = 'yellow';
-    this.highlightId     = 0;
+    /* 状态 */
+    this.isHighlightMode=false;
+    this.currentColor='yellow';
+    this.highlightId=0;
     this.selectedHighlight=null;
-    this.savedHighlights = [];
+    this.savedHighlights=[];
+    /* 设备判定 */
+    this.isIOS=/iP(ad|hone|od)/i.test(navigator.userAgent);
 
-    this.isIOS = /iP(ad|hone|od)/i.test(navigator.userAgent);
-
-    this.initEls();
-    this.bindEvents();
-  }
-
-  /* ——— 元素缓存 ——— */
-  initEls(){
+    /* DOM 缓存 */
     const $=id=>document.getElementById(id);
     this.highlightBtn=$('highlightBtn');
-    this.colorBtns   =document.querySelectorAll('.color-btn');
+    this.colorBtns=document.querySelectorAll('.color-btn');
     this.deleteSelectedBtn=$('deleteSelectedBtn');
     this.saveBtn=$('saveBtn');
     this.exportTxtBtn=$('exportTxtBtn');
@@ -152,28 +320,35 @@ class TextHighlighter{
     this.contextMenu=$('contextMenu');
     this.deleteHighlightItem=$('deleteHighlightItem');
     this.colorBtns[0].classList.add('active');
+
+    this.bindEvents();
   }
 
-  /* ——— 事件绑定 ——— */
+  /* ========== 事件绑定 ========== */
   bindEvents(){
+    /* 工具栏 */
     this.highlightBtn.addEventListener('click',()=>this.toggleMode());
     this.colorBtns.forEach(btn=>btn.addEventListener('click',e=>this.pickColor(e.target)));
     this.deleteSelectedBtn.addEventListener('click',()=>this.deleteSelected());
-    this.saveBtn   .addEventListener('click',()=>this.saveHighlights());
+    this.saveBtn.addEventListener('click',()=>this.saveHighlights());
     this.exportTxtBtn.addEventListener('click',()=>this.exportTxt());
     this.exportJsonBtn.addEventListener('click',()=>this.exportJson());
     this.exportMdBtn.addEventListener('click',()=>this.exportMd());
     this.clearBtn.addEventListener('click',()=>this.clearAll());
+
     this.textInput.addEventListener('input',()=>this.renderDisplay());
     this.formatSelect.addEventListener('change',()=>this.renderDisplay());
+
     this.collapseBtn.addEventListener('click',()=>this.toggleInput());
     this.expandBtn  .addEventListener('click',()=>this.toggleInput());
     this.savedToggleBtn.addEventListener('click',()=>this.toggleSaved());
     this.deleteHighlightItem.addEventListener('click',()=>this.deleteFromMenu());
 
+    /* 点击 & 右键 */
     document.addEventListener('click',e=>this.handleClick(e));
     document.addEventListener('contextmenu',e=>this.handleCtx(e));
 
+    /* 选区监听：iOS 与其它平台差异化 */
     if(this.isIOS){
       document.addEventListener('selectionchange',()=>this.cacheSelection());
       ['pointerup','touchend'].forEach(evt=>document.addEventListener(evt,()=>this.commitHighlight()));
@@ -182,7 +357,7 @@ class TextHighlighter{
     }
   }
 
-  /* ——— 模式 / 颜色 ——— */
+  /* ========== 模式 / 颜色 ========== */
   toggleMode(){
     this.isHighlightMode=!this.isHighlightMode;
     this.highlightBtn.classList.toggle('active',this.isHighlightMode);
@@ -194,7 +369,7 @@ class TextHighlighter{
     this.currentColor=btn.dataset.color;
   }
 
-  /* ——— 选区缓存 / 提交 ——— */
+  /* ========== 选区处理 ========== */
   cacheSelection(){
     if(!this.isHighlightMode) return;
     const sel=window.getSelection();
@@ -202,13 +377,14 @@ class TextHighlighter{
   }
   commitHighlight(){
     if(!this.isHighlightMode) return;
+
     const sel=window.getSelection();
     const range=this.isIOS?this.cachedRange:(sel.rangeCount?sel.getRangeAt(0):null);
     if(!range||range.collapsed||range.toString().trim()==='') return;
-
+    /* 必须在显示区内 */
     if(!this.displayContent.contains(range.commonAncestorContainer)) return;
 
-    /* —— 核心：先移除交叠旧高亮，再包新高亮 —— */
+    /* —— 先拆交叠旧高亮，再包新高亮 —— */
     this.removeHighlightsInRange(range);
     this.wrapRange(range);
 
@@ -216,33 +392,20 @@ class TextHighlighter{
     this.cachedRange=null;
   }
 
-  /* 移除与选区相交的旧高亮（只拆交叉部分） */
+  /* 拆解与 range 相交的旧高亮 */
   removeHighlightsInRange(range){
-    const highlights=[...this.displayContent.querySelectorAll('.highlight')];
-    highlights.forEach(h=>{
+    const hs=[...this.displayContent.querySelectorAll('.highlight')];
+    hs.forEach(h=>{
       if(!range.intersectsNode(h)) return;
-
-      /* 如果选区包住整个高亮节点，直接 unwrap */
-      const hr=document.createRange();hr.selectNodeContents(h);
-      if(range.compareBoundaryPoints(Range.START_TO_START,hr)<=0 &&
-         range.compareBoundaryPoints(Range.END_TO_END  ,hr)>=0){
-        this.unwrap(h); return;
-      }
-
-      /* 否则：把选区边界扩展到 <span> 内部，拆分后再 unwrap 交叉部分 */
-      const interRange=range.cloneRange();
-      interRange.setStart(hr.startContainer,hr.startOffset);
-      interRange.setEnd(hr.endContainer,hr.endOffset);
-      /* 把整个高亮拆开成纯文本 */
       this.unwrap(h);
     });
   }
-  /* unwrap: 用 span.textContent 替换自身 */
-  unwrap(node){
-    const p=node.parentNode;
-    while(node.firstChild) p.insertBefore(node.firstChild,node);
-    p.removeChild(node);
-    p.normalize();
+  /* unwrap 高亮节点 */
+  unwrap(span){
+    const parent=span.parentNode;
+    while(span.firstChild) parent.insertBefore(span.firstChild,span);
+    parent.removeChild(span);
+    parent.normalize();
   }
 
   /* 包裹新高亮 */
@@ -250,11 +413,15 @@ class TextHighlighter{
     const span=document.createElement('span');
     span.className=`highlight highlight-${this.currentColor}`;
     span.dataset.highlightId=this.highlightId++;
-    try{ range.surroundContents(span); }
-    catch{ const frag=range.extractContents();span.appendChild(frag);range.insertNode(span);}
+    try{range.surroundContents(span);}
+    catch{
+      const frag=range.extractContents();
+      span.appendChild(frag);
+      range.insertNode(span);
+    }
   }
 
-  /* ——— 点击 / 右键 ——— */
+  /* ========== 点击 / 右键 ========== */
   handleClick(e){
     this.contextMenu.style.display='none';
     if(e.target.classList.contains('highlight')){
@@ -274,26 +441,163 @@ class TextHighlighter{
       this.contextMenu.style.top=e.pageY+'px';
     }else this.contextMenu.style.display='none';
   }
-  deleteFromMenu(){ if(this.selectedHighlight) this.deleteNode(this.selectedHighlight); this.contextMenu.style.display='none'; }
-  deleteSelected(){ this.selectedHighlight?this.deleteNode(this.selectedHighlight):alert('请先选择一个高亮内容'); }
-  deleteNode(el){const p=el.parentNode;p.replaceChild(document.createTextNode(el.textContent),el);p.normalize();this.selectedHighlight=null;}
+  deleteFromMenu(){
+    if(this.selectedHighlight) this.deleteNode(this.selectedHighlight);
+    this.contextMenu.style.display='none';
+  }
+  deleteSelected(){
+    if(this.selectedHighlight) this.deleteNode(this.selectedHighlight);
+    else alert('请先选择一个高亮内容');
+  }
+  deleteNode(node){
+    const p=node.parentNode;
+    p.replaceChild(document.createTextNode(node.textContent),node);
+    p.normalize();
+    this.selectedHighlight=null;
+  }
 
-  /* ——— 保存 / 导出 / 清空（与旧版一致，省略未改动部分） ——— */
-  saveHighlights(){ /* …原逻辑… */ }
-  exportTxt(){ /* …原逻辑… */ }
-  exportJson(){ /* …原逻辑… */ }
-  exportMd(){ /* …原逻辑… */ }
-  clearAll(){ /* …原逻辑… */ }
+  /* ========== 保存 / 导出 / 清空 ========== */
+  saveHighlights(){
+    const hs=this.displayContent.querySelectorAll('.highlight');
+    if(!hs.length){alert('没有找到高亮内容');return;}
 
-  /* ——— 渲染、折叠面板（与旧版一致） ——— */
-  renderDisplay(){ /* …原逻辑… */ }
-  toggleSaved(){ /* …原逻辑… */ }
-  toggleInput(){ /* …原逻辑… */ }
+    const arr=[];
+    hs.forEach(h=>{
+      const txt=h.textContent.trim();
+      if(!txt) return;
+      const info=this.getLineInfo(h);
+      arr.push({
+        text:txt,
+        color:this.getColor(h),
+        line:info.line,
+        position:info.position
+      });
+    });
+
+    /* 按行合并 */
+    const byLine={};
+    arr.forEach(i=>{(byLine[i.line]=byLine[i.line]||[]).push(i);});
+    this.savedHighlights=[];
+    Object.keys(byLine).sort((a,b)=>a-b).forEach(line=>{
+      const items=byLine[line].sort((a,b)=>a.position-b.position);
+      this.savedHighlights.push({
+        line:+line,
+        text:items.map(i=>i.text).join(' '),
+        items
+      });
+    });
+    this.displaySaved();
+  }
+  exportTxt(){
+    if(!this.savedHighlights.length){alert('没有保存的高亮内容');return;}
+    const content=this.savedHighlights.map(i=>i.text).join('\n');
+    this.download(content,'highlights.txt','text/plain');
+  }
+  exportJson(){
+    if(!this.savedHighlights.length){alert('没有保存的高亮内容');return;}
+    const content=JSON.stringify(this.savedHighlights,null,2);
+    this.download(content,'highlights.json','application/json');
+  }
+  exportMd(){
+    const body=this.displayContent.textContent||this.displayContent.innerText;
+    const md=`# 文档内容\n\n${body}\n\n## 高亮内容\n\n${this.savedHighlights.map(i=>`- ${i.text}`).join('\n')}`;
+    this.download(md,'document.md','text/markdown');
+  }
+  clearAll(){
+    this.displayContent.querySelectorAll('.highlight').forEach(h=>this.unwrap(h));
+    this.savedHighlights=[];
+    this.displaySaved();
+    this.selectedHighlight=null;
+  }
+
+  /* 工具函数 */
+  download(content,name,type){
+    const blob=new Blob([content],{type});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;a.download=name;
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+  getLineInfo(el){
+    const dr=this.displayContent.getBoundingClientRect();
+    const er=el.getBoundingClientRect();
+    const lh=parseInt(getComputedStyle(this.displayContent).lineHeight);
+    return{
+      line:Math.floor((er.top-dr.top)/lh),
+      position:er.left-dr.left
+    };
+  }
+  getColor(el){
+    for(const c of el.classList) if(c.startsWith('highlight-')) return c.replace('highlight-','');
+    return'yellow';
+  }
+
+  /* ========== 保存面板渲染 ========== */
+  displaySaved(){
+    if(!this.savedHighlights.length){
+      this.savedContent.style.display='none';
+      return;
+    }
+    this.savedContent.style.display='block';
+    this.savedList.innerHTML='';
+    this.savedHighlights.forEach((item,i)=>{
+      const div=document.createElement('div');
+      div.className='saved-item';
+      div.innerHTML=`
+        <div class="saved-item-content"><strong>第${item.line+1}行:</strong> ${item.text}</div>
+        <div class="saved-item-actions">
+          <button class="delete-btn" onclick="highlighter.deleteSavedItem(${i})">删除</button>
+        </div>`;
+      this.savedList.appendChild(div);
+    });
+  }
+  deleteSavedItem(i){
+    this.savedHighlights.splice(i,1);
+    this.displaySaved();
+  }
+
+  /* ========== 输入区渲染 ========== */
+  renderDisplay(){
+    const txt=this.textInput.value;
+    const fmt=this.formatSelect.value;
+
+    if(!txt.trim()){
+      this.displayContent.innerHTML='<p>在左侧输入框中输入文本，内容将在这里显示。使用高亮工具可以标记重要内容。</p>';
+      return;
+    }
+
+    if(fmt==='markdown'){
+      let html=txt
+        .replace(/^### (.*$)/gim,'<h3>$1</h3>')
+        .replace(/^## (.*$)/gim,'<h2>$1</h2>')
+        .replace(/^# (.*$)/gim,'<h1>$1</h1>')
+        .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g,'<em>$1</em>')
+        .replace(/`(.*?)`/g,'<code style="background:#f4f4f4;padding:2px 4px;border-radius:3px;">$1</code>')
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" style="color:#007bff;">$1</a>')
+        .replace(/\n/g,'<br>');
+      this.displayContent.innerHTML=`<div>${html}</div>`;
+    }else{
+      this.displayContent.innerHTML=`<div>${txt.replace(/\n/g,'<br>')}</div>`;
+    }
+  }
+
+  /* ========== 折叠/展开 ========== */
+  toggleSaved(){
+    const c=this.savedContent.classList.toggle('collapsed');
+    this.savedToggleBtn.innerText=c?'展开':'收起';
+  }
+  toggleInput(){
+    const c=this.inputSection.classList.toggle('collapsed');
+    this.collapseBtn.style.display=c?'none':'block';
+    this.expandBtn.style.display=c?'block':'none';
+  }
 }
 
-/* 启动 */
+/* 初始化 */
 let highlighter;
-document.addEventListener('DOMContentLoaded',()=>highlighter=new TextHighlighter());
+document.addEventListener('DOMContentLoaded',()=>{highlighter=new TextHighlighter();});
 </script>
 </body>
 </html>
