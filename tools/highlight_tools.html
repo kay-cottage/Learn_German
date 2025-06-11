@@ -10,7 +10,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #f5f5f5;
@@ -18,7 +17,6 @@
             display: flex;
             flex-direction: column;
         }
-
         .toolbar {
             background: white;
             border-bottom: 1px solid #e0e0e0;
@@ -28,7 +26,6 @@
             gap: 12px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-
         .toolbar button {
             padding: 8px 16px;
             border: 1px solid #ddd;
@@ -38,22 +35,18 @@
             font-size: 14px;
             transition: all 0.2s;
         }
-
         .toolbar button:hover {
             background: #f0f0f0;
         }
-
         .toolbar button.active {
             background: #007bff;
             color: white;
             border-color: #007bff;
         }
-
         .color-selector {
             display: flex;
             gap: 8px;
         }
-
         .color-btn {
             width: 32px;
             height: 32px;
@@ -62,22 +55,18 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-
         .color-btn:hover {
             transform: scale(1.1);
         }
-
         .color-btn.active {
             border-color: #333;
             transform: scale(1.1);
         }
-
         .main-container {
             flex: 1;
             display: flex;
             height: calc(100vh - 70px);
         }
-
         .input-section {
             width: 50%;
             background: white;
@@ -86,12 +75,10 @@
             flex-direction: column;
             transition: all 0.3s;
         }
-
         .input-section.collapsed {
             width: 0;
             overflow: hidden;
         }
-
         .input-header {
             padding: 16px;
             background: #f8f9fa;
@@ -100,18 +87,15 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .input-header > div {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-
         .input-area {
             flex: 1;
             padding: 16px;
         }
-
         #textInput {
             width: 100%;
             height: 100%;
@@ -122,14 +106,12 @@
             resize: none;
             font-family: inherit;
         }
-
         .display-section {
             flex: 1;
             background: white;
             display: flex;
             flex-direction: column;
         }
-
         .display-header {
             padding: 16px;
             background: #f8f9fa;
@@ -138,7 +120,6 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .display-content {
             flex: 1;
             padding: 20px;
@@ -147,7 +128,6 @@
             font-size: 14px;
             user-select: text;
         }
-
         .highlight {
             padding: 2px 4px;
             border-radius: 3px;
@@ -155,21 +135,17 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-
         .highlight:hover {
             box-shadow: 0 0 0 2px rgba(0,123,255,0.3);
         }
-
         .highlight.selected {
             box-shadow: 0 0 0 2px #007bff;
         }
-
         .highlight-yellow { background-color: #fff3cd; }
         .highlight-green { background-color: #d4edda; }
         .highlight-blue { background-color: #cce5ff; }
         .highlight-pink { background-color: #f8d7da; }
         .highlight-purple { background-color: #e2e3ff; }
-
         .saved-content {
             margin-top: 20px;
             padding: 16px;
@@ -178,24 +154,20 @@
             border: 1px solid #e0e0e0;
             transition: all 0.3s;
         }
-
         .saved-content.collapsed {
             height: 50px;
             overflow: hidden;
         }
-
         .saved-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
         }
-
         .saved-content h3 {
             color: #333;
             margin: 0;
         }
-
         .saved-item {
             margin-bottom: 8px;
             padding: 8px;
@@ -206,15 +178,12 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .saved-item-content {
             flex: 1;
         }
-
         .saved-item-actions {
             margin-left: 12px;
         }
-
         .delete-btn {
             background: #dc3545;
             color: white;
@@ -224,11 +193,9 @@
             cursor: pointer;
             font-size: 12px;
         }
-
         .delete-btn:hover {
             background: #c82333;
         }
-
         .format-select {
             padding: 6px 10px;
             border: 1px solid #ddd;
@@ -236,7 +203,6 @@
             background: white;
             font-size: 12px;
         }
-
         .toggle-btn {
             background: #007bff;
             color: white;
@@ -246,12 +212,9 @@
             cursor: pointer;
             font-size: 12px;
         }
-
         .toggle-btn:hover {
             background: #0056b3;
         }
-
-        /* 右键菜单样式 */
         .context-menu {
             position: fixed;
             background: white;
@@ -262,7 +225,6 @@
             min-width: 120px;
             display: none;
         }
-
         .context-menu-item {
             padding: 8px 12px;
             cursor: pointer;
@@ -270,19 +232,15 @@
             color: #333;
             border-bottom: 1px solid #f0f0f0;
         }
-
         .context-menu-item:last-child {
             border-bottom: none;
         }
-
         .context-menu-item:hover {
             background: #f8f9fa;
         }
-
         .context-menu-item.danger {
             color: #dc3545;
         }
-
         .context-menu-item.danger:hover {
             background: #f8d7da;
         }
@@ -353,8 +311,7 @@
                 this.currentColor = 'yellow';
                 this.savedHighlights = [];
                 this.highlightId = 0;
-                this.selectedHighlight = null; // 当前选中的高亮
-                
+                this.selectedHighlight = null;
                 this.initElements();
                 this.bindEvents();
             }
@@ -379,38 +336,33 @@
                 this.savedToggleBtn = document.getElementById('savedToggleBtn');
                 this.contextMenu = document.getElementById('contextMenu');
                 this.deleteHighlightItem = document.getElementById('deleteHighlightItem');
-
-                // 默认选中第一个颜色
                 this.colorBtns[0].classList.add('active');
             }
 
             bindEvents() {
                 this.highlightBtn.addEventListener('click', () => this.toggleHighlightMode());
-                
-                this.colorBtns.forEach(btn => {
-                    btn.addEventListener('click', (e) => this.selectColor(e.target));
-                });
-
+                this.colorBtns.forEach(btn => btn.addEventListener('click', e => this.selectColor(e.target)));
                 this.deleteSelectedBtn.addEventListener('click', () => this.deleteSelectedHighlight());
                 this.saveBtn.addEventListener('click', () => this.saveHighlights());
                 this.exportTxtBtn.addEventListener('click', () => this.exportTxt());
                 this.exportJsonBtn.addEventListener('click', () => this.exportJson());
                 this.exportMdBtn.addEventListener('click', () => this.exportMarkdown());
                 this.clearBtn.addEventListener('click', () => this.clearHighlights());
-
                 this.textInput.addEventListener('input', () => this.updateDisplay());
                 this.formatSelect.addEventListener('change', () => this.updateDisplay());
-                
                 this.collapseBtn.addEventListener('click', () => this.toggleInputSection());
                 this.expandBtn.addEventListener('click', () => this.toggleInputSection());
                 this.savedToggleBtn.addEventListener('click', () => this.toggleSavedSection());
-
-                // 右键菜单事件
                 this.deleteHighlightItem.addEventListener('click', () => this.deleteHighlightFromMenu());
 
-                document.addEventListener('mouseup', (e) => this.handleSelection(e));
-                document.addEventListener('click', (e) => this.handleClick(e));
-                document.addEventListener('contextmenu', (e) => this.handleContextMenu(e));
+                // 选区监听：鼠标、Pointer、Touch、selectionchange
+                document.addEventListener('mouseup',       e => this.handleSelection(e));
+                document.addEventListener('pointerup',     e => this.handleSelection(e));
+                document.addEventListener('touchend',      e => this.handleSelection(e));
+                document.addEventListener('selectionchange', e => this.handleSelection(e));
+
+                document.addEventListener('click',        e => this.handleClick(e));
+                document.addEventListener('contextmenu',  e => this.handleContextMenu(e));
             }
 
             toggleHighlightMode() {
@@ -419,104 +371,81 @@
                 this.highlightBtn.textContent = this.isHighlightMode ? '🖍️ 关闭高亮' : '🖍️ 高亮工具';
             }
 
-            selectColor(colorBtn) {
-                this.colorBtns.forEach(btn => btn.classList.remove('active'));
-                colorBtn.classList.add('active');
-                this.currentColor = colorBtn.dataset.color;
+            selectColor(btn) {
+                this.colorBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.currentColor = btn.dataset.color;
             }
 
             handleClick(e) {
-                // 隐藏右键菜单
                 this.contextMenu.style.display = 'none';
-                
-                // 处理高亮选择
                 if (e.target.classList.contains('highlight')) {
-                    // 清除之前的选中状态
-                    this.displayContent.querySelectorAll('.highlight.selected').forEach(h => {
-                        h.classList.remove('selected');
-                    });
-                    
-                    // 选中当前高亮
+                    this.displayContent.querySelectorAll('.highlight.selected')
+                                         .forEach(h => h.classList.remove('selected'));
                     e.target.classList.add('selected');
                     this.selectedHighlight = e.target;
                 } else {
-                    // 点击其他地方，清除选中状态
-                    this.displayContent.querySelectorAll('.highlight.selected').forEach(h => {
-                        h.classList.remove('selected');
-                    });
+                    this.displayContent.querySelectorAll('.highlight.selected')
+                                         .forEach(h => h.classList.remove('selected'));
                     this.selectedHighlight = null;
                 }
             }
 
             handleContextMenu(e) {
-                // 检查是否右键点击高亮
                 if (e.target.classList.contains('highlight')) {
                     e.preventDefault();
-                    
-                    // 选中这个高亮
-                    this.displayContent.querySelectorAll('.highlight.selected').forEach(h => {
-                        h.classList.remove('selected');
-                    });
+                    this.displayContent.querySelectorAll('.highlight.selected')
+                                         .forEach(h => h.classList.remove('selected'));
                     e.target.classList.add('selected');
                     this.selectedHighlight = e.target;
-                    
-                    // 显示右键菜单
                     this.contextMenu.style.display = 'block';
                     this.contextMenu.style.left = e.pageX + 'px';
-                    this.contextMenu.style.top = e.pageY + 'px';
+                    this.contextMenu.style.top  = e.pageY + 'px';
                 } else {
-                    // 隐藏右键菜单
                     this.contextMenu.style.display = 'none';
                 }
             }
 
             deleteHighlightFromMenu() {
-                if (this.selectedHighlight) {
-                    this.deleteHighlight(this.selectedHighlight);
-                }
+                if (this.selectedHighlight) this.deleteHighlight(this.selectedHighlight);
                 this.contextMenu.style.display = 'none';
             }
 
             deleteSelectedHighlight() {
-                if (this.selectedHighlight) {
-                    this.deleteHighlight(this.selectedHighlight);
-                } else {
-                    alert('请先选择一个高亮内容');
-                }
+                if (this.selectedHighlight) this.deleteHighlight(this.selectedHighlight);
+                else alert('请先选择一个高亮内容');
             }
 
-            deleteHighlight(highlightElement) {
-                const parent = highlightElement.parentNode;
-                parent.replaceChild(document.createTextNode(highlightElement.textContent), highlightElement);
-                parent.normalize();
+            deleteHighlight(el) {
+                const p = el.parentNode;
+                p.replaceChild(document.createTextNode(el.textContent), el);
+                p.normalize();
                 this.selectedHighlight = null;
             }
 
             handleSelection(e) {
                 if (!this.isHighlightMode) return;
-                
-                const selection = window.getSelection();
-                if (selection.rangeCount === 0 || selection.toString().trim() === '') return;
+                const sel = window.getSelection();
+                if (sel.rangeCount === 0 || sel.toString().trim() === '') return;
+                const range = sel.getRangeAt(0);
+                const c = range.commonAncestorContainer;
+                if (!this.displayContent.contains(c) && c !== this.displayContent) return;
 
-                const range = selection.getRangeAt(0);
-                const container = range.commonAncestorContainer;
-                
-                // 检查选择是否在显示区域内
-                if (!this.displayContent.contains(container) && container !== this.displayContent) return;
+                // —— 新增：不可重复高亮 —— 
+                const frag = range.cloneContents();
+                if (frag.querySelector('.highlight')) return;
 
                 this.highlightSelection(range);
-                selection.removeAllRanges();
+                sel.removeAllRanges();
             }
 
             highlightSelection(range) {
                 const span = document.createElement('span');
                 span.className = `highlight highlight-${this.currentColor}`;
                 span.dataset.highlightId = this.highlightId++;
-                
                 try {
                     range.surroundContents(span);
-                } catch (e) {
-                    // 处理跨元素选择的情况
+                } catch {
                     const contents = range.extractContents();
                     span.appendChild(contents);
                     range.insertNode(span);
@@ -524,68 +453,47 @@
             }
 
             saveHighlights() {
-                const highlights = this.displayContent.querySelectorAll('.highlight');
-                if (highlights.length === 0) {
+                const hs = this.displayContent.querySelectorAll('.highlight');
+                if (hs.length === 0) {
                     alert('没有找到高亮内容');
                     return;
                 }
-
                 const saved = [];
-                highlights.forEach(highlight => {
-                    const text = highlight.textContent.trim();
-                    if (text) {
-                        const lineInfo = this.getLineInfo(highlight);
-                        saved.push({
-                            text: text,
-                            color: this.getHighlightColor(highlight),
-                            line: lineInfo.line,
-                            position: lineInfo.position
-                        });
-                    }
-                });
-
-                // 按行分组保存
-                const groupedByLine = {};
-                saved.forEach(item => {
-                    if (!groupedByLine[item.line]) {
-                        groupedByLine[item.line] = [];
-                    }
-                    groupedByLine[item.line].push(item);
-                });
-
-                // 按位置排序并合并同行内容
-                this.savedHighlights = [];
-                Object.keys(groupedByLine).sort((a, b) => parseInt(a) - parseInt(b)).forEach(line => {
-                    const lineItems = groupedByLine[line].sort((a, b) => a.position - b.position);
-                    const lineText = lineItems.map(item => item.text).join(' ');
-                    this.savedHighlights.push({
-                        line: parseInt(line),
-                        text: lineText,
-                        items: lineItems
+                hs.forEach(h => {
+                    const t = h.textContent.trim();
+                    if (!t) return;
+                    const info = this.getLineInfo(h);
+                    saved.push({
+                        text: t,
+                        color: this.getHighlightColor(h),
+                        line: info.line,
+                        position: info.position
                     });
                 });
-
+                const byLine = {};
+                saved.forEach(i => {
+                    (byLine[i.line] = byLine[i.line]||[]).push(i);
+                });
+                this.savedHighlights = [];
+                Object.keys(byLine).sort((a,b)=>a-b).forEach(line=>{
+                    const items = byLine[line].sort((a,b)=>a.position-b.position);
+                    const text = items.map(i=>i.text).join(' ');
+                    this.savedHighlights.push({ line: +line, text, items });
+                });
                 this.displaySavedHighlights();
             }
 
-            getLineInfo(element) {
-                const displayRect = this.displayContent.getBoundingClientRect();
-                const elementRect = element.getBoundingClientRect();
-                const lineHeight = parseInt(window.getComputedStyle(this.displayContent).lineHeight);
-                
-                const line = Math.floor((elementRect.top - displayRect.top) / lineHeight);
-                const position = elementRect.left - displayRect.left;
-                
-                return { line, position };
+            getLineInfo(el) {
+                const dr = this.displayContent.getBoundingClientRect();
+                const er = el.getBoundingClientRect();
+                const lh = parseInt(window.getComputedStyle(this.displayContent).lineHeight);
+                const line = Math.floor((er.top - dr.top)/lh);
+                const pos  = er.left - dr.left;
+                return { line, position: pos };
             }
 
-            getHighlightColor(element) {
-                const classList = element.classList;
-                for (let className of classList) {
-                    if (className.startsWith('highlight-')) {
-                        return className.replace('highlight-', '');
-                    }
-                }
+            getHighlightColor(el) {
+                for (let c of el.classList) if (c.startsWith('highlight-')) return c.replace('highlight-','');
                 return 'yellow';
             }
 
@@ -594,62 +502,50 @@
                     this.savedContent.style.display = 'none';
                     return;
                 }
-
                 this.savedContent.style.display = 'block';
                 this.savedList.innerHTML = '';
-                
-                this.savedHighlights.forEach((item, index) => {
+                this.savedHighlights.forEach((item, idx) => {
                     const div = document.createElement('div');
                     div.className = 'saved-item';
                     div.innerHTML = `
                         <div class="saved-item-content">
-                            <strong>第${item.line + 1}行:</strong> ${item.text}
+                            <strong>第${item.line+1}行:</strong> ${item.text}
                         </div>
                         <div class="saved-item-actions">
-                            <button class="delete-btn" onclick="highlighter.deleteSavedItem(${index})">删除</button>
-                        </div>
-                    `;
+                            <button class="delete-btn" onclick="highlighter.deleteSavedItem(${idx})">删除</button>
+                        </div>`;
                     this.savedList.appendChild(div);
                 });
             }
 
-            deleteSavedItem(index) {
-                this.savedHighlights.splice(index, 1);
+            deleteSavedItem(i) {
+                this.savedHighlights.splice(i,1);
                 this.displaySavedHighlights();
             }
 
             exportTxt() {
-                if (this.savedHighlights.length === 0) {
-                    alert('没有保存的高亮内容');
-                    return;
-                }
-
-                const content = this.savedHighlights.map(item => item.text).join('\n');
-                this.downloadFile(content, 'highlights.txt', 'text/plain');
+                if (!this.savedHighlights.length) { alert('没有保存的高亮内容'); return; }
+                const content = this.savedHighlights.map(i=>i.text).join('\n');
+                this.downloadFile(content,'highlights.txt','text/plain');
             }
 
             exportJson() {
-                if (this.savedHighlights.length === 0) {
-                    alert('没有保存的高亮内容');
-                    return;
-                }
-
-                const content = JSON.stringify(this.savedHighlights, null, 2);
-                this.downloadFile(content, 'highlights.json', 'application/json');
+                if (!this.savedHighlights.length) { alert('没有保存的高亮内容'); return; }
+                const content = JSON.stringify(this.savedHighlights,null,2);
+                this.downloadFile(content,'highlights.json','application/json');
             }
 
             exportMarkdown() {
-                const displayText = this.displayContent.textContent || this.displayContent.innerText;
-                const content = `# 文档内容\n\n${displayText}\n\n## 高亮内容\n\n${this.savedHighlights.map(item => `- ${item.text}`).join('\n')}`;
-                this.downloadFile(content, 'document.md', 'text/markdown');
+                const disp = this.displayContent.textContent || this.displayContent.innerText;
+                const md = `# 文档内容\n\n${disp}\n\n## 高亮内容\n\n${this.savedHighlights.map(i=>`- ${i.text}`).join('\n')}`;
+                this.downloadFile(md,'document.md','text/markdown');
             }
 
-            downloadFile(content, filename, mimeType) {
-                const blob = new Blob([content], { type: mimeType });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = filename;
+            downloadFile(content, name, type) {
+                const blob = new Blob([content],{type});
+                const url  = URL.createObjectURL(blob);
+                const a    = document.createElement('a');
+                a.href = url; a.download = name;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
@@ -657,13 +553,11 @@
             }
 
             clearHighlights() {
-                const highlights = this.displayContent.querySelectorAll('.highlight');
-                highlights.forEach(highlight => {
-                    const parent = highlight.parentNode;
-                    parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
-                    parent.normalize();
+                this.displayContent.querySelectorAll('.highlight').forEach(h=>{
+                    const p = h.parentNode;
+                    p.replaceChild(document.createTextNode(h.textContent), h);
+                    p.normalize();
                 });
-                
                 this.savedHighlights = [];
                 this.savedContent.style.display = 'none';
                 this.selectedHighlight = null;
@@ -671,52 +565,38 @@
 
             updateDisplay() {
                 const text = this.textInput.value;
-                const format = this.formatSelect.value;
-                
-                if (text.trim() === '') {
+                const fmt  = this.formatSelect.value;
+                if (!text.trim()) {
                     this.displayContent.innerHTML = '<p>在左侧输入框中输入文本，内容将在这里显示。使用高亮工具可以标记重要内容。</p>';
+                } else if (fmt === 'markdown') {
+                    let ft = text
+                        .replace(/^### (.*$)/gim,'<h3>$1</h3>')
+                        .replace(/^## (.*$)/gim,'<h2>$1</h2>')
+                        .replace(/^# (.*$)/gim,'<h1>$1</h1>')
+                        .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+                        .replace(/\*(.*?)\*/g,'<em>$1</em>')
+                        .replace(/`(.*?)`/g,'<code style="background:#f4f4f4;padding:2px 4px;border-radius:3px;">$1</code>')
+                        .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" style="color:#007bff;">$1</a>')
+                        .replace(/\n/g,'<br>');
+                    this.displayContent.innerHTML = `<div>${ft}</div>`;
                 } else {
-                    if (format === 'markdown') {
-                        // 简单的markdown渲染
-                        let formattedText = text
-                            // 标题
-                            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-                            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-                            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-                            // 粗体和斜体
-                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                            .replace(/\*(.*?)\*/g, '<em>$1</em>')
-                            // 代码
-                            .replace(/`(.*?)`/g, '<code style="background: #f4f4f4; padding: 2px 4px; border-radius: 3px;">$1</code>')
-                            // 链接
-                            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" style="color: #007bff;">$1</a>')
-                            // 换行
-                            .replace(/\n/g, '<br>');
-                        
-                        this.displayContent.innerHTML = `<div>${formattedText}</div>`;
-                    } else {
-                        // 纯文本格式，保持换行
-                        const formattedText = text.replace(/\n/g, '<br>');
-                        this.displayContent.innerHTML = `<div>${formattedText}</div>`;
-                    }
+                    const ft = text.replace(/\n/g,'<br>');
+                    this.displayContent.innerHTML = `<div>${ft}</div>`;
                 }
             }
 
             toggleSavedSection() {
-                const isCollapsed = this.savedContent.classList.contains('collapsed');
-                this.savedContent.classList.toggle('collapsed');
-                this.savedToggleBtn.textContent = isCollapsed ? '收起' : '展开';
+                const col = this.savedContent.classList.toggle('collapsed');
+                this.savedToggleBtn.textContent = col ? '展开' : '收起';
             }
 
             toggleInputSection() {
-                const isCollapsed = this.inputSection.classList.contains('collapsed');
-                this.inputSection.classList.toggle('collapsed');
-                this.collapseBtn.style.display = isCollapsed ? 'block' : 'none';
-                this.expandBtn.style.display = isCollapsed ? 'none' : 'block';
+                const col = this.inputSection.classList.toggle('collapsed');
+                this.collapseBtn.style.display = col ? 'none' : 'block';
+                this.expandBtn .style.display = col ? 'block' : 'none';
             }
         }
 
-        // 初始化应用
         let highlighter;
         document.addEventListener('DOMContentLoaded', () => {
             highlighter = new TextHighlighter();
