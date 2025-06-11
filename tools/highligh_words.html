@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>文本高亮工具</title>
+    <title>kay文本高亮工具</title>
     <style>
         * {
             margin: 0;
@@ -408,13 +408,7 @@
                 // 右键菜单事件
                 this.deleteHighlightItem.addEventListener('click', () => this.deleteHighlightFromMenu());
 
-                // 原有鼠标选区监听
                 document.addEventListener('mouseup', (e) => this.handleSelection(e));
-                // —— 新增：兼容 iPad Pencil、手指及其他输入 —— //
-                document.addEventListener('pointerup', (e) => this.handleSelection(e));
-                document.addEventListener('touchend',   (e) => this.handleSelection(e));
-                document.addEventListener('selectionchange', (e) => this.handleSelection(e));
-                // 其余事件保持不变
                 document.addEventListener('click', (e) => this.handleClick(e));
                 document.addEventListener('contextmenu', (e) => this.handleContextMenu(e));
             }
@@ -432,39 +426,63 @@
             }
 
             handleClick(e) {
+                // 隐藏右键菜单
                 this.contextMenu.style.display = 'none';
+                
+                // 处理高亮选择
                 if (e.target.classList.contains('highlight')) {
-                    this.displayContent.querySelectorAll('.highlight.selected').forEach(h => h.classList.remove('selected'));
+                    // 清除之前的选中状态
+                    this.displayContent.querySelectorAll('.highlight.selected').forEach(h => {
+                        h.classList.remove('selected');
+                    });
+                    
+                    // 选中当前高亮
                     e.target.classList.add('selected');
                     this.selectedHighlight = e.target;
                 } else {
-                    this.displayContent.querySelectorAll('.highlight.selected').forEach(h => h.classList.remove('selected'));
+                    // 点击其他地方，清除选中状态
+                    this.displayContent.querySelectorAll('.highlight.selected').forEach(h => {
+                        h.classList.remove('selected');
+                    });
                     this.selectedHighlight = null;
                 }
             }
 
             handleContextMenu(e) {
+                // 检查是否右键点击高亮
                 if (e.target.classList.contains('highlight')) {
                     e.preventDefault();
-                    this.displayContent.querySelectorAll('.highlight.selected').forEach(h => h.classList.remove('selected'));
+                    
+                    // 选中这个高亮
+                    this.displayContent.querySelectorAll('.highlight.selected').forEach(h => {
+                        h.classList.remove('selected');
+                    });
                     e.target.classList.add('selected');
                     this.selectedHighlight = e.target;
+                    
+                    // 显示右键菜单
                     this.contextMenu.style.display = 'block';
                     this.contextMenu.style.left = e.pageX + 'px';
                     this.contextMenu.style.top = e.pageY + 'px';
                 } else {
+                    // 隐藏右键菜单
                     this.contextMenu.style.display = 'none';
                 }
             }
 
             deleteHighlightFromMenu() {
-                if (this.selectedHighlight) this.deleteHighlight(this.selectedHighlight);
+                if (this.selectedHighlight) {
+                    this.deleteHighlight(this.selectedHighlight);
+                }
                 this.contextMenu.style.display = 'none';
             }
 
             deleteSelectedHighlight() {
-                if (this.selectedHighlight) this.deleteHighlight(this.selectedHighlight);
-                else alert('请先选择一个高亮内容');
+                if (this.selectedHighlight) {
+                    this.deleteHighlight(this.selectedHighlight);
+                } else {
+                    alert('请先选择一个高亮内容');
+                }
             }
 
             deleteHighlight(highlightElement) {
@@ -476,11 +494,16 @@
 
             handleSelection(e) {
                 if (!this.isHighlightMode) return;
+                
                 const selection = window.getSelection();
                 if (selection.rangeCount === 0 || selection.toString().trim() === '') return;
+
                 const range = selection.getRangeAt(0);
                 const container = range.commonAncestorContainer;
+                
+                // 检查选择是否在显示区域内
                 if (!this.displayContent.contains(container) && container !== this.displayContent) return;
+
                 this.highlightSelection(range);
                 selection.removeAllRanges();
             }
@@ -489,9 +512,11 @@
                 const span = document.createElement('span');
                 span.className = `highlight highlight-${this.currentColor}`;
                 span.dataset.highlightId = this.highlightId++;
+                
                 try {
                     range.surroundContents(span);
-                } catch {
+                } catch (e) {
+                    // 处理跨元素选择的情况
                     const contents = range.extractContents();
                     span.appendChild(contents);
                     range.insertNode(span);
@@ -504,32 +529,42 @@
                     alert('没有找到高亮内容');
                     return;
                 }
+
                 const saved = [];
                 highlights.forEach(highlight => {
                     const text = highlight.textContent.trim();
                     if (text) {
                         const lineInfo = this.getLineInfo(highlight);
                         saved.push({
-                            text,
+                            text: text,
                             color: this.getHighlightColor(highlight),
                             line: lineInfo.line,
                             position: lineInfo.position
                         });
                     }
                 });
+
+                // 按行分组保存
                 const groupedByLine = {};
                 saved.forEach(item => {
-                    if (!groupedByLine[item.line]) groupedByLine[item.line] = [];
+                    if (!groupedByLine[item.line]) {
+                        groupedByLine[item.line] = [];
+                    }
                     groupedByLine[item.line].push(item);
                 });
+
+                // 按位置排序并合并同行内容
                 this.savedHighlights = [];
-                Object.keys(groupedByLine)
-                    .sort((a, b) => parseInt(a) - parseInt(b))
-                    .forEach(line => {
-                        const lineItems = groupedByLine[line].sort((a, b) => a.position - b.position);
-                        const lineText = lineItems.map(item => item.text).join(' ');
-                        this.savedHighlights.push({ line: parseInt(line), text: lineText, items: lineItems });
+                Object.keys(groupedByLine).sort((a, b) => parseInt(a) - parseInt(b)).forEach(line => {
+                    const lineItems = groupedByLine[line].sort((a, b) => a.position - b.position);
+                    const lineText = lineItems.map(item => item.text).join(' ');
+                    this.savedHighlights.push({
+                        line: parseInt(line),
+                        text: lineText,
+                        items: lineItems
                     });
+                });
+
                 this.displaySavedHighlights();
             }
 
@@ -537,14 +572,20 @@
                 const displayRect = this.displayContent.getBoundingClientRect();
                 const elementRect = element.getBoundingClientRect();
                 const lineHeight = parseInt(window.getComputedStyle(this.displayContent).lineHeight);
+                
                 const line = Math.floor((elementRect.top - displayRect.top) / lineHeight);
                 const position = elementRect.left - displayRect.left;
+                
                 return { line, position };
             }
 
             getHighlightColor(element) {
-                for (let cls of element.classList)
-                    if (cls.startsWith('highlight-')) return cls.replace('highlight-', '');
+                const classList = element.classList;
+                for (let className of classList) {
+                    if (className.startsWith('highlight-')) {
+                        return className.replace('highlight-', '');
+                    }
+                }
                 return 'yellow';
             }
 
@@ -553,9 +594,11 @@
                     this.savedContent.style.display = 'none';
                     return;
                 }
+
                 this.savedContent.style.display = 'block';
                 this.savedList.innerHTML = '';
-                this.savedHighlights.forEach((item, idx) => {
+                
+                this.savedHighlights.forEach((item, index) => {
                     const div = document.createElement('div');
                     div.className = 'saved-item';
                     div.innerHTML = `
@@ -563,7 +606,7 @@
                             <strong>第${item.line + 1}行:</strong> ${item.text}
                         </div>
                         <div class="saved-item-actions">
-                            <button class="delete-btn" onclick="highlighter.deleteSavedItem(${idx})">删除</button>
+                            <button class="delete-btn" onclick="highlighter.deleteSavedItem(${index})">删除</button>
                         </div>
                     `;
                     this.savedList.appendChild(div);
@@ -580,7 +623,8 @@
                     alert('没有保存的高亮内容');
                     return;
                 }
-                const content = this.savedHighlights.map(i => i.text).join('\n');
+
+                const content = this.savedHighlights.map(item => item.text).join('\n');
                 this.downloadFile(content, 'highlights.txt', 'text/plain');
             }
 
@@ -589,13 +633,14 @@
                     alert('没有保存的高亮内容');
                     return;
                 }
+
                 const content = JSON.stringify(this.savedHighlights, null, 2);
                 this.downloadFile(content, 'highlights.json', 'application/json');
             }
 
             exportMarkdown() {
                 const displayText = this.displayContent.textContent || this.displayContent.innerText;
-                const content = `# 文档内容\n\n${displayText}\n\n## 高亮内容\n\n${this.savedHighlights.map(i => `- ${i.text}`).join('\n')}`;
+                const content = `# 文档内容\n\n${displayText}\n\n## 高亮内容\n\n${this.savedHighlights.map(item => `- ${item.text}`).join('\n')}`;
                 this.downloadFile(content, 'document.md', 'text/markdown');
             }
 
@@ -612,11 +657,13 @@
             }
 
             clearHighlights() {
-                this.displayContent.querySelectorAll('.highlight').forEach(h => {
-                    const parent = h.parentNode;
-                    parent.replaceChild(document.createTextNode(h.textContent), h);
+                const highlights = this.displayContent.querySelectorAll('.highlight');
+                highlights.forEach(highlight => {
+                    const parent = highlight.parentNode;
+                    parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
                     parent.normalize();
                 });
+                
                 this.savedHighlights = [];
                 this.savedContent.style.display = 'none';
                 this.selectedHighlight = null;
@@ -625,22 +672,33 @@
             updateDisplay() {
                 const text = this.textInput.value;
                 const format = this.formatSelect.value;
+                
                 if (text.trim() === '') {
                     this.displayContent.innerHTML = '<p>在左侧输入框中输入文本，内容将在这里显示。使用高亮工具可以标记重要内容。</p>';
-                } else if (format === 'markdown') {
-                    let formattedText = text
-                        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-                        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-                        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                        .replace(/\*(.*?)\*/g, '<em>$1</em>')
-                        .replace(/`(.*?)`/g, '<code style="background: #f4f4f4; padding: 2px 4px; border-radius: 3px;">$1</code>')
-                        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" style="color: #007bff;">$1</a>')
-                        .replace(/\n/g, '<br>');
-                    this.displayContent.innerHTML = `<div>${formattedText}</div>`;
                 } else {
-                    const formattedText = text.replace(/\n/g, '<br>');
-                    this.displayContent.innerHTML = `<div>${formattedText}</div>`;
+                    if (format === 'markdown') {
+                        // 简单的markdown渲染
+                        let formattedText = text
+                            // 标题
+                            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                            // 粗体和斜体
+                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                            // 代码
+                            .replace(/`(.*?)`/g, '<code style="background: #f4f4f4; padding: 2px 4px; border-radius: 3px;">$1</code>')
+                            // 链接
+                            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" style="color: #007bff;">$1</a>')
+                            // 换行
+                            .replace(/\n/g, '<br>');
+                        
+                        this.displayContent.innerHTML = `<div>${formattedText}</div>`;
+                    } else {
+                        // 纯文本格式，保持换行
+                        const formattedText = text.replace(/\n/g, '<br>');
+                        this.displayContent.innerHTML = `<div>${formattedText}</div>`;
+                    }
                 }
             }
 
