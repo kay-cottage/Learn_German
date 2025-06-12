@@ -450,9 +450,8 @@ class TextHighlighter{
     else alert('请先选择一个高亮内容');
   }
   deleteNode(node){
-    const p=node.parentNode;
-    p.replaceChild(document.createTextNode(node.textContent),node);
-    p.normalize();
+    /* 这里改成 unwrap，保留内部换行/标签 */
+    this.unwrap(node);
     this.selectedHighlight=null;
   }
 
